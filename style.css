@@ -1,0 +1,2117 @@
+/* ==========================================================================
+   0) ROOT & RESETS
+   ========================================================================== */
+:root{
+  --brand: #e2af40;        /* botões principais */
+  --brand-2: #f4b93c;      /* botões secundários */
+  --accent: #e56400;       /* intro 2050 */
+  --text-brown: #4c361c;
+  --text-brown-2: #664c25;
+  --shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: 'Fredoka', sans-serif;
+  /* ⚠️ ideal renomear pasta sem espaços/acentos */
+  background-image: url('Imagens questonário/background.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.hidden { display: none !important; }
+
+/* ==========================================================================
+   1) GENERIC ELEMENTS
+   ========================================================================== */
+h2 {
+  font-weight: 600;
+  color: var(--text-brown);
+  margin-bottom: 1.2em;
+  font-size: clamp(1.2rem, 2.5vw, 2rem);
+}
+
+label {
+  display: block;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: var(--text-brown-2);
+  margin: 12px 0;
+}
+
+input[type="radio"],
+input[type="text"] {
+  font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+  margin-right: 10px;
+  margin-top: 6px;
+}
+
+input[type="text"] {
+  width: 100%;
+  max-width: 500px;
+  padding: 10px;
+  border: 1.5px solid #ccc;
+  border-radius: 8px;
+}
+
+/* Buttons (base) */
+button {
+  font-family: 'Fredoka', sans-serif;
+  background-color: var(--brand);
+  color: #fff;
+  border: none;
+  padding: clamp(10px, 3vw, 16px) clamp(20px, 5vw, 35px);
+  font-size: clamp(1rem, 2.2vw, 1.4rem);
+  font-weight: 600;
+  border-radius: 30px;
+  cursor: pointer;
+  animation: pulsar 1.5s infinite;
+  transition: background-color .2s ease;
+  width: auto;
+  max-width: 100%;
+}
+button:hover { background-color: #d47b54; animation: none; }
+
+/* Centrador para botões no fim dos cartões/grid */
+.button-container {
+  grid-column: 1 / -1;
+  margin-top: 40px;
+  width: 100%;
+  text-align: center;
+}
+
+/* ==========================================================================
+   2) CARDS & WRAPPERS
+   ========================================================================== */
+/* Cartão base reutilizável */
+.question-card-yourself,
+.question-wrapper, .narrative-box{
+  position: relative;
+  width: clamp(280px, 80vw, 1300px);
+  margin: 80px auto;
+  background-color: #fff;
+  padding: clamp(10px, 5vw, 20px);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  justify-items: center;
+  justify-content: center;
+  justify-self: center;
+  z-index: 1;
+  overflow: hidden;
+  display: grid;
+  color: var(--text-brown);
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  line-height: 1.5;
+  text-align: left;
+  margin: 50px 50px 50px;
+  align-items: center;
+  text-align: center;
+}
+
+.narrative-text, .consentcontent, .areaIntroduction {
+  color: var(--text-brown);
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: center;
+  margin: 0 20px 40px;
+}
+
+.areaIntroduction {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  line-height: 1.5;
+  text-align: center;
+  margin: 0 20px 40px;
+}
+
+.areaIntroduction h2 {
+  color: #92bc3d;
+  font-size: 30px
+}
+
+#area-climate .buttonintroductionclimate {
+  display: block;
+  margin: 50px auto 0;
+  background-color:#92bc3d;;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  padding: 16px 40px;
+  border-radius: 30px;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
+  animation: fadeUp 1s ease-out, pulsar 1.5s infinite;
+}
+
+#area-climate .buttonintroductionclimate:hover { background-color: #92bc3d; }
+
+.answer-col {  display: block; width: 100%; }
+
+/* Conteúdo por passos */
+.question-content { flex: 10; }
+.step { display: none; }
+.step.active { display: block; position: relative; }
+
+/* ==========================================================================
+   3) SCREENS
+   ========================================================================== */
+/* 3.1 Informed consent */
+#informConsent { display: block; }
+
+
+
+.continue-button {
+  display: block;
+  margin: 50px auto 0;
+  background-color: var(--brand);
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  padding: 16px 40px;
+  border-radius: 30px;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
+  animation: fadeUp 1s ease-out, pulsar 1.5s infinite;
+}
+.continue-button:hover { background-color: #c99b34; }
+
+/* 3.2 Start screen */
+.start-screen {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+.start-screen .content {
+  text-align: center;
+  color: var(--text-brown);
+  max-width: 90vw;
+}
+.start-screen h1 {
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  font-weight: 650;
+  line-height: 1.5;
+  margin-bottom: 40px;
+}
+.start-button {
+  background-color: var(--brand-2);
+  transition: background-color .3s ease;
+}
+.start-button:hover { background-color: #d47b54; }
+
+
+
+
+/* Texto centrado e sem margens negativas */
+.intro2050-text {
+  color: #fff;
+  font-weight: 5;
+  text-align: center;   /* centra o texto */
+  z-index: 10;
+  margin: 0 auto;       /* centra o bloco */
+}
+
+#intro2050 .intro2050-container{
+  position: static !important;      /* deixa de ser absolute */
+  left: auto !important;
+  right: auto !important;
+  top: auto !important;
+  bottom: auto !important;
+  transform: none !important;
+
+  display: flex !important;
+  justify-content: center !important; /* centra horizontalmente */
+  align-items: center !important;
+
+  width: 100%;
+  max-width: none;                   /* ocupa a largura do ecrã */
+  margin: 30px auto 0 !important;    /* espaço acima e centrado */
+}
+
+/* Botão normal (sem mexer em cores de texto) */
+.start-game-button{
+  display: inline-block;
+  padding: 12px 28px;
+  border: 0;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+
+.begin-button {
+  display: block; margin: 0 auto;
+  background-color: var(--brand);
+  font-size: 1.2rem; padding: 16px 40px;
+  border-radius: 30px; box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
+  animation: pulsar 1.5s infinite;
+}
+.begin-button:hover { background-color: #c99b34; }
+
+.narrative-illustration {
+  width: 200px;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  justify-items: center;
+  justify-self: center;
+  animation: float 2s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* 3.5 Create yourself / Ready to begin screens */
+.create-yourself, .ready-begin {
+  height: 100vh; display: flex; justify-content: center; align-items: center;
+}
+.create-yourself .content1, .ready-begin .content2 {
+  text-align: center; color: var(--text-brown);
+}
+.create-yourself h1, .ready-begin h1 {
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  font-weight: 650;
+  line-height: 1.5;
+  margin-bottom: 30px;;
+}
+.create-yourself p, .ready-begin p, .area-climate p {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  margin-bottom: 40px;;
+}
+.createyourself-button, .ready-begin-button, .letsplay-button {
+  background-color: var(--brand-2); padding: 16px 40px; font-size: 20px;
+  border-radius: 30px; box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
+  transition: background-color .3s ease;
+}
+.createyourself-button:hover, .ready-begin-button:hover, .letsplay-button { background-color: #d47b54; }
+
+/* ==========================================================================
+   4) COMPONENTS
+   ========================================================================== */
+/* Perfil 2050: imagem ao lado do texto */
+#yourself2050 .whoam-I{
+  width: 150px !important;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  justify-self: center;
+  animation: float 2s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.world-gif{
+  width: 100%;
+  max-width: 360px;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  justify-self: center;
+  animation: float 2s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+
+
+/* Lista de produtos com rating */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 40px 30px;
+  justify-items: center;
+  align-items: start;
+  margin-top: 100px;
+}
+.product-item { text-align: center; }
+.product-item img { width: 150px; height: auto; }
+
+.rating, .product-item .rating {
+  display: flex; justify-content: center; gap: 10px; margin-top: 10px;
+}
+.product-item .rating { gap: 3px; margin-bottom: 4px; }
+.rating input[type="radio"] { display: none; }
+
+.rating-bubble {
+  display: inline-block; width: 30px; height: 30px; border-radius: 50%;
+  background-color: #e0dcd6; color: var(--text-brown); font-size: 16px;
+  font-weight: 600; line-height: 30px; text-align: center;
+  cursor: pointer; transition: background-color .3s ease, color .3s ease;
+}
+.rating input[type="radio"]:checked + .rating-bubble {
+  background-color: var(--brand); color: #fff;
+}
+
+/* Avatares (reveal) */
+.avatar {
+  transform-origin: center;
+  /* mantém o teu float padrão aqui, caso apareça sem reveal */
+  animation: float 2.2s ease-in-out infinite;
+}
+
+.avatar.reveal {
+  /* 1) zoom in (uma vez)  2) float a partir dos 0.6s */
+  animation: zoomIn .6s ease-out forwards,
+             float 2.2s ease-in-out .6s infinite;
+}
+
+.avatar-container { text-align: center; margin-top: 20px; }
+.avatar { width: 3000px; animation:  2s ease-in-out infinite; }
+
+.avatar-reveal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* vertical */
+  align-items: center;     /* horizontal */
+  min-height: 100vh;       /* ocupa ecrã inteiro */
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.avatar-reveal .pergunta {
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: var(--text-brown);
+}
+
+/* --- MAPA --- */
+/* Secção do mapa */
+.map {
+  background-image: url('Imagens questonário/backgroundmapa.png');
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Avatar: centrado no X e controlado por top:% */
+.map-avatar {
+  position: absolute;
+  left: 40%;
+  transform: translate(-50%, -100%); /* ancora pelo “pé” */
+  width: clamp(300px, 22vw, 400px); ;
+  top: 100%;                         /* começa no fundo */
+  transition: top 1.2s ease-in-out;  /* anima subir */
+  pointer-events: none;
+  z-index: 9000;
+
+}
+
+/* Casas e bandeira: posiciona por % (define top no teu CSS) */
+.house {
+  position: absolute;
+  left: 60%;
+  transform: translateX(-50%);
+}
+
+.final-flag {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.hidden { display: none; }
+.house.active img{
+  animation: pulse 0.9s ease-in-out 2;
+  transform-origin: center;
+}
+
+@keyframes pulse{
+  0%,100% { transform: scale(1); }
+  50%     { transform: scale(1.06); } /* ajusta o “puff” aqui */
+}
+
+.explore-btn{
+  background: var(--brand); color:#fff; border:0; border-radius:50px;
+  padding:.3rem 1rem; font-weight:500; box-shadow:0 8px 20px rgba(0,0,0,.15);
+}
+
+.explore-btn:hover{ background:#c99b34; }
+
+.final-continue{
+  position: absolute;
+  left: 35%;
+  top: 8%;                 /* aparece perto da bandeira (que está a ~6%) */
+  z-index: 10;              /* acima do avatar/casas */
+  background: var(--brand-2);
+  color: #fff;
+  padding: 12px 28px;
+  border: 0;
+  border-radius: 28px;
+  font-weight: 500;
+  box-shadow: var(--shadow);
+}
+.final-continue:hover{ background:#c99b34; }
+
+/* Coordenadas (ajusta para o teu background) */
+#house-climate { top: 65%;}
+#house-nutrition { top: 45%; }
+#house-culture { top: 30%; }
+#finalFlag { top: -3%;  width: 200px !important; height: auto !important;}
+
+/* força o tamanho só da casa do clima */
+#gameMap #house-climate > img{
+  width: 350px !important;  /* ajusta o valor à tua medida */
+  height: auto;
+  max-width: none !important;
+}
+
+#gameMap #house-nutrition > img{
+  width: 320px !important;  /* ajusta o valor à tua medida */
+  height: auto;
+  max-width: none !important;
+}
+
+#gameMap #house-culture > img{
+  width: 280px !important;  /* ajusta o valor à tua medida */
+  height: auto;
+  max-width: none !important;
+}
+
+
+/* ==========================================================================
+   5) MEDIA QUERIES
+   ========================================================================== */
+
+
+
+@media (max-width: 900px) {
+  .question-card-yourself { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  .start-screen h1 { font-size: 24px; }
+  .start-button, .start-game-button { font-size: 18px; padding: 14px 30px; width: 90%; }
+  .question-card { width: 95%; padding: 20px; }
+  label { font-size: 16px; }
+  .rating-bubble { width: 24px; height: 24px; font-size: 14px; line-height: 24px; }
+  .intro2050-text { margin: -80px 0 0; text-align: center; }
+  .intro2050-text h1 { font-size: 30px; }
+  .intro2050-text h1 strong { font-size: 90px; }
+  .intro2050-text p { font-size: 20px; }
+  .intro2050-container { left: 50%; transform: translateX(-50%); }
+}
+
+
+
+
+
+
+
+
+/* ==========================================================================
+   6) ANIMATIONS
+   ========================================================================== */
+@keyframes pulsar {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.08); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  80%      { transform: translateY(-20px); }
+}
+
+@keyframes houseWiggle {
+  0%,100% { transform: rotate(0deg) translateY(0); }
+  30% { transform: rotate(-2.3deg) translateY(-3px); }
+  60% { transform: rotate( 2.3deg) translateY(-2px); }
+}
+
+@keyframes floatMap { 0%,100%{transform: translate(-50%, -100%) translateY(0);} 80%{transform: translate(-50%, -100%) translateY(-12px);} }
+
+
+@keyframes zoomIn {
+  0%   { transform: scale(0.85); opacity: 0; }
+  100% { transform: scale(1);    opacity: 1; }
+}
+
+
+@keyframes happyJump {
+  0%, 100% { transform: translate(-50%, -100%) translateY(0); }
+  50%      { transform: translate(-50%, -100%) translateY(-22px); }
+}
+
+#demographicContainer .avatares{
+  display: block;
+  margin: 0 auto -10px;
+  width: 500px;  /* ↑ aumenta aqui */
+  aspect-ratio: auto;
+  justify-self: center;
+  animation: float 3s ease-in-out infinite;
+}
+
+
+
+.area-quiz .area-step{ display:none; }
+.area-quiz .area-step.active{ display:block; }
+
+.area-quiz h3{
+  color: #4c361c;;
+  margin: 0 0 16px;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.area-quiz label{ margin: 10px 0; }
+
+.area-quiz .inline{
+  display:inline-block; margin-left:10px; padding:8px 10px; border:1.5px solid #ccc; border-radius:8px;
+}
+
+.button-row{
+  display:flex; justify-content:space-between; gap:12px; margin-top:24px;
+}
+
+#area-climate .button-row.one-way{
+  justify-content: center;
+} 
+
+#climate-step1 .button-row button,
+#climate-step2 .button-row button,
+#climate-step3 .button-row button,
+#climate-step4 .button-row button,
+#climate-step5 .button-row button{
+  background-color: #92bc3d;          /* ← tua cor */
+}
+#climate-step1 .button-row button:hover,
+#climate-step2 .button-row button:hover,
+#climate-step3 .button-row button:hover,
+#climate-step4 .button-row button:hover,
+#climate-step5 .button-row button:hover{
+  background-color: #92bc3d;          /* ← cor no hover (opcional) */
+}
+
+/* Clima – cores dos botões Skip e Buy no step 3 (swipe) */
+#climate-step3 .swipe-actions button:first-child{       /* Skip */
+  background-color: #9b3e29;       /* cor do Skip */
+  color: #fff;
+}
+#climate-step3 .swipe-actions button:first-child:hover{
+  background-color: #71777c;       /* hover Skip */
+}
+
+#climate-step3 .swipe-actions button:last-child{        /* Buy */
+  background-color: #92bc3d;       /* cor do Buy */
+  color: #fff;
+}
+#climate-step3 .swipe-actions button:last-child:hover{
+  background-color: #9a6f54;       /* hover Buy */
+}
+
+.button-row .secondary{
+  background:#e9e5df; color:var(--text-brown); box-shadow:none;
+}
+.button-row .secondary:hover{ background:#ddd6ce; }
+
+.drag-instructions{ margin: 6px 0 16px; color: var(--text-brown-2); }
+
+.drag-shelf{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 14px;
+  padding: 10px;
+  background: rgba(255,255,255,0.65);
+  border: 1px dashed #92bc3d;
+  border-radius: 14px;
+}
+
+.food-item{
+  display: grid;
+  place-items: center;
+  gap: 6px;
+  background: #fff;
+  border: 1px solid #92bc3d;
+  border-radius: 14px;
+  padding: 10px;
+  cursor: grab;
+  user-select: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,.05);
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+.food-item:active{ cursor: grabbing; transform: translateY(-2px); }
+.food-item img{ width: 100px; height: 100px; object-fit: contain; }
+.food-item span{ font-size: .95rem; color: var(--text-brown); text-align: center; }
+
+.basket-wrap{ margin-top: 16px; }
+.basket{
+  min-height: 150px;
+  padding: 12px;
+  border: 2px dashed #92bc3d;
+  border-radius: 16px;
+  background:#e3e8be;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 12px;
+}
+.basket-hint{ color:#9c8f7e; font-size: .95rem; grid-column: 1/-1; opacity:.8; }
+.basket.drag-over{ background: #fff7e0; border-color:#e2af40; }
+
+.basket .food-item img{ width: 80px; height: 80px; }
+.basket .food-item{ box-shadow:none; }
+
+.basket-meta{
+  display:flex; align-items:center; justify-content:space-between;
+  margin-top: 8px; color: var(--text-brown);
+}
+.small{ padding: 8px 14px; font-size: .95rem; border-radius: 20px; }
+.secondary{ background:#ece7df; color: var(--text-brown); box-shadow:none; }
+.secondary:hover{ background:#e2dacd; }
+
+/* Shelf com categorias */
+.drag-shelf{ display: grid; gap: 18px; padding: 12px; border: 1px dashed #d8d2c8; border-radius: 14px; background: rgba(255,255,255,0.65); }
+.shelf-category{ background:#fff; border:1px solid #eee; border-radius: 12px; padding: 10px; }
+.category-title{ margin: 0 0 8px; font-weight: 700; color: var(--text-brown); }
+.category-grid{ display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; }
+.category-grid.drag-over{ outline: 2px dashed var(--brand); outline-offset: 4px; background:#fffdf3; }
+
+/* Reaproveita o estilo dos items; se quiseres, reduz um pouco a imagem na prateleira */
+.category-grid .food-item img{ width: 86px; height: 86px; }
+
+/* Evita que a imagem intercepte o drag do container .food-item */
+.food-item img{ pointer-events: none; }
+
+/* Feedback visual quando zona aceita drop */
+.category-grid.drag-over, .basket.drag-over{
+  outline: 2px dashed var(--brand);
+  outline-offset: 4px;
+  background:#fffdf3;
+}
+
+.food-item img{
+  pointer-events: none;
+  -webkit-user-drag: none; /* Safari */
+}
+
+/* ajuda o Safari a permitir arrastar o bloco */
+.food-item{
+  -webkit-user-drag: element;
+}
+
+/* feedback claro de zona de drop */
+.category-grid.drag-over,
+.basket.drag-over{
+  outline: 2px dashed var(--brand);
+  outline-offset: 4px;
+  background: #fffdf3;
+}
+
+.drag-shelf, .basket-wrap{
+  display: block;   /* assegura um bloco por baixo do outro */
+  width: 100%;
+}
+
+.basket.shake { animation: basket-shake .22s linear 2; }
+@keyframes basket-shake {
+  0%,100% { transform: translateX(0); }
+  25%     { transform: translateX(-4px); }
+  75%     { transform: translateX(4px); }
+}
+
+/* ===== Toasts ===== */
+.toast-container{
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  pointer-events: none;
+}
+
+.toast{
+  pointer-events: auto;
+  background: #fff;
+  color: var(--text-brown);
+  border-radius: 12px;
+  padding: 12px 16px;
+  min-width: 240px;
+  max-width: min(92vw, 520px);
+  box-shadow: var(--shadow);
+  border-left: 6px solid var(--brand);
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  animation: toast-in .25s ease-out;
+  position: relative;
+}
+
+.toast__msg{ line-height: 1.35; }
+.toast__close{
+  margin-left: auto;
+  background: transparent;
+  border: 0;
+  font-size: 18px;
+  cursor: pointer;
+  color: inherit;
+  opacity: .6;
+}
+.toast__close:hover{ opacity: 1; }
+
+.toast--success{ border-left-color: #3bb273; }
+.toast--error{   border-left-color: #e0565b; }
+.toast--warning{ border-left-color: var(--brand-2); }
+.toast--info{    border-left-color: #3b82f6; }
+
+.toast--hide{
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity .2s ease, transform .2s ease;
+}
+
+.toast__progress{
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 3px;
+  background: rgba(0,0,0,.08);
+  overflow: hidden;
+  border-radius: 0 0 10px 10px;
+}
+.toast__progress::after{
+  content: "";
+  display: block;
+  height: 100%;
+  background: currentColor;
+  animation: toast-progress linear forwards;
+  animation-duration: var(--dur, 4000ms);
+  transform-origin: left;
+}
+
+@keyframes toast-in{
+  from{ opacity: 0; transform: translateY(-6px);}
+  to{   opacity: 1; transform: translateY(0); }
+}
+@keyframes toast-progress{
+  from{ transform: scaleX(1); }
+  to{   transform: scaleX(0); }
+}
+
+.long-answer{
+  width: 100%;
+  max-width: 900px;
+  padding: 14px 16px;
+  border: 1.5px solid #ccc;
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: 1.5;
+  resize: vertical;
+  background: #fff;
+  z-index: 100;
+}
+.long-answer:focus{
+  outline: none;
+  border-color: #92bc3d;
+}
+.muted{ color: var(--text-brown-2); margin: 6px 0 14px; }
+
+.area-quiz .area-step { display:none; }
+.area-quiz .area-step.active { display:block; }
+
+
+/* Swipe deck */
+.swipe-deck{
+  position: relative;
+  width: min(720px, 100%);
+  height: 520px;              /* altura fixa para o baralho */
+  margin: 14px auto 10px;
+}
+
+.swipe-deck .card{
+  position: absolute;
+  inset: 0;
+  background: #eaefe6;
+  border-radius: 16px;
+  box-shadow: 0 12px 26px rgba(0,0,0,.12);
+  padding: 16px 18px 18px;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 8px;
+  touch-action: none;        /* permite drag no mobile */
+  user-select: none;
+}
+
+.swipe-deck .card h4{ margin: 6px 0 4px; color: var(--text-brown); }
+.swipe-deck .card .eco{ margin: 0; padding-left: 18px; color: var(--text-brown-2); font-size: .98rem; }
+.card-img{ display:flex; justify-content:center; align-items:center; }
+.card-img img{ width: 200px; height: 200px; object-fit: contain; }
+
+.swipe-actions{
+  display:flex; gap: 12px; justify-content:center; margin-top: 10px;
+}
+
+/* Q4: pick-2 cards */
+.heat-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
+  margin-top: 8px;
+}
+
+.heat-card{
+  display: grid;
+  place-items: center;
+  gap: 8px;
+  padding: 14px;
+  border: 1.5px solid #ddd;
+  border-radius: 14px;
+  background: #fff;
+  cursor: pointer;
+  user-select: none;
+  transition: transform .12s ease, box-shadow .18s ease, border-color .18s ease, opacity .18s ease, filter .18s ease;
+  text-align: center;
+}
+.heat-card img{ width: 110px; height: 110px; object-fit: contain; pointer-events: none; }
+.heat-card span{ color: var(--text-brown); }
+
+.heat-card:hover{ transform: translateY(-2px); }
+
+.heat-card.selected{
+  border-color: var(--brand);
+  box-shadow: 0 8px 18px rgba(0,0,0,.10);
+}
+
+.heat-card.disabled{
+  opacity: .6;
+  filter: grayscale(.1);
+}
+
+/* Q5: keep-or-swap */
+.swap-grid{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin-top: 8px;
+}
+.swap-card{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 12px;
+  background: #fff;
+  border: 1.5px solid #92bc3d;
+  border-radius: 12px;
+}
+.swap-left .swap-title{ font-weight: 700; color: var(--text-brown); }
+.swap-left .swap-sub{ color: var(--text-brown-2); font-size: .95rem; }
+
+.swap-right{ display: flex; gap: 10px; flex-wrap: wrap; }
+.chip{
+  display: inline-flex;
+  align-items: center;
+  border: 1.5px solid #dcd6cd;
+  border-radius: 999px;
+  padding: 6px 10px;
+  cursor: pointer;
+  user-select: none;
+}
+.chip input{ display: none; }
+.chip span{ font-size: .95rem; color: var(--text-brown); }
+.chip input:checked + span{
+  background: var(--brand);
+  color: #fff;
+  border-radius: 999px;
+  padding: 4px 10px;
+}
+
+/* Feedback + medal (step 6) */
+.feedback-wrap{
+  display: grid;
+  gap: 14px;
+  align-items: start;
+  text-align: center;
+}
+.badge-medal{
+  width: 160px;
+  height: auto;
+  margin: 0 auto 6px;
+  display: block;
+  animation: float 2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.feedback-wrap p{
+  color: #92bc3d;
+}
+
+
+.badge-block{
+  background: #e9f3d5;
+  border: 1.5px solid #92bc3d;
+  border-radius: 14px;
+  padding: 12px;
+}
+.badge-title{
+  font-weight: 700;
+  color: #5b7f1e;
+  font-size: 1.1rem;
+}
+.badge-sub{
+  color: var(--text-brown-2);
+  font-size: .98rem;
+}
+
+.reflect-title{
+  margin: 8px 0 4px;
+  color: var(--text-brown);
+  font-weight: 700;
+}
+.reflect-list label{
+  display: block;
+  text-align: left;
+  background: #fff;
+  border: 1.5px solid #e7e1d7;
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin: 8px 0;
+  cursor: pointer;
+}
+.reflect-list input[type="radio"]{ margin-right: 10px; }
+
+#area-climate.no-gif .world-gif {
+  display: none !important;
+}
+
+#climate-step6 .feedback-wrap{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  gap:30px;         /* controla o espaçamento vertical */
+}
+#climate-step6 p{ margin: 0; }  /* remove margens padrão dos <p> */
+
+#area-climate #climate-step6 .chosen-avatar{
+  width: 300px;
+  height: auto;
+  border-radius: 14px;
+  margin: 8px auto 16px;
+  display: block;
+}
+
+
+/* --- Ícone da área: rotação --- */
+.food-circle{
+  width: 80%;
+  max-width: 300px;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  justify-self: center;
+  pointer-events: none;
+  z-index: 0;
+}
+
+
+.rotating{ animation: spin 18s linear infinite; }
+@keyframes spin { from{ transform: rotate(0deg);} to{ transform: rotate(360deg);} }
+
+/* Ranking (step1) */
+.rank-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+.rank-item {
+  position: relative;
+  background: #fff;
+  border: 1.5px solid #7b9db7;
+  border-radius: 12px;
+  padding: 18px 16px 54px; /* extra espaço para as setas em baixo */
+  text-align: center;
+}
+
+/* setas centradas horizontalmente, coladas ao fundo da box */
+.rank-item .moves{
+  position: absolute;
+  left: 50%;
+  bottom: 10px;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+
+/* estilo dos botões */
+.rank-item .move{
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  border: 1px solid #7b9db7;
+  background: #7b9db7;
+  font-size: 18px; line-height: 1;
+  display: flex; align-items: center; justify-content: center;
+}
+.rank-item .move:active { transform: scale(0.96); }
+
+/* Check grid (step2) */
+.check-grid{ display:grid; gap:10px; }
+
+
+/* Swaps (step3) */
+.swap-grid{ display:grid; gap:12px; }
+.swap-card{
+  display:block; background:#fff; border:1px solid #eee; border-radius:14px;
+  padding:12px; box-shadow:0 4px 12px rgba(0,0,0,.05); cursor:pointer;
+}
+.swap-card input{ display:none; }
+.swap-card:has(input:checked){ outline:3px solid var(--brand); }
+.swap-row{ display:grid; grid-template-columns: 1fr auto 1fr; align-items:center; gap:12px; }
+.swap-title{ font-weight:700; color: var(--text-brown); margin-bottom:6px; }
+.swap-title.green{ color:#7b9db7; }
+.swap-item{ color:var(--text-brown-2); }
+.swap-arrow{ font-size:22px; color:#7b9db7; }
+
+/* Breakfast (step5) */
+.breakfast-grid{ display:grid; gap:14px; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+.breakfast-card{
+  display:block; background:#fff; border:1px solid #eee; border-radius:14px;
+  padding:10px; text-align:center; cursor:pointer; box-shadow:0 4px 12px rgba(0,0,0,.05);
+}
+.breakfast-card input{ display:none; }
+.breakfast-card:has(input:checked){ outline:3px solid var(--brand); }
+.breakfast-card img{ width:100%; height:auto; border-radius:10px; object-fit:cover; }
+.b-title{ font-weight:700; margin-top:6px; color:var(--text-brown); }
+.b-desc{ color:var(--text-brown-2); font-size:.95rem; }
+
+/* Feedback (step6) – usa os estilos já existentes da área climate */
+#area-nutrition #nutrition-step7 .chosen-avatar{
+  width: 300px;
+  height: auto;
+  border-radius: 14px;
+  margin: 8px auto 16px;
+  display: block;
+}
+
+/* Nutrição: apertar o espaçamento no feedback */
+#area-nutrition #nutrition-step7 .feedback-wrap{
+  gap: 30px;              /* antes era 14px no .feedback-wrap genérico */
+}
+#area-nutrition #nutrition-step7 .feedback-wrap p{
+  margin: 0;             /* remove a margem padrão dos parágrafos */
+}
+
+#area-nutrition #nutrition-step7 .badge-block{
+  background: #e9f3fa;        /* fundo do badge */
+  border-color: #7b9db7;      /* contorno do badge */
+}
+
+#area-nutrition #nutrition-step7 .badge-title{
+  color: #7b9db7;             /* título do badge */
+}
+
+#area-nutrition #nutrition-step7 .feedback-wrap p{
+  color: #7b9db7;             /* parágrafos do feedback */
+}
+
+/* Q2 (Nutrição) – cartões multi-seleção */
+.option-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin-top: 8px;
+}
+.option-card{
+  display: grid;
+  place-items: center;
+  gap: 6px;
+  padding: 14px;
+  border: 1.5px solid #ddd;
+  border-radius: 14px;
+  background: #fff;
+  cursor: pointer;
+  user-select: none;
+  text-align: center;
+  transition: transform .12s ease, box-shadow .18s ease, border-color .18s ease, opacity .18s ease, filter .18s ease;
+}
+.option-card:hover{ transform: translateY(-2px); }
+.option-card.selected{
+  border-color: var(--brand);
+  box-shadow: 0 8px 18px rgba(0,0,0,.10);
+}
+.option-card.disabled{
+  opacity: .6;
+  filter: grayscale(.1);
+}
+.option-card .o-title{ font-weight: 700; color: var(--text-brown); }
+.option-card .o-sub{ color: var(--text-brown-2); font-size: .95rem; }
+
+/* cartão “none” com um tom diferente */
+.option-card.none{
+  background: #fff9f7;
+  border-color: #f1d9cf;
+}
+
+/* ===== Food Culture – visual da área ===== */
+.hand-globe{
+  width: 100%;
+  max-width: 360px;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  justify-self: center;
+  animation: float 2s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Esconder GIF no feedback da Culture (tal como no Climate) */
+#area-culture.no-gif .hand-globe { display: none !important; }
+
+/* ===== Step 1 — identidade ===== */
+
+.identity-layout{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+.identity-pool{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 10px;
+  padding: 10px;
+  border: 1.5px dashed #d8d2c8;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.65);
+}
+.identity-item{
+  background:#fff;
+  border: 1.5px solid #e7e1d7;
+  border-radius: 12px;
+  padding: 10px 12px;
+  cursor: grab;
+  box-shadow: 0 4px 10px rgba(0,0,0,.06);
+  user-select: none;
+}
+.identity-table{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
+}
+.drop-col{ background:#fff; border:1.5px solid #eee; border-radius: 12px; padding: 10px; }
+.drop-title{ font-weight:700; color: var(--text-brown); margin-bottom: 8px; }
+.dropzone{
+  min-height: 72px;
+  border: 1.5px dashed #dcd6cd;
+  border-radius: 10px;
+  padding: 8px;
+}
+.dropzone.drag-over{ outline: 2px dashed var(--brand); background:#fffdf3; }
+
+/* ===== Step 2 — classificar status ===== */
+.status-sort{ display: grid; grid-template-columns: 1fr; gap: 14px; }
+.status-pool{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 10px;
+  padding: 10px;
+  border: 2px dashed #b88669 !important;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.65);
+}
+.sort-card{
+  background:#fff;
+  border: 1.5px solid #e7e1d7;
+  border-radius: 12px;
+  padding: 10px 12px;
+  text-align: center;
+  cursor: grab;
+  user-select: none;
+  box-shadow: 0 4px 10px rgba(0,0,0,.06);
+}
+.status-targets{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.status-col{ background:#fff; border:1.5px solid #eee; border-radius:12px; padding: 10px; }
+.status-title{ font-weight:700; color: var(--text-brown); margin-bottom: 8px; }
+.status-drop{
+  min-height: 120px;
+  border: 2px dashed #b88669 !important;
+  border-radius: 10px;
+  padding: 8px;
+  display: grid;
+  gap: 8px;
+}
+.status-drop.drag-over{ outline: 2px dashed var(--brand); background:#fffdf3; }
+
+/* ===== Step 4 — noite temática ===== */
+.night-grid{ display:grid; gap:12px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.night-card{
+  display:block; background:#fff; border:1px solid #eee; border-radius:14px;
+  padding:12px; cursor:pointer; box-shadow:0 4px 12px rgba(0,0,0,.05);
+}
+.night-card input{ display:none; }
+.night-card:has(input:checked){ outline:3px solid var(--brand); }
+.n-title{ font-weight:700; color:var(--text-brown); margin-bottom:4px; }
+.n-desc{ color: var(--text-brown-2); font-size:.95rem; }
+.n-badge{
+  display:inline-block; margin-top:6px; font-size:.85rem;
+  background:#f1f8e9; color:#5b7f1e; border:1px solid #a8cf6a; border-radius:999px; padding:2px 8px;
+}
+
+/* ===== Feedback (step6) – cores específicas da Culture ===== */
+#culture-step6 .badge-block{
+  background: #edd6c9;            /* lilás clarinho */
+  border: 1.5px solid #b06031;    /* lilás médio */
+}
+#culture-step6 .badge-title{
+  color: #b06031;                 /* lilás mais escuro */
+}
+#culture-step6 p{
+  color: #b06031;                 /* combina com o título */
+}
+/* reduzir espaço entre os dois <p> (como no clima) */
+#culture-step6 p{ margin: 0; }
+#culture-step6 .feedback-wrap{ gap: 20px; }
+#culture-step6 .chosen-avatar{
+  width: 300px;
+  height: auto;
+  border-radius: 14px;
+  margin: 8px auto 12px;
+  display: block;
+}
+
+/* Culture Q1 – fallback mobile */
+.q1-moves{
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  margin-top: 8px;
+}
+.q1-moves .pick{
+  font-size: .6rem;
+  padding: 4px 10px;
+  border: 1px solid #b06031;
+  border-radius: 999px;
+  background: #b88669;
+}
+.q1-moves .pick:active{ transform: scale(0.98); }
+
+#cultureIdentityPool.shake { animation: basket-shake .22s linear 2; }
+
+.q2-moves{
+  margin-top: 8px;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+.q2-moves .pick{
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1.5px solid #dcd6cd;
+  background: #eee;
+  font-size: .5rem;
+  cursor: pointer;
+}
+.q2-moves .pick:active{ transform: scale(0.98); }
+
+/* Sanidade geral: evita que bordas/padding causem overflow */
+*, *::before, *::after { box-sizing: border-box; }
+img { max-width: 100%; height: auto; }
+
+/* GIF da área: não deve “empurrar”/sobrepor conteúdo */
+#area-climate .world-gif{
+  justify-self: center !important;   /* em vez de start */
+  align-self: start;                  /* fica no topo do card */
+  display: block;
+  margin: 0 auto 16px;                /* centra por margens */
+  width: clamp(180px, 26vw, 360px);   /* tamanho confortável */
+  height: auto;
+  pointer-events: none;
+  z-index: 0;
+}
+
+#area-climate .question-wrapper{
+  text-align: center;
+}
+
+/* STEP 2
+   Empilha tudo no mobile; duas colunas só em ecrãs largos
+--------------------------------------------------------- */
+
+/* Wrapper das duas categorias (as colunas) */
+#culture-step2 .status-targets {
+  display: grid;
+  grid-template-columns: 1fr;           /* mobile: 1 coluna */
+  gap: 16px;
+}
+
+/* Desktop/tablet: 2 colunas iguais */
+@media (min-width: 680px){
+  #culture-step2 .status-targets {
+    grid-template-columns: repeat(2, minmax(0,1fr));
+  }
+}
+
+/* Evita que filhos forcem a largura e estourem o cartão branco */
+#culture-step2 .status-sort,
+#culture-step2 .status-targets,
+#culture-step2 .status-col,
+#culture-step2 .status-pool,
+#culture-step2 .status-drop { min-width: 0; }
+
+/* Títulos longos podem partir linha */
+#culture-step2 .status-title{
+  white-space: normal;
+  word-break: break-word;
+  line-height: 1.25;
+  margin-bottom: 8px;
+}
+
+/* Caixas de drop/pool ocupam 100% e não extravasam */
+#culture-step2 .status-pool,
+#culture-step2 .status-drop{
+  width: 100%;
+  padding: 12px;
+  border-radius: 16px;
+  border: 2px dashed #e1dcd2;
+  background: #fff;
+}
+
+/* Cartões fluidos */
+#culture-step2 .sort-card{
+  display: block;
+  width: 100%;
+  max-width: none;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  margin-bottom: 8px;
+  cursor: grab;
+}
+
+/* Destaque visual quando uma zona está pronta a receber */
+#culture-step2 .status-pool.drag-over,
+#culture-step2 .status-drop.drag-over{
+  border-color: #b99;        /* ajusta às tuas cores */
+  background: rgba(0,0,0,.03);
+}
+
+/* Se o cartão da área tiver overflow escondido, solta-o aqui */
+#culture-step2 { overflow: visible; }
+
+/* Cards do Step 3 (Food Culture) */
+.ingredient-card-grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap:12px;
+}
+
+.ingredient-card{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:8px;
+  padding:14px;
+  border:2px solid var(--card-border, #e6e6e6);
+  background:#fff;
+  border-radius:16px;
+  box-shadow:0 1px 0 rgba(0,0,0,.04);
+  cursor:pointer;
+  transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+}
+
+.ingredient-card:hover{ transform:translateY(-1px); }
+
+.ingredient-card.selected{
+  border-color:var(--accent, #4ba);
+  box-shadow:0 0 0 3px color-mix(in srgb, var(--accent, #4ba) 25%, transparent);
+}
+
+.ingredient-card[aria-selected="true"]{ /* acessibilidade coerente */
+  border-color:var(--accent, #4ba);
+}
+
+.ingredient-card img{
+  width:88px; height:88px; object-fit:contain; pointer-events:none;
+}
+
+.ingredient-card .other-input-wrap{ width:100%; }
+.ingredient-card .other-input-wrap input{
+  width:100%;
+  margin-top:6px;
+  padding:8px 10px;
+  border:1.5px solid #ddd;
+  border-radius:10px;
+  font-size:0.95rem;
+}
+
+/* utilitária para leitores de ecrã */
+.sr-only{
+  position:absolute!important; width:1px; height:1px; padding:0; margin:-1px;
+  overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
+}
+
+/* ===== Maize hero (fica visível na intro e passos 1–3) ===== */
+#area-maize { position: relative; overflow: hidden; }
+#area-maize .areaIntroduction,
+#area-maize #maizeQuiz { position: relative; z-index: 2; }
+
+/* Maize visual na mesma posição/nível do hand-globe */
+
+
+
+/* perguntas (reuso do estilo das áreas) */
+area-maize .mc-list{ display:grid; gap:10px; margin-top:10px; }
+#area-maize .mc{ display:flex; gap:8px; align-items:flex-start; padding:10px 12px; border:1px solid #e6e6e6; border-radius:12px; background:#fff; }
+.final-avatars{ display:flex; gap:14px; justify-content:center; align-items:center; margin-bottom:10px; }
+.trophy{ width:60px; height:60px; fill: var(--accent, #35a68a); filter: drop-shadow(0 4px 8px rgba(0,0,0,.15)); }
+.final-cta{ display:grid; gap:8px; justify-items:center; margin-top:14px; }
+.final-reward-badge{ font-size:.9rem; padding:.25rem .6rem; background:#f2f7f6; border:1px solid #dde9e6; border-radius:999px; color:#1b5b4d; }
+
+/* Torna a intro um overlay fixo que centra o wrapper */
+#intro2050{
+  position: static;        /* em vez de absolute */
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: clamp(12px, 3vw, 32px);
+  z-index: 9999;
+  overflow: auto;         /* caso o conteúdo cresça em screens pequenos */
+}
+
+/* Wrapper castanho clarinho para a intro */
+#intro2050 .intro-card{
+  /* herdado de .question-wrapper + overrides */
+  background-color: #b88669;                 /* castanho clarinho */
+  margin: 80px auto;                    /* espaço acima/abaixo como os outros */
+  overflow: visible;                    /* nada é cortado */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: clamp(12px, 2.5vw, 24px);
+  padding: clamp(16px, 4vw, 28px);
+  margin: 30px 30px;
+}
+
+/* Imagens da intro centralizadas e responsivas */
+#intro2050 .intro-img{
+  display: block;
+  margin: 0 auto;
+  height: auto;
+  pointer-events: none;
+}
+
+#intro2050 .intro-clock{ margin-top: 8px; width: 300px;}
+#intro2050 .intro-cook{  margin-bottom: 8px; width: 500px; }
+
+/* Texto ao centro com largura confortável */
+#intro2050 .intro2050-text{
+  max-width: min(90vw, 760px);
+  margin: 0 auto;
+}
+
+#intro2050 .intro2050-text h1{
+  font-size: 25px;
+}
+
+#intro2050 .intro2050-text p{
+  font-size: 15px;
+}
+
+
+/* Botão com pequeno espaçamento */
+#intro2050 .start-game-button{ margin-top: 8px; background-color: #e56400; font-size: 15px;}
+
+/* Garantir que o wrapper da intro não fica branco por estilos genéricos */
+#intro2050 .question-wrapper{ background: #b19c83; }
+
+#climate-step5 .swap-card{
+  display: flex;                 /* empilha conteúdo */
+  flex-direction: column;
+  align-items: center;           /* centra horizontalmente */
+  text-align: center;            /* texto centrado */
+  gap: 10px;                     /* espaço entre texto e botões */
+}
+
+/* bloco do título/subtexto */
+#climate-step5 .swap-card .swap-left{
+  margin-bottom: 4px;            /* espaçamento pequeno acima dos botões */
+}
+
+/* botões Keep/Swap ao centro, lado a lado */
+#climate-step5 .swap-card .swap-right{
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  gap: 10px;                     /* espaço entre os dois */
+  width: 100%;                   /* opcional: ocupa a largura para centrar melhor */
+}
+
+/* (opcional) deixar as "chips" com ar mais de botão grande */
+#climate-step5 .swap-card .chip span{
+  display: inline-block;
+  padding: 10px 16px;
+  border-radius: 999px;
+}
+
+/* CLIMATE Step 5 — limpar qualquer realce amarelo por defeito */
+#climate-step5 .swap-card,
+#climate-step5 .swap-card:hover,
+#climate-step5 .swap-card:focus,
+#climate-step5 .swap-card:focus-within{
+  box-shadow: none !important;
+  outline: none !important;
+  border-color: #e8e2d9 !important; /* base neutra do cartão */
+}
+
+/* manter APENAS o verde quando o cartão tiver um radio selecionado */
+#climate-step5 .swap-card:has(.swap-right input[type="radio"]:checked){
+  border-color: #92bc3d !important;
+  box-shadow: 0 0 0 4px rgba(43, 182, 115, .12) !important;
+}
+
+/* (já tinhas) chips verdes quando selecionadas */
+#climate-step5 .chip input:checked + span{
+  background: #92bc3d !important;
+  border-color: #92bc3d !important;
+  color: #fff !important;
+  box-shadow: none !important;
+}
+
+#climate-step6 .button-row button{
+  background-color: #92bc3d !important;
+  color: #fff !important;
+}
+#climate-step6 .button-row button:hover{
+  background-color: #92bc3d !important;
+}
+
+#area-nutrition h2{ color: #7b9db7 !important; }
+
+/* Nutritional Health — botão "Move forward!" em #7b9db7 */
+#area-nutrition .buttonintroductionclimate{
+  background-color: #7b9db7 !important;
+  color: #fff !important;
+}
+#area-nutrition .buttonintroductionclimate:hover{
+  background-color: #6a8aa0 !important; /* um tom mais escuro no hover */
+}
+
+#area-nutrition .button-row{
+  display: flex;
+  justify-content: center;
+}
+#area-nutrition .button-row button{
+  background-color: #7b9db7 !important;
+  color: #fff !important;
+}
+#area-nutrition .button-row button:hover{
+  background-color: #6a8aa0 !important;
+}
+
+/* NUTRITION — Step 2 (Q2) */
+
+/* 1) Cartão selecionado → rebordo VERDE-AZUL #7b9db7 */
+#nutrition-step2 .option-card.selected{
+  border-color: #7b9db7 !important;
+  box-shadow: 0 0 0 4px rgba(123,157,183,.18) !important; /* anel suave */
+}
+
+/* (opcional) pré-visualização ao passar o rato quando não está selecionado */
+#nutrition-step2 .option-card:not(.selected):hover{
+  border-color: #a9bfd1;
+  box-shadow: 0 0 0 3px rgba(123,157,183,.12);
+}
+
+/* 2) Cartão "None" (o último) com fundo azul clarinho */
+#nutrition-step2 .option-card.none{
+  background: #eaf3fb !important;   /* azul claro */
+  border-color: #d3e5f2;            /* borda a condizer */
+}
+
+/* "None" quando selecionado — mantém a mesma linguagem visual */
+#nutrition-step2 .option-card.none.selected{
+  background: #d7e9f7 !important;
+  border-color: #7b9db7 !important;
+  box-shadow: 0 0 0 4px rgba(123,157,183,.18) !important;
+}
+
+/* (opcional) estado disabled mais “silenciado” */
+#nutrition-step2 .option-card.disabled{
+  opacity: .6;
+  filter: grayscale(10%);
+}
+
+/* base neutra do cartão (limpa amarelos antigos) */
+#nutrition-step3 .swap-card{
+  border: 2px solid #e8e2d9;
+  border-radius: 16px;
+  padding: 12px 16px;
+  box-shadow: none;
+  transition: border-color .2s, box-shadow .2s;
+}
+
+/* hover opcional */
+#nutrition-step3 .swap-card:hover{
+  border-color: #a9bfd1;
+  box-shadow: 0 0 0 3px rgba(123,157,183,.12);
+}
+
+/* ✅ selecionado → rebordo #7b9db7 */
+#nutrition-step3 .swap-card:has(> input[type="radio"]:checked){
+  border-color: #7b9db7 !important;
+  box-shadow: 0 0 0 4px rgba(123,157,183,.18) !important;
+}
+
+/* acessibilidade: foco via teclado */
+#nutrition-step3 .swap-card:has(> input[type="radio"]:focus-visible){
+  box-shadow: 0 0 0 4px rgba(123,157,183,.28);
+}
+
+#nutrition-step3 .swap-card.active{
+  border-color: #7b9db7 !important;
+  box-shadow: 0 0 0 4px rgba(123,157,183,.18) !important;
+}
+
+/* NUTRITION — Step 3: limpar o realce amarelo e aplicar só o azul */
+
+/* base neutra (remove amarelo em base/hover/focus) */
+#nutrition-step3 .swap-card,
+#nutrition-step3 .swap-card:hover,
+#nutrition-step3 .swap-card:focus,
+#nutrition-step3 .swap-card:focus-within{
+  box-shadow: none !important;
+  outline: none !important;
+  border-color: #e8e2d9 !important;  /* borda neutra */
+}
+
+/* hover opcional, discreto em azul */
+#nutrition-step3 .swap-card:hover{
+  border-color: #a9bfd1 !important;
+  box-shadow: 0 0 0 3px rgba(123,157,183,.12) !important;
+}
+
+/* ✅ selecionado → só anel/borda AZUL */
+#nutrition-step3 .swap-card:has(> input[type="radio"]:checked){
+  border-color: #7b9db7 !important;
+  box-shadow: 0 0 0 4px rgba(123,157,183,.18) !important;
+}
+
+/* NUTRITION — Step 4: textarea com borda azul ao focar */
+#nutrition-step4 .long-answer{
+  border: 2px solid #e8e2d9 !important;   /* base neutra */
+  border-radius: 12px;
+  padding: 12px 14px;
+  outline: none;
+  transition: border-color .2s, box-shadow .2s;
+}
+
+#nutrition-step4 .long-answer:focus,
+#nutrition-step4 .long-answer:focus-visible{
+  border-color: #7b9db7 !important;       /* azul pretendido */
+  box-shadow: 0 0 0 4px rgba(123,157,183,.18) !important; /* anel suave */
+}
+
+/* (opcional) leve feedback no hover */
+#nutrition-step4 .long-answer:hover{
+  border-color: #a9bfd1 !important;
+}
+
+/* NUTRITION — Step 5: limpar amarelo e usar só azul nos cartões */
+
+/* base neutra (remove qualquer sombra/anel amarelo) */
+#nutrition-step5 .breakfast-card,
+#nutrition-step5 .breakfast-card:hover,
+#nutrition-step5 .breakfast-card:focus,
+#nutrition-step5 .breakfast-card:focus-within{
+  box-shadow: none !important;
+  outline: none !important;
+  border: 2px solid #e8e2d9 !important;
+}
+
+/* hover opcional, discreto em azul */
+#nutrition-step5 .breakfast-card:hover{
+  border-color: #a9bfd1 !important;
+  box-shadow: 0 0 0 3px rgba(123,157,183,.12) !important;
+}
+
+/* ✅ selecionado → borda/anel AZUL (substitui o amarelo) */
+#nutrition-step5 .breakfast-card:has(> input[type="radio"]:checked){
+  border-color: #7b9db7 !important;
+  box-shadow: 0 0 0 4px rgba(123,157,183,.18) !important;
+}
+
+/* Food Culture — título em #b06031 */
+#area-culture .areaIntroduction h2{
+  color: #b06031 !important;
+}
+
+/* Food Culture — botão "Move forward!" em #b06031 */
+#area-culture .buttonintroductionclimate{
+  background-color: #b06031 !important;
+  color: #fff !important;
+}
+#area-culture .buttonintroductionclimate:hover{
+  background-color: #924f2a !important; /* tom mais escuro no hover */
+}
+
+/* FOOD CULTURE — Step 1 (cards) */
+#culture-step1 .identity-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin: 16px 0 10px;
+}
+
+#culture-step1 .identity-card{
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 14px 16px;
+  border: 2px solid #e8e2d9;
+  border-radius: 16px;
+  background: #fff;
+  cursor: pointer;
+  transition: border-color .2s, box-shadow .2s, background .2s;
+}
+
+#area-culture .identity-card:hover{
+  border-color: #d7cfc4;
+  box-shadow: 0 0 0 3px rgba(176,96,49,.10); /* leve realce */
+}
+
+/* selecionado — harmonizado com a cor da área (#b06031) */
+#area-culture .identity-card.selected{
+  border-color: #b06031 !important;
+  box-shadow: 0 0 0 4px rgba(176,96,49,.18) !important;
+  background: #fff7f2; /* opcional: subtil */
+}
+
+#area-culture .identity-card:focus-visible{
+  outline: 2px solid #b06031;
+  outline-offset: 2px;
+}
+
+/* Food Culture – Step 1: cor do texto dos cartões */
+#culture-step1 .identity-card{
+  color: #664c25 !important;   /* cor do texto */
+  background: #fff;            /* já tinhas, só para garantir contraste */
+  animation: none; 
+  font-weight: 100;            /* desliga o pulsar global dos botões */
+}
+
+/* mantém a mesma cor em estados de hover/selecionado/foco */
+#area-culture .identity-card:hover,
+#area-culture .identity-card.selected,
+#area-culture .identity-card:focus-visible{
+  color: #664c25 !important;
+}
+
+/* Centrar a barra dos botões em todos os steps da Food Culture */
+#area-culture .area-quiz .area-step .button-row{
+  display: flex !important;
+  justify-content: center !important;
+}
+
+/* Pintar o NEXT em todos os steps 1–5 */
+#culture-step1 .button-row button,
+#culture-step2 .button-row button,
+#culture-step3 .button-row button,
+#culture-step4 .button-row button,
+#culture-step5 .button-row button{
+  background-color: #b06031 !important;
+  color: #fff !important;
+  animation: none !important; /* evita o pulsar global dos botões */
+}
+#culture-step1 .button-row button:hover,
+#culture-step2 .button-row button:hover,
+#culture-step3 .button-row button:hover,
+#culture-step4 .button-row button:hover,
+#culture-step5 .button-row button:hover{
+  background-color: #924f2a !important;
+}
+
+/* (Opcional) também o botão final do step 6 */
+#culture-step6 .button-row button{
+  background-color: #b06031 !important;
+  color: #fff !important;
+}
+#culture-step6 .button-row button:hover{
+  background-color: #924f2a !important;
+}
+
+#culture-step2 .q2-moves .pick{
+  background-color: #b06031 !important; /* cor do botão */
+  color: #fff !important;
+  border: 0;
+  border-radius: 9999px;
+  padding: 8px 14px;
+  font-weight: 600;
+  animation: none !important;           /* não herdar o "pulsar" global */
+}
+#culture-step2 .q2-moves .pick:hover{
+  background-color: #924f2a !important; /* hover */
+}
+#culture-step2 .q2-moves .pick:focus-visible{
+  outline: 2px solid #b06031;
+  outline-offset: 2px;
+}
+
+/* FOOD CULTURE — Step 3: parar animações e estilizar seleção */
+
+/* estado base do cartão */
+#culture-step3 .ingredient-card{
+  background: #fff;
+  color: #664c25;                 /* cor do texto pedida na área */
+  border: 2px solid #e8e2d9;
+  border-radius: 16px;
+  padding: 12px 14px;
+  cursor: pointer;
+
+  /* desligar animações/heranças globais */
+  animation: none !important;
+  transform: none !important;
+
+  /* se quiseres sem transições, deixa "none"; se quiseres suave, troca p/ .2s */
+  transition: none !important;
+}
+
+/* hover opcional, discreto (remove se não quiseres) */
+#culture-step3 .ingredient-card:hover{
+  border-color: #d7cfc4;
+}
+
+/* ✅ ao clicar/selecionar (classe .selected vem do JS) */
+#culture-step3 .ingredient-card.selected{
+  border-color: #b06031 !important;                   /* tom da área */
+  box-shadow: 0 0 0 4px rgba(176,96,49,.18) !important; /* anel suave */
+  background: #fff7f2 !important;                     /* fundo clarinho */
+  color: #664c25 !important;                          /* mantém texto legível */
+}
+
+/* acessibilidade: foco via teclado */
+#culture-step3 .ingredient-card:focus-visible{
+  outline: 2px solid #b06031;
+  outline-offset: 3px;
+}
+
+/* “Other”: mantém o input visível quando o cartão está selecionado */
+#culture-step3 .ingredient-card.ingredient-card--other .other-input-wrap{
+  margin-top: 8px;
+}
+#culture-step3 .ingredient-card.ingredient-card--other .other-input-wrap input{
+  border: 2px solid #e8e2d9;
+  border-radius: 10px;
+  padding: 8px 10px;
+}
+#culture-step3 .ingredient-card.ingredient-card--other.selected .other-input-wrap input{
+  border-color: #b06031;         /* combina com o selecionado */
+  box-shadow: 0 0 0 3px rgba(176,96,49,.12);
+}
+
+/* base neutra + limpar sombras/outline antigas */
+#culture-step4 .night-card,
+#culture-step4 .night-card:hover,
+#culture-step4 .night-card:focus,
+#culture-step4 .night-card:focus-within{
+  border: 2px solid #e8e2d9 !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+/* ✅ selecionado → apenas o anel/borda #b06031 */
+#culture-step4 .night-card:has(> input[type="radio"]:checked){
+  border-color: #b06031 !important;
+  box-shadow: 0 0 0 4px rgba(176,96,49,.18) !important;
+}
+
+/* (opcional) foco via teclado mantém só o anel da nossa cor */
+#culture-step4 .night-card:has(> input[type="radio"]:focus-visible){
+  box-shadow: 0 0 0 4px rgba(176,96,49,.28) !important;
+}
+
+/* MAIZE intro — imagem centrada acima do texto (como o foodcircle) */
+#area-maize .question-wrapper{
+  display: grid;                /* já tens grid, reforçamos */
+  grid-auto-flow: row;          /* empilha elementos em linhas */
+}
+
+#maizeVisual{
+  grid-column: 1 / -1;          /* ocupa a largura toda da grelha */
+  justify-self: center;         /* centra horizontalmente */
+  align-self: start;            /* encosta ao topo do wrapper */
+  position: static !important;  /* garante que não fica “de lado”/absoluto */  /* remove qualquer rotação herdada */   /* sem animações (como quiseres) */
+
+  width: 200px !important;      /* igual ao tamanho do ícone da nutrição */
+  aspect-ratio: 1 / 1;
+  height: auto;
+  object-fit: contain;
+  margin: 0 auto 16px;          /* espaço por baixo da imagem */
+}
+
+@keyframes maize-joy {
+  0%   { transform: translateY(0) rotate(0deg) scale(1); }
+  20%  { transform: translateY(-8px) rotate(2deg)  scale(1.02); }
+  40%  { transform: translateY(0)  rotate(0deg)  scale(1); }
+  60%  { transform: translateY(-6px) rotate(-2deg) scale(1.015); }
+  80%  { transform: translateY(0)  rotate(0deg)  scale(1); }
+  100% { transform: translateY(0)  rotate(0deg)  scale(1); }
+}
+
+/* aplica a animação e garante que vence qualquer regra anterior */
+#maizeVisual.maize-joy{
+  animation: maize-joy 3.6s ease-in-out infinite !important;
+  will-change: transform;
+}
+
+/* respeitar utilizadores que preferem menos movimento */
+@media (prefers-reduced-motion: reduce){
+  #maizeVisual.maize-joy{ animation: none !important; }
+}
+
+
+#area-maize .areaIntroduction h2{
+  color: #e2af40 !important; /* amarelo */
+}
+
+/* MAIZE — centrar botões Next em todos os steps */
+#area-maize .area-quiz .area-step .button-row{
+  display: flex !important;
+  justify-content: center !important;
+}
+
+/* (Opcional) tirar o pulsar dos botões nesta área */
+#area-maize .area-quiz .area-step .button-row button{
+  animation: none !important;
+}
+
+/* (Opcional) também centrar a call-to-action final */
+#area-maize .final-cta{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+/* MAIZE — Step 3 (Reflection 3): textarea com rebordo amarelo */
+#maize-step3 .textarea-wrap textarea{
+  border: 2px solid #e8e2d9;          /* base neutra como nas outras áreas */
+  border-radius: 12px;
+  padding: 12px 14px;
+  outline: none;
+  width: 100%;
+  transition: border-color .2s, box-shadow .2s;
+}
+
+#maize-step3 .textarea-wrap textarea:focus,
+#maize-step3 .textarea-wrap textarea:focus-visible{
+  border-color: #f4b93c !important;   /* amarelo */
+  box-shadow: 0 0 0 4px rgba(244,185,60,.18) !important; /* anel suave */
+}
+
+/* (opcional) leve feedback no hover */
+#maize-step3 .textarea-wrap textarea:hover{
+  border-color: #f0c56a;
+}
+
+#maize-step3 .textarea-wrap textarea{
+  font-family: 'Fredoka', sans-serif !important; /* igual ao resto do site */
+  font-size: clamp(1rem, 1.8vw, 1.1rem);
+  color: var(--text-brown) !important;           /* #4c361c */
+  line-height: 1.5;
+}
+
+/* placeholder coerente */
+#maize-step3 .textarea-wrap textarea::placeholder{
+  color: #7a6650; /* subtil, legível */
+  opacity: .85;
+}
+
+/* MAIZE — Step 4: layout e animação troféu em cima + avatar em baixo */
+
+/* Wrapper final já estava com final-theme; mantemos */
+#area-maize .question-wrapper.final-theme{
+  background-color: #fff !important; /* o bege claro que combinámos */
+}
+
+/* Título e texto (já definidos antes, repetimos aqui por segurança) */
+#maize-step4 h2{ color: #ffa828 !important; font-size: 30px;}
+#maize-step4{ color: #664c25; }
+#maize-step4 p{ color: #664c25 !important; }
+
+/* TROFÉU no topo, centrado */
+#maize-step4 #finalTrophy{
+  display: block;
+  margin: 0 auto 14px;
+  width: min(180px, 32vw);
+  height: auto;
+  object-fit: contain;
+  animation: final-bob 2.6s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* AVATAR em baixo, centrado */
+#maize-step4 .final-avatars{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 14px 0 18px;
+}
+#maize-step4 #maizeFinalAvatar{
+  width: 300px;
+  height: auto;
+  object-fit: contain;
+  animation: final-bob 2.6s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* animação alegre (já usada; mantemos aqui) */
+@keyframes final-bob {
+  0%   { transform: translateY(0) rotate(0deg) }
+  25%  { transform: translateY(-6px) rotate(1.5deg) }
+  50%  { transform: translateY(0) rotate(0deg) }
+  75%  { transform: translateY(-4px) rotate(-1.5deg) }
+  100% { transform: translateY(0) rotate(0deg) }
+}
+
+/* respeitar reduzido movimento */
+@media (prefers-reduced-motion: reduce){
+  #maize-step4 #finalTrophy,
+  #maize-step4 #maizeFinalAvatar{ animation: none !important; }
+}
+
+/* Maize – Step 4: reduzir espaço entre parágrafos */
+#maize-step4 p{
+  margin: 2px 0 !important;   /* antes/depois de cada parágrafo */
+  line-height: 1.45;          /* opcional: aperta um pouco a linha */
+}
+
+#climate-step2 .long-answer{
+  border: 2px solid #e8e2d9 !important;   /* base neutra */
+  border-radius: 12px;
+  padding: 12px 14px;
+  width: 100%;
+  outline: none !important;
+  transition: border-color .2s, box-shadow .2s;
+}
+
+/* hover opcional */
+#climate-step2 .long-answer:hover{
+  border-color: #92bc3d !important;
+}
+
+/* foco: rebordo e “anel” verde */
+#climate-step2 .long-answer:focus,
+#climate-step2 .long-answer:focus-visible{
+  border-color: #92bc3d !important;                    /* verde da área */
+  box-shadow: 0 0 0 4px rgba(146, 188, 61, 0.18) !important; /* sombra verde */
+}
+
+#climate-step4 .heat-card{
+  border: 2px solid #e8e2d9 !important;
+  border-radius: 14px;
+  box-shadow: none !important;
+  transition: border-color .2s, box-shadow .2s;
+}
+
+/* hover opcional */
+#climate-step4 .heat-card:hover{
+  border-color: #cfd8c0 !important;
+}
+
+/* ✅ selecionado → verde da área */
+#climate-step4 .heat-card.selected{
+  border-color: #92bc3d !important;                               /* verde */
+  box-shadow: 0 0 0 4px rgba(146, 188, 61, 0.18) !important;       /* anel */
+}
+
+/* cartões “bloqueados” quando já atinges o máximo */
+#climate-step4 .heat-card.disabled{
+  opacity: .55;
+  cursor: not-allowed;
+}

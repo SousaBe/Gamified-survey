@@ -1,0 +1,1584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Gamified Survey</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- EXPLICAÇÃO DO OBJETIVO DO QUESTIONÁRIO -->
+  <div class="informconsent-screen" id="informConsent">
+    <div class="question-wrapper">
+      <div class="consentcontent">
+        <h2>The Future on Your Plate: Exploring Citizens' Visions for Maize Consumption in 2050</h2>
+        
+        <p>This questionnaire is part of a scientific research project exploring possible futures of food consumption, with a special focus on how maize might be consumed in the year 2050. </p>
+            
+        <p>Your responses will directly contribute to a citizen science initiative, helping researchers build participatory foresight scenarios about the future of maize. By imagining your food choices and preferences in 2050, you will help us understand how societal values, environmental concerns, and cultural habits might shape future food systems. The questionnaire will take approximately 10 to 15 minutes to complete. You can take your time, and there are no right or wrong answers, just your perspectives.</p>
+
+        <p>It is unlikely that you will experience any risks or discomfort beyond what would be experienced in everyday life by participating. There are no specific benefits associated with participating. </p>
+
+        <p>The data collected in this study is completely anonymous. The information you choose to provide in this study cannot be connected back to you. All responses will be kept confidential and will only be accessed by the research team at Instituto Superior Técnico involved in this master’s thesis project. The data collected will be stored securely and retained for five years, after which it will be permanently deleted.</p>
+
+        <p>Your participation in this study is voluntary, and you may choose not to participate or end your participation at any time without penalty. If you wish to have your responses removed, please contact us at beatriz.de.sousa@tecnico.ulisboa.pt.</p>
+
+        <p>If you have any questions or comments about this study or if you want access to your answers, you may contact the researcher: Beatriz de Sousa, Master Biomedical Engineering student, beatriz.de.sousa@tecnico.ulisboa.pt.</p>
+
+        <p>I have read and understand the above consent form. By clicking “Continue!”, you confirm that you have understood the information above and indicate your willingness to voluntarily take part in this study. Thank you for your collaboration!</p>
+
+        <button class = "continue-button" onclick="informConsent()">Continue!</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- START SCREEN: aparece primeiro -->
+  <div class="start-screen hidden" id="startScreen">
+    <div class="content">
+      <h1>Are you ready to enter this<br><strong>immersive</strong> experience?</h1>
+      <button class = "start-button" onclick="startSurvey()">Let’s go!</button>
+    </div>
+  </div>
+
+  <!-- QUESTIONÁRIO DEMOGRÁFICO -->
+  <div class="question-wrapper hidden" id="demographicContainer">
+    <div class="question-card">
+      <img src="Imagens questonário/avatares.png" alt="avatares" class="avatares">
+      <div class="question-content">
+        <div class="answer-col">
+          <!-- Step 1 -->
+          <div class="step" id="step1">
+            <h2>How old are you?</h2>
+            <label><input type="radio" name="age" value="Under 18"> Under 18</label>
+            <label><input type="radio" name="age" value="18–24"> 18–24</label>
+            <label><input type="radio" name="age" value="25–39"> 25–39</label>
+            <label><input type="radio" name="age" value="40–54"> 40–54</label>
+            <label><input type="radio" name="age" value="55–69"> 55–69</label>
+            <label><input type="radio" name="age" value="70+"> 70+</label>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="step" id="step2">
+            <h2>What is your gender?</h2>
+            <label><input type="radio" name="gender" value="Man"> Man</label>
+            <label><input type="radio" name="gender" value="Woman"> Woman</label>
+            <label><input type="radio" name="gender" value="Other"> Other</label>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="step" id="step3">
+            <h2> How do you best describe your diet?</h2>
+            <label><input type="radio" name="diet" value="Omnivore"> Omnivore (includes both plant-based and animal-based foods, with variations that may include dairy and/or eggs) </label>
+            <label><input type="radio" name="diet" value="Flexitarian"> Flexitarian (mostly plant-based eating style that allows occasional consumption of meat and animal products) </label>
+            <label><input type="radio" name="diet" value="Vegetarian"> Vegetarian (based on plant foods and excludes meat) </label>
+            <label><input type="radio" name="diet" value="Vegan"> Vegan (excludes all animal products and focuses entirely on plant-based foods) </label>
+            <label><input type="radio" name="diet" value="Pescatarian"> Pescatarian (primarily plant-based eating pattern that includes fish and seafood, and sometimes dairy and eggs, while excluding red meat and poultry) </label>
+            <label><input type="radio" name="diet" value="Other"> Other <input type="text" placeholder="Please specify"></label>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="step" id="step4">
+            <h2> Are you allergic/intolerant to any type of food today?</h2>
+            <label><input type="checkbox" name="allergic" value="Milk"> Milk </label>
+            <label><input type="checkbox" name="allergic" value="Eggs"> Eggs </label>
+            <label><input type="checkbox" name="allergic" value="Soybeans"> Soybeans </label>
+            <label><input type="checkbox" name="allergic" value="Wheat"> Wheat or cereals containing gluten </label>
+            <label><input type="checkbox" name="allergic" value="Nuts"> Peanuts and/or tree nuts </label>
+            <label><input type="checkbox" name="allergic" value="Fish"> Fish and/or seafood </label>
+            <label><input type="checkbox" name="allergic" value="None"> I don't have allergies </label>
+            <label><input type="checkbox" name="allergic" value="Other"> Other <input type="text" placeholder="Please specify"></label>
+          </div>
+
+          <div class="step" id="step5">
+            <!-- Primeira pergunta com radio buttons -->
+            <h2>What is your nationality?</h2>
+            <label><input type="radio" name="nationality" value="French"> French</label>
+            <label><input type="radio" name="nationality" value="Other"> Other <input type="text" placeholder="Please specify"></label>
+
+            <!-- Segunda pergunta com input -->
+            <h2>Where do you live today?</h2>
+              <input type="text" name="city" placeholder="Type your city" class="city-input" required>
+          </div>
+
+          <!-- Step 6 -->
+          <div class="step" id="step6">
+            <h2>How often do you currently eat the products above?</h2>
+            <p style="margin-bottom: 30px;">1 = Never · 2 = Rarely · 3 = Once a week · 4 = A few times · 5 = Daily</p>
+
+            <div class="product-grid">
+              <!-- Cornflakes -->
+              <div class="product-item">
+                <img src="Imagens questonário/cornflakes.png" alt="Cornflakes">
+                <div class="rating">
+                  <label>
+                    <input type="radio" name="cornflakes" value="1" />
+                    <span class="rating-bubble">1</span>
+                  </label>
+                  <label>
+                    <input type="radio" name="cornflakes" value="2" />
+                    <span class="rating-bubble">2</span>
+                  </label>
+                  <label>
+                    <input type="radio" name="cornflakes" value="3" />
+                    <span class="rating-bubble">3</span>
+                  </label>
+                  <label>
+                    <input type="radio" name="cornflakes" value="4" />
+                    <span class="rating-bubble">4</span>
+                  </label>
+                  <label>
+                    <input type="radio" name="cornflakes" value="5" />
+                    <span class="rating-bubble">5</span>
+                  </label>
+                </div>
+                <p>Cornflakes</p>
+              </div>
+
+              <!-- Corn bread -->
+              <div class="product-item">
+                <img src="Imagens questonário/cornbread.png" alt="Corn bread">
+                <div class="rating">
+                  <label>
+                    <input type="radio" name="cornbread" value="1" />
+                    <span class="rating-bubble">1</span>
+                  </label>
+                  <label>
+                    <input type="radio" name="cornbread" value="2" />
+                    <span class="rating-bubble">2</span>
+                  </label>
+                  <label>
+                    <input type="radio" name="cornbread" value="3" />
+                    <span class="rating-bubble">3</span>
+                  </label>
+                  <label>
+                    <input type="radio" name="cornbread" value="4" />
+                    <span class="rating-bubble">4</span>
+                  </label>
+                  <label>
+                    <input type="radio" name="cornbread" value="5" />
+                    <span class="rating-bubble">5</span>
+                  </label>
+                </div>
+                <p>Corn bread</p>
+              </div>
+
+              <!-- Polenta -->
+              <div class="product-item">
+                <img src="Imagens questonário/polenta.png" alt="Polenta">
+                <div class="rating">
+                  <label>
+                    <input type="radio" name="polenta" value="1" />
+                    <span class="rating-bubble">1</span>
+                  </label>
+                  <label>
+                    <input type="radio" name="polenta" value="2" />
+                    <span class="rating-bubble">2</span>
+                  </label>
+                  <label>
+                    <input type="radio" name="polenta" value="3" />
+                    <span class="rating-bubble">3</span>
+                  </label>
+                  <label>
+                    <input type="radio" name="polenta" value="4" />
+                    <span class="rating-bubble">4</span>
+                  </label>
+                  <label>
+                    <input type="radio" name="polenta" value="5" />
+                    <span class="rating-bubble">5</span>
+                  </label>
+                </div>
+                <p>Polenta</p>
+              </div>
+
+              <!-- Sweet corn -->
+              <div class="product-item">
+                <img src="Imagens questonário/sweetcorn.png" alt="Sweet corn">
+                <div class="rating">
+                  <label>
+                    <input type="radio" name="sweetcorn" value="1" />
+                    <span class="rating-bubble">1</span>
+                  </label>
+                  <label>
+                    <input type="radio" name="sweetcorn" value="2" />
+                    <span class="rating-bubble">2</span>
+                  </label>
+                  <label>
+                    <input type="radio" name="sweetcorn" value="3" />
+                    <span class="rating-bubble">3</span>
+                  </label>
+                  <label>
+                    <input type="radio" name="sweetcorn" value="4" />
+                    <span class="rating-bubble">4</span>
+                  </label>
+                  <label>
+                    <input type="radio" name="sweetcorn" value="5" />
+                    <span class="rating-bubble">5</span>
+                  </label>
+                </div>
+                <p>Sweet corn</p>
+              </div>
+
+              <!-- Corn tortillas -->
+              <div class="product-item">
+                <img src="Imagens questonário/corntortillas.png" alt="Corn tortillas">
+                <div class="rating">
+                  <label>
+                    <input type="radio" name="tortillas" value="1" />
+                    <span class="rating-bubble">1</span>
+                  </label>
+                  <label>
+                    <input type="radio" name="tortillas" value="2" />
+                    <span class="rating-bubble">2</span>
+                  </label>
+                  <label>
+                    <input type="radio" name="tortillas" value="3" />
+                    <span class="rating-bubble">3</span>
+                  </label>
+                  <label>
+                    <input type="radio" name="tortillas" value="4" />
+                    <span class="rating-bubble">4</span>
+                  </label>
+                  <label>
+                    <input type="radio" name="tortillas" value="5" />
+                    <span class="rating-bubble">5</span>
+                  </label>
+                </div>
+                <p>Corn tortillas</p>
+              </div>
+
+              <!-- Nachos -->
+              <div class="product-item">
+                <img src="Imagens questonário/nachos.png" alt="Nachos">
+                <div class="rating">
+                  <label>
+                    <input type="radio" name="nachos" value="1" />
+                    <span class="rating-bubble">1</span>
+                  </label>
+                  <label>
+                    <input type="radio" name="nachos" value="2" />
+                    <span class="rating-bubble">2</span>
+                  </label>
+                  <label>
+                    <input type="radio" name="nachos" value="3" />
+                    <span class="rating-bubble">3</span>
+                  </label>
+                  <label>
+                    <input type="radio" name="nachos" value="4" />
+                    <span class="rating-bubble">4</span>
+                  </label>
+                  <label>
+                    <input type="radio" name="nachos" value="5" />
+                    <span class="rating-bubble">5</span>
+                  </label>
+                </div>
+                <p>Nachos</p>
+              </div>
+
+              <!-- Popcorn -->
+              <div class="product-item">
+                <img src="Imagens questonário/popcorn.png" alt="Popcorn">
+                <div class="rating">
+                  <label>
+                    <input type="radio" name="popcorn" value="1" />
+                    <span class="rating-bubble">1</span>
+                  </label>
+                  <label>
+                    <input type="radio" name="popcorn" value="2" />
+                    <span class="rating-bubble">2</span>
+                  </label>
+                  <label>
+                    <input type="radio" name="popcorn" value="3" />
+                    <span class="rating-bubble">3</span>
+                  </label>
+                  <label>
+                    <input type="radio" name="popcorn" value="4" />
+                    <span class="rating-bubble">4</span>
+                  </label>
+                  <label>
+                    <input type="radio" name="popcorn" value="5" />
+                    <span class="rating-bubble">5</span>
+                  </label>
+                </div>
+                <p>Popcorn</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="button-container">
+          <button onclick="nextStep()">Next!</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- INTRODUÇÃO AO FUTURO 2050 -->
+
+  <div id="intro2050" class="intro hidden">
+    <div class="question-wrapper intro-card">
+      <!-- relógio em cima -->
+      <img src="Imagens questonário/relogio.gif" class="intro-img intro-clock" alt="Clock">
+
+      <!-- texto centrado -->
+      <div class="intro2050-text">
+        <h1>Welcome to the year<br><strong>2050</strong></h1>
+        <p>On this journey towards 2050,<br>
+        we want to know: what factors will<br>
+        influence what ends up on your plate?</p>
+
+        <div class="intro2050-container">
+          <button class="start-game-button" onclick="goToGame()">Click to enter the game!</button>
+        </div>
+      </div>
+
+      <!-- cozinheiro em baixo -->
+      <img src="Imagens questonário/cozinhar.gif" class="intro-img intro-cook" alt="Cook">
+    </div>
+  </div>
+
+  <div id="narrativeIntro" class="intro-narrative hidden">
+    <div class="narrative-box">
+      <img src="Imagens questonário/sacola.png" alt="food bag" class="narrative-illustration">
+      <div class="answer-col">
+        <div class="narrative-text">
+          <p>In the next few minutes, you will be living in 2050. By this year, the world has changed, and so has food. The global population is approaching 10 billion people, and feeding everyone fairly, safely, and sustainably has become one of humanity’s greatest challenges.</p>
+
+          <p>Over the past decades, countries and communities have adopted different strategies to respond to global crises. In some regions, rapid economic and technological growth brought innovation to the food system. In others, inequalities and difficulties in adapting persist, with slower responses to change.</p>
+
+          <p>Climate change, biodiversity loss, and intensive resource use have forced shifts in how food is produced, distributed, and consumed. New solutions have been tested. Some based on technology, others focused on reducing waste and protecting the environment.</p>
+          <br>
+          <button class="begin-button" onclick="createyourself2050()">Let’s begin!</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="create-yourself hidden" id="createyourself">
+    <div class="content1">
+      <h1>Create your 2050 self.</h1>
+      <p>Step into your future identity. Customize your character: who are you in 2050?</p>
+      <button class = "createyourself-button" onclick="yourself2050()">Let’s start!</button>
+    </div>
+  </div>
+
+  <!-- PERGUNTA: Escolher perfil 2050 -->
+  <div class="yourself-2050 hidden" id="yourself2050">
+    <div class="question-card-yourself">
+    <img src="Imagens questonário/whoamI.png" alt="interrogation face" class="whoam-I">
+      <div class="answer-col">
+        <h2>Which of these profiles sounds most like the 2050 you?</h2>
+        
+        <form id="perfil-form">
+          <label class="perfil-rooted">
+            <input type="radio" name="perfil" value="rooted" required>
+            I find comfort in traditions. I value cultural food practices and prefer recipes I know well.
+          </label>
+          <label class="perfil-future">
+            <input type="radio" name="perfil" value="future">
+            I’m curious about what the future holds. I enjoy exploring new food technologies and futuristic ideas.
+          </label>
+          <label class="perfil-practical">
+            <input type="radio" name="perfil" value="practical">
+            I see food as part of my routine. I choose what’s affordable, quick, and easy to prepare.
+          </label>
+          <label class="perfil-conscious">
+            <input type="radio" name="perfil" value="conscious">
+            I care deeply about the planet and how my food choices affect the environment and society.
+          </label>
+          <label class="perfil-wellness">
+            <input type="radio" name="perfil" value="wellness">
+            Health is my priority. I choose food that supports my well-being and nutrition goals.
+          </label>
+          <label class="perfil-explorer">
+            <input type="radio" name="perfil" value="explorer">
+            I love discovering new tastes and cultures. Food is an adventure for me.
+          </label>
+
+          <div class="button-container">
+            <button type="button" class="yourself2050" onclick="readytobegin(event)">Next!</button>
+          </div><br>
+
+        </form>
+      </div>
+
+
+    </div>
+  </div>
+
+  <div class="avatar-reveal hidden" id="avatarReveal">
+    <h2 class="pergunta">Here is your 2050 self!</h2>
+    <div class="avatar-container">
+      <img id="avatar-rooted" src="Imagens questonário/rooted.png" class="avatar">
+      <img id="avatar-future" src="Imagens questonário/futurethinker.png" class="avatar">
+      <img id="avatar-practical" src="Imagens questonário/praticalplanner.png" class="avatar">
+      <img id="avatar-conscious" src="Imagens questonário/consciouscitizen.png" class="avatar">
+      <img id="avatar-wellness" src="Imagens questonário/wellnessseeker.png" class="avatar">
+      <img id="avatar-explorer" src="Imagens questonário/explorer.png" class="avatar">
+    </div>
+    <div class="button-container">
+      <button type="button" class = "letsplay-button" onclick="showReady()">Let's play!</button>
+    </div>
+  </div>
+
+
+  <div class="ready-begin hidden" id="readytobeginscreen">
+    <div class="content2">
+      <h1>You're ready to begin.</h1>
+      <p>Welcome to your world in 2050.</p>
+      <button class="ready-begin-button" onclick="startAdventure()">Start exploring!</button>
+    </div>
+  </div>
+
+  <!-- MAPA DE NAVEGAÇÃO -->
+  <section id="gameMap" class="map hidden">
+    <!-- Avatar que se mexe -->
+    <img id="mapAvatar" class="map-avatar" alt="Your avatar" />
+
+    <!-- Casas (as 3 áreas) -->
+    <div id="house-climate" class="house house-climate" data-area="climate">
+      <img src="Imagens questonário/climateandenviromnentarea.png" alt="Climate & Environment"/>
+      <button class="explore-btn hidden" onclick="startArea('climate')">Click to explore this area!</button>
+    </div>
+
+    <div id="house-nutrition" class="house house-nutrition" data-area="nutrition">
+      <img src="Imagens questonário/nutricionalhealtharea.png" alt="Nutritional Health"/>
+      <button class="explore-btn hidden" onclick="startArea('nutrition')">Click to explore this area!</button>
+    </div>
+
+    <div id="house-culture" class="house house-culture" data-area="culture">
+      <img src="Imagens questonário/foodculturearea.png" alt="Food Culture"/>
+      <button class="explore-btn hidden" onclick="startArea('culture')">Click to explore this area!</button>
+    </div>
+
+    <!-- Bandeira final -->
+    <img id="finalFlag" class="final-flag" src="Imagens questonário/finalflag.png" alt="Finish"/>
+    <button id="finalContinueBtn" class="final-continue hidden" onclick="goToMaizeSection()">Continue!</button>
+  </section>
+
+  
+  <!-- PLACEHOLDERS das perguntas (substitui pelo teu conteúdo real de cada área) -->
+  <section id="area-climate" class="area-screen hidden">
+    <div class="question-wrapper">
+      <div class="answer-col">
+        <img src="Imagens questonário/world.gif" alt="world" class="world-gif">
+        <div class="areaIntroduction">
+          <h2>Climate and Environment</h2>
+          <p>By 2050, the effects of climate change are part of your everyday life. In some regions, water scarcity, rising temperatures, or extreme weather events affect crops. In other areas, new solutions have emerged to grow food under challenging conditions.</p>
+          <p>These changes have significantly influenced the way food is produced and consumed. Some ingredients have become more valuable. And others, rarer.</p>
+          <p>Depending on the path the world follows, the rise in global average temperature by 2050 could range, according to the best estimate, from around 2.0°C to over 2.4°C, depending on the future scenario. These warming levels are already reshaping agriculture, ecosystems, and our everyday choices.</p>
+          <p>Let’s explore how this new environmental context might influence your eating habits and choices in the future.</p>
+          <br>
+          <button class="buttonintroductionclimate" onclick="showAreaQuiz('climate')">Move forward!</button>
+
+        </div>
+
+        <div id="climateQuiz" class="area-quiz hidden">
+          <!-- Passo 1 -->
+          <div class="area-step" id="climate-step1" data-require-drop="true" data-exact-drops="5">
+            <h3>It’s the year 2050. You’re at your local market. Due to water scarcity, soil degradation, and rising temperatures, many food crops have become increasingly difficult to grow. Others have adapted better to these new conditions.</h3>
+            <h3>This week, a selection of products is available on the market. </h3>
+            <h3>You are going to buy food for yourself today. You can only carry max. 5 items and your budget restricts you to a max. 1 product of the product category “meat and alternatives” and max. 1 product for “dairy and alternatives”. (There are no restrictions for the other food categories)</h3>
+            <h3>Based on what you think about their sustainability and your personal preferences, which ones would you choose to take home?</h3>
+            
+            <h3 class="drag-instructions">Pick what you'd likely buy in 2050. Drag at least one item into the basket.</h3>
+            
+            <!-- SHELF com categorias -->
+            <div class="drag-shelf" id="climateShelf">
+
+              <!-- Meat and plant-based alternatives -->
+              <div class="shelf-category">
+                <h4 class="category-title">Meat and plant-based alternatives</h4>
+                <div class="category-grid" data-category="meat">
+                  <div class="food-item" id="item-fish" draggable="true" data-maize="no" data-novel="no">
+                    <img src="Imagens questonário/itens/fish.png" alt="Fish"><span>Fish</span>
+                  </div>
+                  <div class="food-item" id="item-poultry" draggable="true" data-maize="no" data-novel="no">
+                    <img src="Imagens questonário/itens/poultry.png" alt="Poultry"><span>Poultry</span>
+                  </div>
+                  <div class="food-item" id="item-legume-burger" draggable="true" data-maize="maybe" data-novel="no">
+                    <img src="Imagens questonário/itens/legume-burger.png" alt="Legume burger"><span>Legume burger</span>
+                  </div>
+                  <div class="food-item" id="item-insect-patty" draggable="true" data-maize="no" data-novel="yes">
+                    <img src="Imagens questonário/itens/insect-patty.png" alt="Insect-based patties"><span>Insect patties</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Drinks and Dairy -->
+              <div class="shelf-category">
+                <h4 class="category-title">Drinks and Dairy</h4>
+                <div class="category-grid" data-category="dairy">
+                  <div class="food-item" id="item-cow-milk" draggable="true" data-maize="no" data-novel="no">
+                    <img src="Imagens questonário/itens/cow-milk.png" alt="Cow milk"><span>Cow milk</span>
+                  </div>
+                  <div class="food-item" id="item-oat-milk" draggable="true" data-maize="no" data-novel="no">
+                    <img src="Imagens questonário/itens/oat-milk.png" alt="Oat vegetal milk"><span>Oat milk</span>
+                  </div>
+                  <div class="food-item" id="item-corn-milk" draggable="true" data-maize="yes" data-novel="no">
+                    <img src="Imagens questonário/itens/corn-milk.png" alt="Corn milk"><span>Corn milk</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Snacks -->
+              <div class="shelf-category">
+                <h4 class="category-title">Snacks</h4>
+                <div class="category-grid" data-category="snacks">
+                  <div class="food-item" id="item-seaweed-crisps" draggable="true" data-maize="no" data-novel="yes">
+                    <img src="Imagens questonário/itens/seaweed-crisps.png" alt="Seaweed crisps"><span>Seaweed crisps</span>
+                  </div>
+                  <div class="food-item" id="item-insect-snacks" draggable="true" data-maize="no" data-novel="yes">
+                    <img src="Imagens questonário/itens/insect-snacks.png" alt="Insect snacks"><span>Insect snacks</span>
+                  </div>
+                  <div class="food-item" id="item-puffed-grain" draggable="true" data-maize="yes" data-novel="no">
+                    <img src="Imagens questonário/itens/puffed-grain.png" alt="Puffed grain snack"><span>Puffed grain snack</span>
+                  </div>
+                  <div class="food-item" id="item-energy-bar" draggable="true" data-maize="yes" data-novel="no">
+                    <img src="Imagens questonário/itens/energy-bar.png" alt="Plant energy bar"><span>Energy bar</span>
+                  </div>
+                  <div class="food-item" id="item-corn-chips" draggable="true" data-maize="yes" data-novel="no">
+                    <img src="Imagens questonário/itens/corn-chips.png" alt="Corn chips"><span>Corn chips</span>
+                  </div>
+                  <div class="food-item" id="item-popcorn" draggable="true" data-maize="yes" data-novel="no">
+                    <img src="Imagens questonário/itens/popcorn.png" alt="Popcorn"><span>Popcorn</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Cereals, Bread and Pasta -->
+              <div class="shelf-category">
+                <h4 class="category-title">Cereals, Bread and Pasta</h4>
+                <div class="category-grid" data-category="staples">
+                  <div class="food-item" id="item-wheat-bread" draggable="true" data-maize="no" data-novel="no">
+                    <img src="Imagens questonário/itens/wheat-bread.png" alt="Wheat bread"><span>Wheat bread</span>
+                  </div>
+                  <div class="food-item" id="item-flatbread" draggable="true" data-maize="yes" data-novel="no">
+                    <img src="Imagens questonário/itens/flatbread.png" alt="Whole grain flatbread"><span>Flatbread</span>
+                  </div>
+                  <div class="food-item" id="item-gf-pasta" draggable="true" data-maize="yes" data-novel="no">
+                    <img src="Imagens questonário/itens/glutenfree-pasta.png" alt="Gluten-free pasta"><span>Glutten-Free pasta</span>
+                  </div>
+                  <div class="food-item" id="item-rice" draggable="true" data-maize="no" data-novel="no">
+                    <img src="Imagens questonário/itens/rice.png" alt="Rice"><span>Rice</span>
+                  </div>
+                  <div class="food-item" id="item-breakfast-cereal" draggable="true" data-maize="yes" data-novel="no">
+                    <img src="Imagens questonário/itens/breakfast-cereal.png" alt="Breakfast cereals"><span>Breakfast cereals</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Fruits and vegetables -->
+              <div class="shelf-category">
+                <h4 class="category-title">Fruits and vegetables</h4>
+                <div class="category-grid" data-category="produce">
+                  <div class="food-item" id="item-maize" draggable="true" data-maize="yes" data-novel="no">
+                    <img src="Imagens questonário/itens/sweet-corn.png" alt="Maize"><span>Sweet Corn</span>
+                  </div>
+                  <div class="food-item" id="item-tomato" draggable="true" data-maize="no" data-novel="no">
+                    <img src="Imagens questonário/itens/tomato.png" alt="Tomato"><span>Tomato</span>
+                  </div>
+                  <div class="food-item" id="item-lettuce" draggable="true" data-maize="no" data-novel="no">
+                    <img src="Imagens questonário/itens/lettuce.png" alt="Lettuce"><span>Lettuce</span>
+                  </div>
+                  <div class="food-item" id="item-fruit-mix" draggable="true" data-maize="no" data-novel="no">
+                    <img src="Imagens questonário/itens/fruit-mix.png" alt="Seasonal fruit mix"><span>Seasonal fruits</span>
+                  </div>
+                  <div class="food-item" id="item-potato" draggable="true" data-maize="no" data-novel="no">
+                    <img src="Imagens questonário/itens/potato.png" alt="Potato"><span>Potato</span>
+                  </div>
+                  <div class="food-item" id="item-broccoli" draggable="true" data-maize="no" data-novel="no">
+                    <img src="Imagens questonário/itens/broccoli.png" alt="Broccoli"><span>Broccoli</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Cesto -->
+            <div class="basket-wrap">
+              <div id="climateBasket" class="basket" aria-label="Basket" tabindex="0">
+                <span class="basket-hint">Drop items here</span>
+              </div>
+              <div class="basket-meta">
+                <span>Selected: <strong id="climateCount">0</strong> / 5</span>
+                <button type="button" class="secondary small" onclick="resetBasket('climate')">Reset</button>
+              </div>
+            </div>
+
+            <!-- valor para submissão/validação -->
+            <input type="hidden" id="climateDragSelection" name="climate_drag_selection" value="[]"/>
+
+            <div class="button-row one-way">
+              <button type="button" onclick="nextAreaStep('climate')">Next</button>
+            </div>
+          </div>
+
+          <!-- Step 2: open text -->
+          <div class="area-step" id="climate-step2">
+            <h3>Why did you choose these 5 items?</h3>
+            <h3> Were you thinking about the environmental challenges of 2050, such as water scarcity, soil degradation, and rising temperatures or others? Tell us!</h3>
+
+            <textarea id="climateReason"
+                      class="long-answer"
+                      rows="6"
+                      placeholder="Type your answer here..."
+                      required></textarea>
+
+            <!-- (opcional) guardar resposta em hidden para submissão posterior -->
+            <input type="hidden" id="climateReasonValue" name="climate_reason" value="">
+
+            <div class="button-row one-way">
+              <!-- sem “Back” (flow só para a frente) -->
+              <button type="button" onclick="nextAreaStep('climate')">Next</button>
+            </div>
+          </div>
+
+          <!-- Step 3: swipe cards -->
+          <div class="area-step" id="climate-step3">
+            <h3>Swipe through these 2050 food labels. Would you buy each one?</h3>
+            <p class="muted">Swipe right = Buy · Swipe left = Skip. Or use the buttons.</p>
+
+            <div id="climateSwipeDeck" class="swipe-deck">
+              <!-- topo do baralho é o ÚLTIMO .card -->
+              <div class="card" data-id="corn-tortilla">
+                <h4>Corn Tortilla</h4>
+                <div class="card-img"><img src="Imagens questonário/corntortillas.png" alt="Corn tortilla"></div>
+                <ul class="eco">
+                  <li>CO₂: 0.419 kg CO₂e/kg → 🟢 Very Low</li>
+                  <li>Water: 1,870 L/kg → 🟠 Moderate</li>
+                  <li>♨️ Hotspot: cultivation (fertilizers, irrigation, cooking)</li>
+                </ul>
+              </div>
+
+              <div class="card" data-id="baguette">
+                <h4>French Baguette</h4>
+                <div class="card-img"><img src="Imagens questonário/itens/wheat-bread.png" alt="French baguette"></div>
+                <ul class="eco">
+                  <li>💨 CO₂: 0.4–0.8 kg CO₂e/kg → 🟡 Low</li>
+                  <li>💧 Water: 1,800–1,900 L/kg → 🟠 Moderate</li>
+                  <li>♨️ Hotspot: flour & baking energy</li>
+                </ul>
+              </div>
+
+              <div class="card" data-id="cheese">
+                <h4>Cheese</h4>
+                <div class="card-img"><img src="Imagens questonário/itens/cheese.png" alt="Cheese"></div>
+                <ul class="eco">
+                  <li>💨 CO₂: 8–21 kg CO₂e/kg → 🔴 Very High</li>
+                  <li>💧 Water: 5,000–5,500 L/kg → 🔴 Very High</li>
+                  <li>♨️ Hotspot: methane (cows) & processing</li>
+                </ul>
+              </div>
+
+              <div class="card" data-id="poultry">
+                <h4>Poultry Meal</h4>
+                <div class="card-img"><img src="Imagens questonário/itens/poultry.png" alt="Poultry meal"></div>
+                <ul class="eco">
+                  <li>💨 CO₂: 5.97 kg CO₂e/kg → 🔶 High</li>
+                  <li>💧 Water: 670 L/kg → 🟡 Low</li>
+                  <li>♨️ Hotspot: feed & manure</li>
+                </ul>
+              </div>
+
+              <div class="card" data-id="insect-snacks">
+                <h4>Insect Snacks</h4>
+                <div class="card-img"><img src="Imagens questonário/itens/insect-snacks.png" alt="Insect snacks"></div>                
+                <ul class="eco">
+                  <li>💨 CO₂: 0.3–3.0 kg CO₂e/kg → 🟡 Low</li>
+                  <li>💧 Water: 400–800 L/kg → 🟡 Low</li>
+                  <li>♨️ Hotspot: feed source</li>
+                </ul>
+              </div>
+
+              <div class="card" data-id="canned-sweet-corn">
+                <h4>Canned Sweet Corn</h4>
+                <div class="card-img"><img src="Imagens questonário/itens/sweet-corn.png" alt="Canned sweet corn"></div>                
+                <ul class="eco">
+                  <li>💨 CO₂: 0.976 kg CO₂e/kg → 🟡 Low</li>
+                  <li>💧 Water: 706 L/kg → 🟡 Low</li>
+                  <li>♨️ Hotspot: steam & packaging</li>
+                </ul>
+              </div>
+            </div>
+
+            <input type="hidden" id="climateSwipeChoices" name="climate_swipe_choices" value="[]"/>
+            
+            <br>
+
+            <div class="swipe-actions">
+              <button type="button" class="secondary" onclick="swipeLeft('climate')">Skip</button>
+              <button type="button" onclick="swipeRight('climate')">Buy</button>
+            </div>
+
+            <div id="climateSwipeDone" class="hidden">
+              <p class="muted">Thanks! You’ve reviewed all products.</p>
+              <div class="button-row one-way">
+                <button type="button" onclick="nextAreaStep('climate')">Next</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 4: hot day — pick exactly 2 -->
+          <div class="area-step" id="climate-step4" data-select-exact="2">
+            <h3>In 2050, extreme heat waves have become more frequent and intense. On very hot days, some foods feel more appealing than others. On very hot days, some foods feel more appealing than others.</h3>
+
+            <h3>Imagine it’s one of those scorching days. Which two of these foods would you prefer to eat?</h3>
+
+            <h3 class="muted">Select exactly two options.</h3>
+
+            <div class="heat-grid">
+              <!-- Maize options -->
+              <div class="heat-card" data-selectable data-id="cold-maize-salad" data-maize="yes">
+                <img src="Imagens questonário/itens/cold-maize-salad.png" alt="Cold maize salad">
+                <span>Cold maize salad</span>
+              </div>
+
+              <div class="heat-card" data-selectable data-id="tortilla-wrap-veg" data-maize="yes">
+                <img src="Imagens questonário/itens/tortilla-wrap.png" alt="Tortilla wrap with vegetables">
+                <span>Tortilla wrap with vegetables</span>
+              </div>
+
+              <div class="heat-card" data-selectable data-id="grilled-corn-cob" data-maize="yes">
+                <img src="Imagens questonário/itens/grilled-corn.png" alt="Grilled maize on the cob">
+                <span>Grilled maize on the cob</span>
+              </div>
+
+              <!-- Non-maize options -->
+              <div class="heat-card" data-selectable data-id="yogurt-fruit" data-maize="no">
+                <img src="Imagens questonário/itens/yogurt-fruit.png" alt="Yogurt with fruit">
+                <span>Yogurt with fruit</span>
+              </div>
+
+              <div class="heat-card" data-selectable data-id="grilled-chicken" data-maize="no">
+                <img src="Imagens questonário/itens/poultry.png" alt="Grilled chicken">
+                <span>Grilled chicken</span>
+              </div>
+
+              <div class="heat-card" data-selectable data-id="cold-pasta" data-maize="no">
+                <img src="Imagens questonário/itens/cold-pasta.png" alt="Cold pasta dish">
+                <span>Cold pasta dish</span>
+              </div>
+            </div>
+
+            <input type="hidden" id="climateHeatChoices" name="climate_heat_choices" value="[]"/>
+
+            <div class="button-row one-way">
+              <button type="button" onclick="nextAreaStep('climate')">Next</button>
+            </div>
+          </div>
+
+          <!-- Step 5: sustainable canteen — keep or swap -->
+          <div class="area-step" id="climate-step5">
+            <h3>It’s 2050. Climate policies and food shortages have led to changes in what’s available and affordable. You’ve been asked to help design the weekly menu for a sustainable canteen.</h3>
+            <h3 class="muted">For each item, decide if you keep it as is, or swap it for a more sustainable option.</h3>
+
+            <div class="swap-grid">
+              <!-- Rice -->
+              <div class="swap-card">
+                <div class="swap-left">
+                  <div class="swap-title">White rice</div>
+                  <div class="swap-sub">Swap to: maize-based cereals, potatoes, millet</div>
+                </div>
+                <div class="swap-right">
+                  <label class="chip">
+                    <input type="radio" name="swap_rice" value="keep" />
+                    <span>Keep</span>
+                  </label>
+                  <label class="chip">
+                    <input type="radio" name="swap_rice" value="swap" />
+                    <span>Swap</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Milk -->
+              <div class="swap-card">
+                <div class="swap-left">
+                  <div class="swap-title">Dairy milk</div>
+                  <div class="swap-sub">Swap to: corn milk</div>
+                </div>
+                <div class="swap-right">
+                  <label class="chip">
+                    <input type="radio" name="swap_milk" value="keep" />
+                    <span>Keep</span>
+                  </label>
+                  <label class="chip">
+                    <input type="radio" name="swap_milk" value="swap" />
+                    <span>Swap</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Meat -->
+              <div class="swap-card">
+                <div class="swap-left">
+                  <div class="swap-title">Meat-based meals</div>
+                  <div class="swap-sub">Swap to: legume &amp; maize bowls</div>
+                </div>
+                <div class="swap-right">
+                  <label class="chip">
+                    <input type="radio" name="swap_meat" value="keep" />
+                    <span>Keep</span>
+                  </label>
+                  <label class="chip">
+                    <input type="radio" name="swap_meat" value="swap" />
+                    <span>Swap</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Snacks -->
+              <div class="swap-card">
+                <div class="swap-left">
+                  <div class="swap-title">Wheat snacks</div>
+                  <div class="swap-sub">Swap to: corn-based snacks</div>
+                </div>
+                <div class="swap-right">
+                  <label class="chip">
+                    <input type="radio" name="swap_snacks" value="keep" />
+                    <span>Keep</span>
+                  </label>
+                  <label class="chip">
+                    <input type="radio" name="swap_snacks" value="swap" />
+                    <span>Swap</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Guarda as respostas em JSON -->
+            <input type="hidden" id="climateSwapChoices" name="climate_swap_choices" value="{}" />
+
+            <div class="button-row one-way">
+              <button type="button" onclick="nextAreaStep('climate')">Next</button>
+            </div>
+          </div>
+
+          <!-- Step 6: feedback + medal -->
+          <div class="area-step" id="climate-step6">
+            <div class="feedback-wrap">
+              <img src="Imagens questonário/medal_climate.png" alt="Medal" class="badge-medal">
+
+              <div class="badge-block">
+                <div class="badge-title">Climate Responder – Level Unlocked</div>
+                <div class="badge-sub">You explored how climate and food systems are changing.</div>
+              </div>
+
+              <p>You’ve just completed the Climate and Environment challenge!</p>
+              <p>Your choices help reveal how people might adapt to these challenges and what foods they’ll trust in a climate-uncertain future.</p>
+
+
+
+              <h4 class="reflect-title">What did you learn from this area?</h4>
+              <div class="reflect-list">
+                <label><input type="radio" name="climate_reflection" value="maize_resilient"> I hadn’t considered maize as a climate-resilient option before</label>
+                <label><input type="radio" name="climate_reflection" value="aware_climate_availability"> I became more aware of how climate shapes food availability</label>
+                <label><input type="radio" name="climate_reflection" value="sust_vs_preference"> I noticed how sustainability and personal preference can conflict</label>
+                <label><input type="radio" name="climate_reflection" value="prioritize_familiar"> I still prioritize familiar tastes, even in extreme conditions</label>
+                <label>
+                  <input type="radio" name="climate_reflection" value="other">
+                  Other
+                  <input type="text" id="climateReflectionOther" class="inline" placeholder="Type your answer..." disabled>
+                </label>
+              </div>
+              
+              <img id="climateFeedbackAvatar" class="chosen-avatar" alt="Your avatar">
+
+              <!-- Guardar resposta -->
+              <input type="hidden" id="climateReflectionValue" name="climate_reflection_value" value="">
+
+              <div class="button-row one-way">
+                <button type="button" onclick="finishAreaQuiz('climate')">Continue to next area!</button>
+              </div>
+              <br>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="area-nutrition" class="area-screen hidden">
+    <div class="question-wrapper">
+      <!-- Ícone/ilustração da área -->
+      <img src="Imagens questonário/foodcircle.png" alt="Food circle" class="food-circle rotating">
+
+      <div class="answer-col">
+        <!-- INTRO -->
+        <div class="areaIntroduction">
+          <h2>Nutritional Health</h2>
+          <p>It’s 2050. Health is seamlessly woven into your daily life - smart, silent, and always present.
+          Wearables track your sleep, nutrition, and stress, guiding subtle choices to keep you well. Prevention is now the foundation of healthcare, thanks to decades of global efforts.</p>
+          <p>The shift began when poor diets were linked to heart disease, diabetes, and even dementia. Science showed that food could prevent illness by reducing inflammation and oxidative stress. Balance and healthy diets gained ground. By 2050, they helped reduce mortality and protect against chronic diseases.</p>
+          <p>Global models had warned that while people would live longer, many would face long years with illness if diets and habits didn’t change. So, policies are adapted, making healthy choices easier and personalized plans common.</p>
+          <p>Now, what you eat is more than fuel. It’s a daily decision that shapes your future. Let’s explore how you live your nutritional health in 2050.</p>
+          <br>
+          <button class="buttonintroductionclimate" onclick="showAreaQuiz('nutrition')">Move forward!</button>
+        </div>
+
+        <!-- QUIZ -->
+        <div id="nutritionQuiz" class="area-quiz hidden">
+          <!-- Step 1: Ranking -->
+          <div class="area-step" id="nutrition-step1">
+            <h3>In 2050, food does more than just feed us. But not everyone has the same priorities. Rank the following factors from most to least important when choosing a food (top = most important).</h3>
+
+            <ul id="nutritionPriorityList" class="rank-list">
+              <li class="rank-item" draggable="true" data-key="prevent">Prevent disease</li>
+              <li class="rank-item" draggable="true" data-key="natural">Be natural/traditional</li>
+              <li class="rank-item" draggable="true" data-key="affordable">Be affordable</li>
+              <li class="rank-item" draggable="true" data-key="taste">Taste good</li>
+              <li class="rank-item" draggable="true" data-key="digest">Have digestive effects (e.g., intestines, microbiome)</li>
+            </ul>
+
+            <input type="hidden" id="nutritionPriorityOrder" name="nutrition_priority_order" value="[]">
+
+            <div class="button-row one-way">
+              <button type="button" onclick="nextAreaStep('nutrition')">Next</button>
+            </div>
+          </div>
+
+          <!-- Step 2: Fortified / Functional / Familiar (multi-card até 3) -->
+          <div class="area-step" id="nutrition-step2" data-select-min="1" data-select-max="3">
+            <h3>Fortified, Functional, or Familiar? Which of these would you be willing to eat?</h3>
+
+            <div class="option-grid" id="nutritionQ2Grid">
+              <div class="option-card" data-selectable data-id="traditional">
+                <div class="o-title">Traditional maize flour</div>
+                <div class="o-sub">Familiar staple</div>
+              </div>
+
+              <div class="option-card" data-selectable data-id="fortified">
+                <div class="o-title">Fortified maize flour</div>
+                <div class="o-sub">+ iron / vitamin A</div>
+              </div>
+
+              <div class="option-card" data-selectable data-id="probiotic">
+                <div class="o-title">Probiotic corn-based yogurt</div>
+                <div class="o-sub">Digestive support</div>
+              </div>
+
+              <div class="option-card" data-selectable data-id="protein">
+                <div class="o-title">Maize protein shake</div>
+                <div class="o-sub">Muscle recovery</div>
+              </div>
+
+              <!-- Cartão especial “None” -->
+              <div class="option-card none" data-selectable data-id="none" data-none="true">
+                <div class="o-title">I’d avoid all of the above</div>
+              </div>
+            </div>
+
+            <!-- onde guardamos as escolhas -->
+            <input type="hidden" id="nutritionQ2Choices" name="nutrition_q2_choices" value="[]">
+
+            <div class="button-row one-way">
+              <button type="button" onclick="nextAreaStep('nutrition')">Next</button>
+            </div>
+          </div>
+
+          <!-- Step 3: Healthier swaps (escolha única) -->
+          <div class="area-step" id="nutrition-step3">
+            <h3>Many people in 2050 have adapted their diets for long-term health. Sometimes that means replacing familiar foods with healthier alternatives. Which of these swaps would you be most open to?</h3>
+
+            <div class="swap-grid">
+              <label class="swap-card">
+                <input type="radio" name="nutrition_swap_choice" value="pasta_to_corn_pasta">
+                <div class="swap-row">
+                  <div class="swap-col">
+                    <div class="swap-title">Traditional</div>
+                    <div class="swap-item">White pasta</div>
+                  </div>
+                  <div class="swap-arrow">→</div>
+                  <div class="swap-col">
+                    <div class="swap-title green">Reformulated</div>
+                    <div class="swap-item">Whole-grain corn pasta</div>
+                  </div>
+                </div>
+              </label>
+
+              <label class="swap-card">
+                <input type="radio" name="nutrition_swap_choice" value="bread_to_maize_bread">
+                <div class="swap-row">
+                  <div class="swap-col">
+                    <div class="swap-title">Traditional</div>
+                    <div class="swap-item">Wheat bread</div>
+                  </div>
+                  <div class="swap-arrow">→</div>
+                  <div class="swap-col">
+                    <div class="swap-title green">Reformulated</div>
+                    <div class="swap-item">Maize bread</div>
+                  </div>
+                </div>
+              </label>
+
+              <label class="swap-card">
+                <input type="radio" name="nutrition_swap_choice" value="snack_to_biomass_bar">
+                <div class="swap-row">
+                  <div class="swap-col">
+                    <div class="swap-title">Traditional</div>
+                    <div class="swap-item">Commercial snack bar</div>
+                  </div>
+                  <div class="swap-arrow">→</div>
+                  <div class="swap-col">
+                    <div class="swap-title green">Reformulated</div>
+                    <div class="swap-item">Maize biomass flour snack bars</div>
+                  </div>
+                </div>
+              </label>
+
+              <label class="swap-card">
+                <input type="radio" name="nutrition_swap_choice" value="yogurt_to_maize_yogurt">
+                <div class="swap-row">
+                  <div class="swap-col">
+                    <div class="swap-title">Traditional</div>
+                    <div class="swap-item">Cow milk yogurt</div>
+                  </div>
+                  <div class="swap-arrow">→</div>
+                  <div class="swap-col">
+                    <div class="swap-title green">Reformulated</div>
+                    <div class="swap-item">Maize-based milk yogurt</div>
+                  </div>
+                </div>
+              </label>
+            </div>
+
+            <div class="button-row one-way">
+              <button type="button" onclick="nextAreaStep('nutrition')">Next</button>
+            </div>
+          </div>
+
+          <!-- Step 4: Texto aberto (porquê da Step 3) -->
+          <div class="area-step" id="nutrition-step4">
+            <h3>Why did you choose that swap? Tell us what influenced your choice.</h3>
+
+            <textarea id="nutritionWhySwap" class="long-answer" rows="6" placeholder="Type your answer here..." required></textarea>
+            <input type="hidden" id="nutritionWhySwapValue" name="nutrition_why_swap" value="">
+            <div class="button-row one-way">
+              <button type="button" onclick="nextAreaStep('nutrition')">Next</button>
+            </div>
+          </div>
+
+          <!-- Step 5: Pequeno-almoço (com 4.1 dentro) -->
+          <div class="area-step" id="nutrition-step5">
+            <h3>Your ideal breakfast in 2050</h3>
+            <p class="muted">Choose the one that satisfies you the most in 2050.</p>
+
+            <div class="breakfast-grid">
+              <label class="breakfast-card">
+                <input type="radio" name="nutrition_breakfast" value="A">
+                <img src="Imagens questonário/breakfast-a.png" alt="Yogurt with crunchy whole cornflakes and fruits">
+                <div class="b-title">Option A</div>
+                <div class="b-desc">Yogurt + whole cornflakes + seasonal fruits</div>
+              </label>
+
+              <label class="breakfast-card">
+                <input type="radio" name="nutrition_breakfast" value="B">
+                <img src="Imagens questonário/breakfast-b.png" alt="White bread toast with butter, scrambled eggs and milk">
+                <div class="b-title">Option B</div>
+                <div class="b-desc">Toast + butter + eggs + milk</div>
+              </label>
+
+              <label class="breakfast-card">
+                <input type="radio" name="nutrition_breakfast" value="C">
+                <img src="Imagens questonário/breakfast-c.png" alt="Pancakes with fibre-rich gluten-free flour and orange juice">
+                <div class="b-title">Option C</div>
+                <div class="b-desc">GF fibre-rich pancakes + orange juice</div>
+              </label>
+
+              <label class="breakfast-card">
+                <input type="radio" name="nutrition_breakfast" value="D">
+                <img src="Imagens questonário/breakfast-d.png" alt="Butter croissant with coffee">
+                <div class="b-title">Option D</div>
+                <div class="b-desc">Butter croissant + coffee</div>
+              </label>
+            </div>
+
+            <div class="button-row one-way">
+              <button type="button" onclick="nextAreaStep('nutrition')">Next</button>
+            </div>
+          </div>
+
+          <div class="area-step" id="nutrition-step6">
+            <h3>Would you choose differently if you were seeking to be a healthier person?</h3>
+
+            <label>
+              <input type="radio" name="nutrition_breakfast_healthier" value="no" checked>
+              No
+            </label>
+            <label>
+              <input type="radio" name="nutrition_breakfast_healthier" value="yes">
+              Yes
+            </label>
+
+            <div id="nutritionHealthierExplainWrap" class="hidden" style="margin-top:12px;">
+              <textarea id="nutritionHealthierExplain"
+                        class="long-answer"
+                        rows="4"
+                        placeholder="How would it differ?"></textarea>
+            </div>
+
+            <div class="button-row one-way" style="margin-top:22px;">
+              <button type="button" onclick="nextAreaStep('nutrition')">Next</button>
+            </div>
+          </div>
+
+          <!-- Step 6: Feedback / Medal -->
+          <div class="area-step" id="nutrition-step7">
+            <div class="feedback-wrap">
+
+              <img src="Imagens questonário/medal_health.png" alt="Medal" class="badge-medal">
+              <div class="badge-block">
+                <div class="badge-title">Health Responder – Level Unlocked</div>
+                <div class="badge-sub">You explored how health goals can shape future food choices.</div>
+              </div>
+
+              <p>You’ve just completed the Health and Nutrition challenge!</p>
+              <p>Your choices offer clues about how people in 2050 manage their well-being through food, and how health priorities might influence the future of everyday ingredients.</p>
+
+              <h4 class="reflect-title">What did you learn from this area?</h4>
+              <div class="reflect-list">
+                <label><input type="radio" name="nutrition_reflection" value="features_shape_design"> I hadn’t realized how health features could shape future food design</label>
+                <label><input type="radio" name="nutrition_reflection" value="prevention_role"> I became more aware of the role food plays in disease prevention</label>
+                <label><input type="radio" name="nutrition_reflection" value="tech_vs_trad"> I noticed how technology and tradition can clash in food choices</label>
+                <label><input type="radio" name="nutrition_reflection" value="taste_priority"> I still prioritize taste, even in personalized nutrition</label>
+                <label>
+                  <input type="radio" name="nutrition_reflection" value="other">
+                  Other
+                  <input type="text" id="nutritionReflectionOther" class="inline" placeholder="Type your answer..." disabled>
+                </label>
+              </div>
+
+              <input type="hidden" id="nutritionReflectionValue" name="nutrition_reflection_value" value="">
+              <img id="nutritionFeedbackAvatar" class="chosen-avatar" alt="Your avatar">
+              <div class="button-row one-way">
+                <button type="button" onclick="finishAreaQuiz('nutrition')">Continue to next area!</button>
+              </div>
+
+              <br>
+            </div>
+          </div>
+        </div><!-- /#nutritionQuiz -->
+      </div>
+    </div>
+  </section>
+
+  <section id="area-culture" class="area-screen hidden">
+    <div class="question-wrapper">
+      <!-- Ilustração da área -->
+      <img src="Imagens questonário/handglobe.gif" alt="Hand with globe" class="hand-globe">
+
+      <div class="answer-col">
+        <!-- INTRO -->
+        <div class="areaIntroduction">
+          <h2>Food Culture</h2>
+          <p>By 2050, the way people eat continues to be shaped by deep cultural roots and rapidly evolving social dynamics. What we eat, how we eat, and with whom we share our meals are more than personal choices, they are cultural expressions, shaped by generations of traditions, beliefs, and values.</p>
+          <p>Food culture goes even further, encompassing mealtime rituals, social norms, and the emotional roles food plays in daily life. Eating habits are influenced by family, religion, the communities we belong to, and increasingly through social media. Across societies, eating together remains a powerful act of connection, while beliefs about food can shape practices from local food taboos to global movements like vegetarianism.</p>
+          <p>How do you see the role of culturally significant ingredients in your life today? Let’s explore how your cultural background and social world shape your food decisions in 2050 — and how that might influence the future of what we eat.</p>
+          <br>
+          <button class="buttonintroductionclimate" onclick="showAreaQuiz('culture')">Move forward!</button>
+        </div>
+
+        <!-- QUIZ -->
+        <div id="cultureQuiz" class="area-quiz hidden">
+
+          <!-- Step 1: Food & identity (arrastar 1 afirmação para 1 de 3 colunas) -->
+          <div class="area-step" id="culture-step1" data-select-exact="1">
+            <h3>In 2050, food is part of who you are. Which statement best describes you?</h3>
+
+            <div class="identity-grid" id="cultureIdentityGrid" role="listbox" aria-label="Pick one statement">
+              <button type="button" class="identity-card" data-selectable data-id="tradition" role="option" aria-selected="false">
+                I eat what I grew up with, tradition matters
+              </button>
+
+              <button type="button" class="identity-card" data-selectable data-id="fusion" role="option" aria-selected="false">
+                I like to explore new ingredients and fusion dishes
+              </button>
+
+              <button type="button" class="identity-card" data-selectable data-id="affordable" role="option" aria-selected="false">
+                I eat what’s affordable and easy to prepare
+              </button>
+
+              <button type="button" class="identity-card" data-selectable data-id="social" role="option" aria-selected="false">
+                I eat what’s popular in my social circles
+              </button>
+
+              <button type="button" class="identity-card" data-selectable data-id="lifestyle" role="option" aria-selected="false">
+                I follow a lifestyle diet (e.g., vegan, gluten-free)
+              </button>
+            </div>
+
+            <!-- guarda a escolha -->
+            <input type="hidden" id="cultureIdentityChoice" name="culture_identity_choice" value="">
+
+            <div class="button-row one-way">
+              <button type="button" onclick="nextAreaStep('culture')">Next</button>
+            </div>
+          </div>
+
+          <!-- Step 2: Cultural Ingredients Reimagined (classificar tudo em 2 categorias) -->
+          <div class="area-step" id="culture-step2" data-require-classify-all="true">
+            <h3>In your society in 2050, some foods carry more status than others. Drag each food to the category that fits your perception.</h3>
+
+            <div class="status-sort">
+              <!-- Pool -->
+              <div class="status-pool" id="cultureStatusPool">
+                <div class="sort-card" draggable="true" data-id="cornbread">Cornbread</div>
+                <div class="sort-card" draggable="true" data-id="insect-pate">Insect-based pâté</div>
+                <div class="sort-card" draggable="true" data-id="vegan-cheese">Vegan cheese</div>
+                <div class="sort-card" draggable="true" data-id="white-rice">White rice</div>
+                <div class="sort-card" draggable="true" data-id="grilled-corn">Grilled maize on the cob</div>
+                <div class="sort-card" draggable="true" data-id="tortillas">Tortillas</div>
+                <div class="sort-card" draggable="true" data-id="legume-stew">Legume stew</div>
+                <div class="sort-card" draggable="true" data-id="beef-stew">Beef stew</div>
+                <div class="sort-card" draggable="true" data-id="onion-soup">Onion soup</div>
+                <div class="sort-card" draggable="true" data-id="salad">Salad</div>
+              </div>
+
+              <!-- Categorias -->
+              <div class="status-targets">
+                <div class="status-col">
+                  <div class="status-title">Prestigious, trendy, or upscale</div>
+                  <div class="status-drop" id="culturePrestigious" data-bucket="prestigious"></div>
+                </div>
+                <div class="status-col">
+                  <div class="status-title">Everyday, traditional, or modest</div>
+                  <div class="status-drop" id="cultureEveryday" data-bucket="everyday"></div>
+                </div>
+              </div>
+            </div>
+
+            <input type="hidden" id="cultureStatusSort" name="culture_status_sort" value="[]">
+            <div class="button-row one-way">
+              <button type="button" onclick="nextAreaStep('culture')">Next</button>
+            </div>
+          </div>
+
+          <!-- Step 3: A flavour that travels with you (cards, single select) -->
+          <div class="area-step" id="culture-step3" data-select-exact="1">
+            <h3>Imagine you’ve moved far from your home country. Which ingredient would you never leave out of that dish?</h3>
+
+            <div class="ingredient-card-grid" id="cultureRootGrid" role="listbox" aria-label="Pick one ingredient">
+              <button type="button" class="ingredient-card" data-selectable data-id="maize" role="option" aria-selected="false">
+                <img src="Imagens questonário/itens/sweet-corn.png" alt="" />
+                <span>Maize</span>
+              </button>
+
+              <button type="button" class="ingredient-card" data-selectable data-id="rice" role="option" aria-selected="false">
+                <img src="Imagens questonário/itens/rice.png" alt="" />
+                <span>Rice</span>
+              </button>
+
+              <button type="button" class="ingredient-card" data-selectable data-id="olive-oil" role="option" aria-selected="false">
+                <img src="Imagens questonário/itens/olive-oil.png" alt="" />
+                <span>Olive oil</span>
+              </button>
+
+              <button type="button" class="ingredient-card" data-selectable data-id="spices" role="option" aria-selected="false">
+                <img src="Imagens questonário/itens/spices.png" alt="" />
+                <span>Spices</span>
+              </button>
+
+              <button type="button" class="ingredient-card" data-selectable data-id="cheese" role="option" aria-selected="false">
+                <img src="Imagens questonário/itens/cheese.png" alt="" />
+                <span>Cheese</span>
+              </button>
+
+              <!-- OTHER -->
+              <button type="button" class="ingredient-card ingredient-card--other" data-selectable data-id="other" role="option" aria-selected="false" aria-expanded="false">
+                <img src="Imagens questonário/itens/other.png" alt="" />
+                <span>Other</span>
+
+                <div class="other-input-wrap hidden">
+                  <label class="sr-only" for="cultureRootOther">Type your ingredient</label>
+                  <input id="cultureRootOther" type="text" placeholder="Type your ingredient..." disabled />
+                </div>
+              </button>
+            </div>
+
+            <input type="hidden" id="cultureRootChoice" name="culture_root_choice" value="" />
+
+            <div class="button-row one-way">
+              <button type="button" onclick="nextAreaStep('culture')">Next</button>
+            </div>
+          </div>
+
+            <!-- Step 4: Themed dinner (cards com imagem) -->
+            <div class="area-step" id="culture-step4">
+              <h3>It’s 2050. You’re hosting a themed dinner with your friends. Which one would you choose to share?</h3>
+
+              <div class="night-grid" id="cultureNightGrid">
+                <!-- Mexican -->
+                <label class="night-card">
+                  <input type="radio" name="culture_night" value="mexican" data-maize="yes" />
+                  <figure class="night-card__media">
+                    <img src="Imagens questonário/itens/mexican-night.png" alt="Mexican night: tacos e elotes" loading="lazy">
+                  </figure>
+                  <div class="night-card__body">
+                    <h4>Mexican night</h4>
+                    <p><strong>Tacos, grilled corn (elotes), guacamole with corn chips</strong></p>
+                    <p>Spicy, social and full of colour — perfect for sharing around the table</p>
+                    <span class="chip">Contains maize</span>
+                  </div>
+                </label>
+
+                <!-- Italian -->
+                <label class="night-card">
+                  <input type="radio" name="culture_night" value="italian" data-maize="no" />
+                  <figure class="night-card__media">
+                    <img src="Imagens questonário/itens/italian-night.png" alt="Italian night: pasta e tiramisu" loading="lazy">
+                  </figure>
+                  <div class="night-card__body">
+                    <h4>Italian night</h4>
+                    <p><strong>Pasta with tomato sauce, garlic bread, tiramisu</strong></p>
+                    <p>Comfort food with deep family roots and long conversations</p>
+                    <span class="chip">No maize</span>
+                  </div>
+                </label>
+
+                <!-- Korean -->
+                <label class="night-card">
+                  <input type="radio" name="culture_night" value="korean" data-maize="yes" />
+                  <figure class="night-card__media">
+                    <img src="Imagens questonário/itens/korean-night.png" alt="Korean night: bibimbap e BBQ" loading="lazy">
+                  </figure>
+                  <div class="night-card__body">
+                    <h4>Korean night</h4>
+                    <p><strong>Bibimbap, kimchi, grilled beef</strong></p>
+                    <p>A fusion of spice, sizzling meats, and fermented sides — cooked together</p>
+                    <span class="chip">Contains maize</span>
+                  </div>
+                </label>
+
+                <!-- Ethiopian -->
+                <label class="night-card">
+                  <input type="radio" name="culture_night" value="ethiopian" data-maize="no" />
+                  <figure class="night-card__media">
+                    <img src="Imagens questonário/itens/ethiopian-night.png" alt="Ethiopian night: injera e estufados" loading="lazy">
+                  </figure>
+                  <div class="night-card__body">
+                    <h4>Ethiopian night</h4>
+                    <p><strong>Injera with shared stews and lentils</strong></p>
+                    <p>Hands-on, flavourful and deeply communal</p>
+                    <span class="chip">No maize</span>
+                  </div>
+                </label>
+
+                <!-- American BBQ -->
+                <label class="night-card">
+                  <input type="radio" name="culture_night" value="american-bbq" data-maize="yes" />
+                  <figure class="night-card__media">
+                    <img src="Imagens questonário/itens/american-night.png" alt="American BBQ: burgers e corn on the cob" loading="lazy">
+                  </figure>
+                  <div class="night-card__body">
+                    <h4>American BBQ</h4>
+                    <p><strong>Burgers, corn on the cob, fries, sauces</strong></p>
+                    <p>Familiar, informal, outdoor — fire and friends</p>
+                    <span class="chip">Contains maize</span>
+                  </div>
+                </label>
+
+                <!-- Japanese -->
+                <label class="night-card">
+                  <input type="radio" name="culture_night" value="japanese" data-maize="no" />
+                  <figure class="night-card__media">
+                    <img src="Imagens questonário/itens/japanese-night.png" alt="Japanese night: sushi e miso" loading="lazy">
+                  </figure>
+                  <div class="night-card__body">
+                    <h4>Japanese night</h4>
+                    <p><strong>Sushi platter, miso soup, green tea</strong></p>
+                    <p>Minimalist, precise and aesthetically pleasing</p>
+                    <span class="chip">No maize</span>
+                  </div>
+                </label>
+
+                <!-- Portuguese petiscos -->
+                <label class="night-card">
+                  <input type="radio" name="culture_night" value="portuguese-petiscos" data-maize="yes" />
+                  <figure class="night-card__media">
+                    <img src="Imagens questonário/itens/portuguese-night.png" alt="Portuguese petiscos: broa de milho, chouriço" loading="lazy">
+                  </figure>
+                  <div class="night-card__body">
+                    <h4>Portuguese petiscos</h4>
+                    <p><strong>Corn bread, octopus salad, chouriço, tremoços</strong></p>
+                    <p>Coastal, rustic and meant for sharing among old friends</p>
+                    <span class="chip">Contains maize</span>
+                  </div>
+                </label>
+              </div>
+
+              <input type="hidden" id="cultureNightChoice" name="culture_night_choice" value="">
+              <div class="button-row one-way">
+                <button type="button" onclick="nextAreaStep('culture')">Next</button>
+              </div>
+            </div>
+
+          <!-- Step 5: Why that night? (múltipla escolha) -->
+          <div class="area-step" id="culture-step5">
+            <h3>Why did you choose that night?</h3>
+            <div class="check-grid">
+              <label><input type="checkbox" name="culture_night_why" value="fun_social"> It’s fun and social</label>
+              <label><input type="checkbox" name="culture_night_why" value="love_food"> I love the food</label>
+              <label><input type="checkbox" name="culture_night_why" value="reminds_home"> It reminds me of home</label>
+              <label><input type="checkbox" name="culture_night_why" value="try_new"> I’d like to try something new</label>
+              <label><input type="checkbox" name="culture_night_why" value="comfortable_sharing"> I’d feel comfortable sharing that with others</label>
+            </div>
+            <input type="hidden" id="cultureNightWhy" name="culture_night_why_value" value="[]">
+            <div class="button-row one-way">
+              <button type="button" onclick="nextAreaStep('culture')">Next</button>
+            </div>
+          </div>
+
+          <!-- Step 6: Feedback / Medal -->
+          <div class="area-step" id="culture-step6">
+            <div class="feedback-wrap">
+              <img src="Imagens questonário/medal_culture.png" alt="Medal" class="badge-medal">
+
+              <div class="badge-block">
+                <div class="badge-title">Culture Responder – Level Unlocked</div>
+                <div class="badge-sub">You explored how culture, heritage, and innovation shape food in the future.</div>
+              </div>
+
+              <p>You’ve just completed the Food Culture challenge!</p>
+              <p>Your choices reveal how people in 2050 connect identity, community, and food — and how that might influence everyday ingredients.</p>
+
+              <h4 class="reflect-title">What did you realize while exploring food culture in 2050?</h4>
+              <div class="reflect-list">
+                <label><input type="radio" name="culture_reflection" value="tradition_influence"> I hadn’t thought about how much tradition influences what I eat</label>
+                <label><input type="radio" name="culture_reflection" value="togetherness"> I became more aware of how food brings people together</label>
+                <label><input type="radio" name="culture_reflection" value="social_trends"> I realized that social trends can reshape what becomes “normal”</label>
+                <label><input type="radio" name="culture_reflection" value="familiar_priority"> I still prioritize what’s familiar, even if culture shifts</label>
+                <label>
+                  <input type="radio" name="culture_reflection" value="other">
+                  Other
+                  <input type="text" id="cultureReflectionOther" class="inline" placeholder="Type your answer..." disabled>
+                </label>
+              </div>
+
+              <img id="cultureFeedbackAvatar" class="chosen-avatar" alt="Your avatar">
+              <input type="hidden" id="cultureReflectionValue" name="culture_reflection_value" value="">
+
+              <div class="button-row one-way">
+                <button type="button" onclick="finishAreaQuiz('culture')">Finish the Food Culture area!</button>
+              </div>
+              <br>
+            </div>
+          </div>
+
+        </div><!-- /#cultureQuiz -->
+      </div>
+    </div>
+  </section>
+
+  <section id="area-maize" class="area-screen hidden">
+    <div class="question-wrapper">
+      <!-- Ilustração da secção -->
+      <img src="Imagens questonário/itens/maize.png"
+     id="maizeVisual"
+     class="maize-visual maize-joy"
+     alt="Maize">
+      <div class="answer-col">
+
+        <!-- INTRO -->
+        <div class="areaIntroduction">
+          <h2>Maize in 2050</h2>
+
+          <p>Throughout your journey in 2050, maize appeared in many forms, from nutritious breakfasts to cultural dinners. Sometimes traditional, sometimes innovative.</p>
+          <p>But what does it all mean to you? Let’s pause for a moment and reflect on how you see maize now, and what role it might play in the future of food.</p>
+
+          <p>Maize (Zea mays L.), often referred to as corn, is one of the most important cereal crops worldwide, both in terms of volume and versatility. It is the world’s most widely grown cereal, with annual production exceeding one billion tons, driven by its high yield potential and diverse uses. In Europe, maize represents a significant share of cereal production, and the continent plays a crucial role in the global seed market. With around 30 million seed doses produced annually, Europe is a leader in maize seed production, and France, in particular, stands out. In 2021, it accounted for nearly half of the EU’s seed output, exporting 60% of its production.</p>
+
+          <p>This strategic role in seed production reflects maize’s broader economic and geopolitical importance. While the United States, China, Brazil, and Argentina continue to dominate overall maize production and trade, shifting demand from low- and middle-income countries is reshaping global supply chains and innovation priorities. As the world faces rising challenges from climate change and population growth, maize will be at the center of efforts to enhance food security, making advances in sustainability, climate resilience, and nutritional quality more urgent than ever.</p>
+
+          <p>Moreover, maize is increasingly recognized for its potential in health promotion. Its components have been shown to reduce risks of chronic diseases such as diabetes, cardiovascular disease, and certain cancers. Notably, resistant starch in maize improves gut health and metabolic outcomes, while carotenoids like lutein and zeaxanthin support eye health and may reduce oxidative stress.</p>
+
+          <p>By understanding this multifaceted role, from economic engine and climate-resilient crop to health-promoting food, we can better imagine the place maize might occupy in tomorrow’s food systems.</p>
+
+          <br>
+          <button class="buttonintroductionclimate" onclick="showAreaQuiz('maize')">Start reflection</button>
+        </div>
+
+        <!-- QUIZ (mantém o maize.png nos passos 1–3) -->
+        <div id="maizeQuiz" class="area-quiz hidden">
+          <!-- Step 1 -->
+          <div class="area-step" id="maize-step1">
+            <h2>Reflection 1</h2>
+            <p class="question-lead">Did you notice how often you chose maize-based foods?</p>
+
+            <div class="mc-list">
+              <label class="mc"><input type="radio" name="maize_reflect1" value="yes_on_purpose"><span>Yes, and I did it on purpose</span></label>
+              <label class="mc"><input type="radio" name="maize_reflect1" value="yes_not_aware"><span>Yes, but I wasn’t really aware</span></label>
+              <label class="mc"><input type="radio" name="maize_reflect1" value="no_only_now"><span>No, I didn’t realize until now</span></label>
+              <label class="mc"><input type="radio" name="maize_reflect1" value="avoided_maize"><span>I tried to avoid maize</span></label>
+            </div>
+
+            <div class="button-row one-way">
+              <button type="button" onclick="nextAreaStep('maize')">Next</button>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="area-step" id="maize-step2">
+            <h2>Reflection 2</h2>
+            <p class="question-lead">What role do you think maize will play in your future diet?</p>
+
+            <div class="mc-list">
+              <label class="mc"><input type="radio" name="maize_future_role" value="core_staple"><span>A core staple I rely on regularly</span></label>
+              <label class="mc"><input type="radio" name="maize_future_role" value="occasional"><span>Something I enjoy occasionally</span></label>
+              <label class="mc"><input type="radio" name="maize_future_role" value="conditional"><span>Only if it’s healthy, sustainable, or affordable</span></label>
+              <label class="mc"><input type="radio" name="maize_future_role" value="not_part"><span>Not really part of how I see myself eating in the future</span></label>
+            </div>
+
+            <div class="button-row one-way">
+              <button type="button" onclick="nextAreaStep('maize')">Next</button>
+            </div>
+          </div>
+
+          <!-- Step 3 (texto aberto) -->
+          <div class="area-step" id="maize-step3">
+            <h2>Reflection 3</h2>
+            <p class="question-lead">Think about a dish that you like that contains maize. What dish is it? Do you often consume, do they change to a different preparation, or substitute maize with other grains?</p>
+
+            <div class="textarea-wrap">
+              <textarea id="maizeReflectionOpen" rows="5" placeholder="Type your answer..." data-required-text="true"></textarea>
+            </div>
+            <input type="hidden" id="maizeReflectionOpenValue" name="maize_reflection_open" value="">
+
+            <div class="button-row one-way">
+              <button type="button" onclick="nextAreaStep('maize')">Finish</button>
+            </div>
+          </div>
+
+          <!-- Step 4: Agradecimento + troféu (o maize.png desaparece aqui) -->
+          <div class="area-step" id="maize-step4" data-hide-visuals="true">
+            <div class="feedback-wrap">
+              <img id="finalTrophy" src="Imagens questonário/trofeufinal.png" alt="Final Trophy">
+
+              <h2>Thank you for shaping the future.</h2>
+              <p>You’ve just completed your journey through the food world of 2050.</p>
+              <p>Your choices, ideas, and reflections reveal how people might eat, feel, and connect through food in the decades ahead.</p>
+              <p>From climate challenges to health goals and cultural rituals, you explored how everyday ingredients, such as maize, can take on new meanings in a changing world.</p>
+              <p>Your perspective matters. It helps researchers, policymakers, and communities imagine futures that are not only possible but desirable.</p>
+              <p><strong>Thank you for being part of this experience. The future of food starts with you.</strong></p>
+              
+              <div class="final-avatars">
+                <img id="maizeFinalAvatar" class="chosen-avatar" alt="Your avatar">
+              </div>
+
+              <div class="final-cta">
+                <button type="button" id="finishSubmitBtn" onclick="submitAllAndFinish()">Finish and submit answers!</button>
+              </div>
+
+              <br>
+            </div>
+          </div>
+        </div><!-- /#maizeQuiz -->
+      </div><!-- /answer-col -->
+    </div><!-- /question-wrapper -->
+  </section>
+
+  <script src="script.js"></script>
+  
+</body>
+</html>
