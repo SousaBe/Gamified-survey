@@ -2326,3 +2326,50 @@ area-maize .mc-list{ display:grid; gap:10px; margin-top:10px; }
   .rotate-hint-global{ display: flex; }
 }
 
+/* --- Climate intro: estilo legível e com ênfase verde --- */
+#area-climate .areaIntroduction{
+  --climate-green: #2e7d32; /* <- ajusta para o mesmo verde do teu título, se for diferente */
+}
+
+#area-climate .climate-intro-copy .lead{
+  font-size: clamp(1.05rem, 2.4vw, 1.25rem);
+  line-height: 1.45;
+  margin-bottom: .35rem;
+}
+
+#area-climate .climate-intro-copy p{
+  margin: .4rem 0 .9rem;
+  line-height: 1.5;
+}
+
+#area-climate .climate-intro-copy .intro-bullets{
+  list-style: none;
+  padding: 0;
+  margin: .2rem 0 .8rem;
+  display: grid;
+  gap: .4rem;
+}
+#area-climate .climate-intro-copy .intro-bullets li{
+  position: relative;
+  padding-left: 1.15rem;
+}
+#area-climate .climate-intro-copy .intro-bullets li::before{
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 0;
+  line-height: 1;
+  color: var(--climate-green);
+  font-weight: 700;
+}
+
+#area-climate .climate-intro-copy .accent{
+  color: var(--climate-green);
+  font-weight: 700;
+}
+
+#area-climate .climate-intro-copy .cta{
+  margin-top: .6rem;
+  font-weight: 600;
+}
+
