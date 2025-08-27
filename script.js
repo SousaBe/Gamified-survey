@@ -1021,7 +1021,13 @@ function setupSwipeDeck(area){
                     .trim();
    
      const st = SWIPE_STATE[area];
-     st.choices.push({ id, label, choice });
+     const entry = { id, label, choice };
+   
+     // se já existe esse id, atualiza-o em vez de adicionar outro
+     const idx = st.choices.findIndex(x => x.id === id);
+     if (idx >= 0) st.choices[idx] = entry;
+     else          st.choices.push(entry);
+   
      if (hidden) hidden.value = JSON.stringify(st.choices);
    }
 
@@ -2148,3 +2154,4 @@ window.submitAllAndFinish = async function(){
   }
 
 };
+
