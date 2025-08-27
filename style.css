@@ -2224,3 +2224,8 @@ area-maize .mc-list{ display:grid; gap:10px; margin-top:10px; }
   margin: .4rem 0 .9rem;
   line-height: 1.45;
 }
+
+#readytobeginscreen .content2 p{
+  font-size: clamp(1.2rem, 2.6vw, 1.6rem); /* um bocadinho maior */
+  line-height: 1.3;
+}
