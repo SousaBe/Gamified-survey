@@ -2165,3 +2165,26 @@ area-maize .mc-list{ display:grid; gap:10px; margin-top:10px; }
   opacity: .5;
   cursor: not-allowed;
 }
+
+/* --- Consent fix: não cortar os <details> quando abrem --- */
+.informconsent-screen .question-wrapper{
+  overflow: visible !important;   /* deixa o conteúdo expandir */
+  height: auto !important;
+  max-height: none !important;
+}
+
+.informconsent-screen .consentcontent{
+  position: relative;             /* sobe acima de molduras/pseudo-elements */
+  z-index: 2;
+}
+
+.consentcontent details{
+  overflow: visible;              /* por segurança */
+  margin-bottom: 12px;            /* espaço extra no fim */
+}
+
+/* Se o ecrã de consentimento estiver num container fixo, deixa rolar */
+.informconsent-screen{
+  overflow: auto;
+}
+
