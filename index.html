@@ -13,22 +13,68 @@
     <div class="question-wrapper">
       <div class="consentcontent">
         <h2>The Future on Your Plate: Exploring Citizens' Visions for Maize Consumption in 2050</h2>
-        
-        <p>This questionnaire is part of a scientific research project exploring possible futures of food consumption, with a special focus on how maize might be consumed in the year 2050. </p>
-            
-        <p>Your responses will directly contribute to a citizen science initiative, helping researchers build participatory foresight scenarios about the future of maize. By imagining your food choices and preferences in 2050, you will help us understand how societal values, environmental concerns, and cultural habits might shape future food systems. The questionnaire will take approximately 10 to 15 minutes to complete. You can take your time, and there are no right or wrong answers, just your perspectives.</p>
-
-        <p>It is unlikely that you will experience any risks or discomfort beyond what would be experienced in everyday life by participating. There are no specific benefits associated with participating. </p>
-
-        <p>The data collected in this study is completely anonymous. The information you choose to provide in this study cannot be connected back to you. All responses will be kept confidential and will only be accessed by the research team at Instituto Superior Técnico involved in this master’s thesis project. The data collected will be stored securely and retained for five years, after which it will be permanently deleted.</p>
-
-        <p>Your participation in this study is voluntary, and you may choose not to participate or end your participation at any time without penalty. If you wish to have your responses removed, please contact us at beatriz.de.sousa@tecnico.ulisboa.pt.</p>
-
-        <p>If you have any questions or comments about this study or if you want access to your answers, you may contact the researcher: Beatriz de Sousa, Master Biomedical Engineering student, beatriz.de.sousa@tecnico.ulisboa.pt.</p>
-
-        <p>I have read and understand the above consent form. By clicking “Continue!”, you confirm that you have understood the information above and indicate your willingness to voluntarily take part in this study. Thank you for your collaboration!</p>
-
-        <button class = "continue-button" onclick="informConsent()">Continue!</button>
+      
+        <p class="lead">
+          This questionnaire explores how people might eat in 2050 — especially the role of maize (corn).
+          Your answers feed a citizen-science project that helps researchers build participatory foresight scenarios.
+        </p>
+      
+        <div class="consent-ataglance">
+          <div><strong>What:</strong> Scientific research on future food consumption</div>
+          <div><strong>Time:</strong> ~10–15 minutes</div>
+          <div><strong>Your part:</strong> Imagine your preferences and choices in 2050</div>
+          <div><strong>Who:</strong> Instituto Superior Técnico (Master’s thesis project)</div>
+        </div>
+      
+        <details open>
+          <summary>Why is this important?</summary>
+          <p>
+            By sharing your perspectives, you help us understand how societal values, environmental concerns, and cultural habits
+            may shape future food systems and the role maize could play.
+          </p>
+        </details>
+      
+        <details>
+          <summary>Risks & benefits</summary>
+          <ul class="compact">
+            <li>It is unlikely you will experience risks or discomfort beyond everyday life.</li>
+            <li>There are no direct benefits for participating.</li>
+          </ul>
+        </details>
+      
+        <details>
+          <summary>Privacy & data</summary>
+          <ul class="compact">
+            <li>The study is <strong>completely anonymous</strong> — your information cannot be connected back to you.</li>
+            <li>Responses are <strong>confidential</strong> and only accessed by the research team at Instituto Superior Técnico.</li>
+            <li>Data are stored securely and retained for <strong>five years</strong>, after which they are permanently deleted.</li>
+          </ul>
+        </details>
+      
+        <details>
+          <summary>Your rights</summary>
+          <ul class="compact">
+            <li>Participation is <strong>voluntary</strong>. You may stop at any time without penalty.</li>
+            <li>If you wish to have your responses removed, contact: 
+              <a href="mailto:beatriz.de.sousa@tecnico.ulisboa.pt">beatriz.de.sousa@tecnico.ulisboa.pt</a>.
+            </li>
+          </ul>
+        </details>
+      
+        <details>
+          <summary>Questions or access to your answers?</summary>
+          <p>
+            Contact the researcher: Beatriz de Sousa, Master Biomedical Engineering student — 
+            <a href="mailto:beatriz.de.sousa@tecnico.ulisboa.pt">beatriz.de.sousa@tecnico.ulisboa.pt</a>.
+          </p>
+        </details>
+      
+        <label class="consent-agree">
+          <input type="checkbox" id="consentAgree" />
+          I have read and understand the above consent form.
+        </label>
+      
+        <button id="consentStartBtn" class="continue-button" onclick="informConsent()" disabled>Start!</button>
       </div>
     </div>
   </div>
@@ -1582,6 +1628,7 @@
   
 </body>
 </html>
+
 
 
 
