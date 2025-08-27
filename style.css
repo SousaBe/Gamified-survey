@@ -2373,4 +2373,20 @@ area-maize .mc-list{ display:grid; gap:10px; margin-top:10px; }
   font-weight: 700;
 }
 
+.footnote-bottom{
+  margin-top: 12px;
+  font-size: clamp(.78rem, 1.4vw, .85rem);
+  line-height: 1.35;
+  color: var(--text-brown-2, #5b5146);
+  font-style: italic;
+  opacity: .9;
+}
+.area-screen .question-wrapper{ position: relative; }
+#climate-step3 .footnote-bottom.pin{
+  position: absolute;
+  bottom: 16px;
+  left: 20px;
+  right: 20px;
+}
+
 
