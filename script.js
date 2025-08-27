@@ -928,6 +928,8 @@ function setupSwipeDeck(area){
   // 🔄 reset limpo do estado e do hidden
   SWIPE_STATE[area] = { inited:true, choices: [] };
   if (hidden) hidden.value = '[]';
+   
+  const seen = new Set();
 
   // empilha (o último filho é o topo)
   styleStack();
@@ -1000,6 +1002,8 @@ function setupSwipeDeck(area){
   }
 
   function fling(card, dir){
+     if (card.dataset._swiped === '1') return;
+     card.dataset._swiped = '1';
     // anima para fora
     card.style.transition = 'transform .28s ease, opacity .28s ease';
     const toX = dir === 'right' ? window.innerWidth * 0.9 : -window.innerWidth * 0.9;
@@ -1018,26 +1022,30 @@ function setupSwipeDeck(area){
     }, 280);
   }
 
-  // ✅ sempre guarda {id, label, choice} e sem duplicar entradas
-  function registerChoice(id, choice){
-    // tenta obter o texto visível do cartão com este id
-    const cardEl = deck.querySelector(`.card[data-id="${id}"]`);
-    const label = (cardEl?.querySelector('.label, .title, span, p, h3')?.textContent
-                  || cardEl?.textContent
-                  || '')
-                  .replace(/\s+/g,' ')
-                  .trim();
+   function registerChoice(id, choice){
+     // não voltes a registar o mesmo ID
+     if (seen.has(id)) return;
+     seen.add(id);
+   
+     // tenta capturar o texto visível antes da remoção
+     const cardEl = deck.querySelector(`.card[data-id="${id}"]`);
+     const label = (cardEl?.querySelector('.label, .title, span, p, h3')?.textContent
+                   || cardEl?.textContent
+                   || '')
+                   .replace(/\s+/g,' ')
+                   .trim();
+   
+     const st = SWIPE_STATE[area];
+     const entry = { id, label, choice };
+   
+     // de qualquer forma, mantém dedup por segurança
+     const idx = st.choices.findIndex(x => x.id === id);
+     if (idx >= 0) st.choices[idx] = entry;
+     else          st.choices.push(entry);
+   
+     if (hidden) hidden.value = JSON.stringify(st.choices);
+   }
 
-    const st = SWIPE_STATE[area];
-    const entry = { id, label, choice };
-
-    // dedup: se já existe esse id, atualiza-o
-    const idx = st.choices.findIndex(x => x.id === id);
-    if (idx >= 0) st.choices[idx] = entry;
-    else          st.choices.push(entry);
-
-    if (hidden) hidden.value = JSON.stringify(st.choices);
-  }
 
   function getPoint(ev){
     if (ev.touches && ev.touches[0]) return { x:ev.touches[0].clientX, y:ev.touches[0].clientY };
@@ -2162,5 +2170,6 @@ window.submitAllAndFinish = async function(){
   }
 
 };
+
 
 
