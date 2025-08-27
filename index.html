@@ -7,6 +7,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
+<div class="rotate-hint-global" aria-live="polite">
+  <span class="icon" aria-hidden="true">🔄</span>
+  For the best experience, please rotate your device to portrait.
+</div>
 <body>
   <!-- EXPLICAÇÃO DO OBJETIVO DO QUESTIONÁRIO -->
   <div class="informconsent-screen" id="informConsent">
@@ -77,6 +81,12 @@
           <input type="checkbox" id="consentAgree" />
           I have read and understand the above consent form.
         </label>
+
+        <div class="consent-disclaimer" role="note" aria-label="Display recommendation">
+          <span class="icon" aria-hidden="true">📱</span>
+          <strong>Best on mobile (portrait).</strong>
+          For the best experience, use a smartphone held upright.
+        </div>
       
         <button id="consentStartBtn" class="continue-button" onclick="informConsent()" disabled>Start!</button>
       </div>
@@ -715,7 +725,7 @@
           <!-- Step 2: open text -->
           <div class="area-step" id="climate-step2">
             <h3>Why did you choose these 5 items?</h3>
-            <h3> Were you thinking about the environmental challenges of 2050, such as water scarcity, soil degradation, and rising temperatures or others? Tell us!</h3>
+            <h3> What were your motivations to choose these items? Where reasons related to the environment? </h3>
 
             <textarea id="climateReason"
                       class="long-answer"
@@ -745,7 +755,7 @@
                 <ul class="eco">
                   <li>💨 CO₂: 0.419 kg CO₂e/kg → 🟢 Very Low</li>
                   <li>💧 Water: 1870 L/kg → 🟠 Moderate</li>
-                  <li>♨️ Hotspot: cultivation (fertilizers, irrigation, cooking)</li>
+                  <li>♨️ Dominant contributor: cultivation (fertilizers, irrigation, cooking)</li>
                 </ul>
               </div>
 
@@ -755,7 +765,7 @@
                 <ul class="eco">
                   <li>💨 CO₂: 0.4–0.8 kg CO₂e/kg → 🟡 Low</li>
                   <li>💧 Water: 1608 L/kg → 🟠 Moderate</li>
-                  <li>♨️ Hotspot: flour & baking energy</li>
+                  <li>♨️ Dominant contributor: flour & baking energy</li>
                 </ul>
               </div>
 
@@ -765,7 +775,7 @@
                 <ul class="eco">
                   <li>💨 CO₂: 10.2  kg CO₂e/kg → 🔶 High</li>
                   <li>💧 Water: 3178 L/kg → 🔴 High</li>
-                  <li>♨️ Hotspot: methane (cows) & processing</li>
+                  <li>♨️ Dominant contributor: methane (cows) & processing</li>
                 </ul>
               </div>
 
@@ -775,7 +785,7 @@
                 <ul class="eco">
                   <li>💨 CO₂: 3.15  kg CO₂e/kg → 🟠 Moderate</li>
                   <li>💧 Water: 4325 L/kg → 🔴 High</li>
-                  <li>♨️ Hotspot: feed & manure</li>
+                  <li>♨️ Dominant contributor: feed & manure</li>
                 </ul>
               </div>
 
@@ -785,7 +795,7 @@
                 <ul class="eco">
                   <li>💨 CO₂:  5.760 kg CO₂e/kg → 🟡 Low</li>
                   <li>💧 Water: 400–800 L/kg → 🟡 Low</li>
-                  <li>♨️ Hotspot: feed source</li>
+                  <li>♨️ Dominant contributor: feed source</li>
                 </ul>
               </div>
 
@@ -795,7 +805,7 @@
                 <ul class="eco">
                   <li>💨 CO₂: 0.332 kg CO₂e/kg → 🟢 Very Low</li>
                   <li>💧 Water: 706 L/kg → 🟡 Low</li>
-                  <li>♨️ Hotspot: steam & packaging</li>
+                  <li>♨️ Dominant contributor: steam & packaging</li>
                 </ul>
               </div>
             </div>
@@ -812,7 +822,7 @@
 
           <!-- Step 4: hot day — pick exactly 2 -->
           <div class="area-step" id="climate-step4" data-select-exact="2">
-            <h3>In 2050, extreme heat waves have become more frequent and intense. On very hot days, some foods feel more appealing than others. On very hot days, some foods feel more appealing than others.</h3>
+            <h3>In 2050, extreme heat waves have become more frequent and intense. On very hot days, some foods feel more appealing than others.</h3>
 
             <h3>Imagine it’s one of those scorching days. Which two of these foods would you prefer to eat?</h3>
 
@@ -861,15 +871,15 @@
 
           <!-- Step 5: sustainable canteen — keep or swap -->
           <div class="area-step" id="climate-step5">
-            <h3>It’s 2050. Climate policies and food shortages have led to changes in what’s available and affordable. You’ve been asked to help design the weekly menu for a sustainable canteen.</h3>
-            <h3 class="muted">For each item, decide if you keep it as is, or swap it for a more sustainable option.</h3>
+            <h3>In this 2050 scenario, assume the alternatives would prove more sustainable than the original (though this isn’t proven today).</h3>
+            <h3 class="muted">For each food, keep the original or swap for a more sustainable option?</h3>
 
             <div class="swap-grid">
               <!-- Rice -->
               <div class="swap-card">
                 <div class="swap-left">
-                  <div class="swap-title">White rice</div>
-                  <div class="swap-sub">Swap to: maize-based cereals, potatoes, millet</div>
+                  <div class="swap-title">Normal Pasta</div>
+                  <div class="swap-sub">Pasta made of corn (gluten-free pasta)</div>
                 </div>
                 <div class="swap-right">
                   <label class="chip">
@@ -886,7 +896,7 @@
               <!-- Milk -->
               <div class="swap-card">
                 <div class="swap-left">
-                  <div class="swap-title">Dairy milk</div>
+                  <div class="swap-title">Cow milk</div>
                   <div class="swap-sub">Swap to: corn milk</div>
                 </div>
                 <div class="swap-right">
@@ -905,7 +915,7 @@
               <div class="swap-card">
                 <div class="swap-left">
                   <div class="swap-title">Meat-based meals</div>
-                  <div class="swap-sub">Swap to: legume &amp; maize bowls</div>
+                  <div class="swap-sub">Swap to: Legume-based bowls</div>
                 </div>
                 <div class="swap-right">
                   <label class="chip">
@@ -923,7 +933,7 @@
               <div class="swap-card">
                 <div class="swap-left">
                   <div class="swap-title">Wheat snacks</div>
-                  <div class="swap-sub">Swap to: corn-based snacks</div>
+                  <div class="swap-sub">Swap to: Corn-based snacks</div>
                 </div>
                 <div class="swap-right">
                   <label class="chip">
@@ -957,7 +967,7 @@
               </div>
 
               <p>You’ve just completed the Climate and Environment challenge!</p>
-              <p>Your choices help reveal how people might adapt to these challenges and what foods they’ll trust in a climate-uncertain future.</p>
+              <p>Your choices help reveal how people might adapt a climate-uncertain future.</p>
 
 
 
@@ -1349,17 +1359,17 @@
 
           <!-- Step 3: A flavour that travels with you (cards, single select) -->
           <div class="area-step" id="culture-step3" data-select-exact="1">
-            <h3>Imagine you’ve moved far from your home country. Which ingredient would you never leave out of that dish?</h3>
+            <h3>If your priority is health in 2050, which of the following bases would you choose for the dish?</h3>
 
             <div class="ingredient-card-grid" id="cultureRootGrid" role="listbox" aria-label="Pick one ingredient">
               <button type="button" class="ingredient-card" data-selectable data-id="maize" role="option" aria-selected="false" data-label="Sweet Corn">
                 <img src="Imagens questonário/itens/sweet-corn.png" alt="" />
-                <span>Maize</span>
+                <span>Whole-grain maize base</span>
               </button>
 
               <button type="button" class="ingredient-card" data-selectable data-id="rice" role="option" aria-selected="false" data-label="Rice">
                 <img src="Imagens questonário/itens/rice.png" alt="" />
-                <span>Rice</span>
+                <span>Maize–legume base</span>
               </button>
 
               <button type="button" class="ingredient-card" data-selectable data-id="olive-oil" role="option" aria-selected="false" data-label="Olive Oil">
@@ -1674,6 +1684,7 @@
   
 </body>
 </html>
+
 
 
 
