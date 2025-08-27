@@ -2390,3 +2390,27 @@ area-maize .mc-list{ display:grid; gap:10px; margin-top:10px; }
 }
 
 
+/* === Center all question cards horizontally === */
+.area-screen .question-wrapper,
+.area-step .question-wrapper {
+  width: clamp(280px, 92vw, 720px); /* fluido: min 280px, max 720px */
+  margin-left: auto !important;
+  margin-right: auto !important;
+  box-sizing: border-box;
+}
+
+/* Avoid accidental overflow from inner elements */
+.question-wrapper img,
+.question-wrapper .card-img img,
+.question-wrapper .long-answer,
+.question-wrapper .button-row,
+.question-wrapper .eco {
+  max-width: 100%;
+}
+
+/* Optional: give a bit of breathing room on very small screens */
+.area-screen .question-wrapper { 
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
