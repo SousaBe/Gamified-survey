@@ -444,7 +444,7 @@ button:hover { background-color: #d47b54; animation: none; }
 #house-climate { top: 65%;}
 #house-nutrition { top: 45%; }
 #house-culture { top: 27%; }
-#finalFlag { top: -3%;  width: 200px !important; height: auto !important;}
+#finalFlag { top: -6%;  width: 200px !important; height: auto !important;}
 
 /* força o tamanho só da casa do clima */
 #gameMap #house-climate > img{
@@ -2280,3 +2280,4 @@ area-maize .mc-list{ display:grid; gap:10px; margin-top:10px; }
   font-size: clamp(1.2rem, 2.6vw, 1.6rem);
   line-height: 1.3;
 }
+
