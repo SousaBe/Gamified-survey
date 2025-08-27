@@ -1073,23 +1073,49 @@ function initHeatPickIfNeeded(area){
   if (!step || step.dataset._heatInit) return;
   step.dataset._heatInit = '1';
 
-  const cards  = [...step.querySelectorAll('.heat-card[data-selectable]')];
-  const hidden = document.getElementById(`${area}HeatChoices`);
+  // garante o hidden
+  let hidden = document.getElementById(`${area}HeatChoices`);
+  if (!hidden){
+    hidden = document.createElement('input');
+    hidden.type  = 'hidden';
+    hidden.id    = `${area}HeatChoices`;
+    hidden.name  = `${area}HeatChoices`;
+    hidden.value = '[]';
+    step.appendChild(hidden);
+  }
+
+  // recolhe os cartões válidos
+  const cards = [...step.querySelectorAll('.heat-card[data-selectable]')];
+  if (!cards.length) {
+    console.warn(`[heat] Nenhum .heat-card[data-selectable] encontrado em ${area}-step4`);
+  }
+
+  // helper para extrair label visível/estável
+  function labelOf(card){
+    return (
+      card.dataset.label ||
+      card.querySelector('.label, .title, .card-title, span, p, h3, h4')?.textContent ||
+      card.textContent ||
+      ''
+    ).replace(/\s+/g,' ').trim();
+  }
 
   function updateHiddenAndLocks(){
     const selected = cards
       .filter(c => c.classList.contains('selected'))
       .map(c => ({
         id: c.dataset.id || '',
-        label: (c.querySelector('span')?.textContent || '').trim(),
+        label: labelOf(c),
         maize: c.dataset.maize || 'no'
       }));
 
-    if (hidden) hidden.value = JSON.stringify(selected);
+    hidden.value = JSON.stringify(selected);
 
     const max = Number(step.dataset.selectMax || step.dataset.selectExact || 2);
     if (selected.length >= max){
-      cards.forEach(c => { if (!c.classList.contains('selected')) c.classList.add('disabled'); });
+      cards.forEach(c => {
+        if (!c.classList.contains('selected')) c.classList.add('disabled');
+      });
     } else {
       cards.forEach(c => c.classList.remove('disabled'));
     }
@@ -1113,8 +1139,10 @@ function initHeatPickIfNeeded(area){
     });
   });
 
+  // inicializa hidden e locks
   updateHiddenAndLocks();
 }
+
 
 function checkSelectConstraints(stepEl){
   // genérico: olha para [data-selectable].selected dentro do passo
@@ -2180,6 +2208,7 @@ window.submitAllAndFinish = async function(){
   }
 
 };
+
 
 
 
