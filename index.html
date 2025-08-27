@@ -530,28 +530,30 @@
 
   <!-- MAPA DE NAVEGAÇÃO -->
   <section id="gameMap" class="map hidden">
-    <!-- Avatar que se mexe -->
-    <img id="mapAvatar" class="map-avatar" alt="Your avatar" />
-
-    <!-- Casas (as 3 áreas) -->
-    <div id="house-climate" class="house house-climate" data-area="climate">
-      <img src="Imagens questonário/climateandenviromnentarea.png" alt="Climate & Environment"/>
-      <button class="explore-btn hidden" onclick="startArea('climate')">Click to explore this area!</button>
+    <div class="question-wrapper map-wrapper">
+      <!-- Avatar que se mexe -->
+      <img id="mapAvatar" class="map-avatar" alt="Your avatar" />
+  
+      <!-- Casas (as 3 áreas) -->
+      <div id="house-climate" class="house house-climate" data-area="climate">
+        <img src="Imagens questonário/climateandenviromnentarea.png" alt="Climate & Environment"/>
+        <button class="explore-btn hidden" onclick="startArea('climate')">Click to explore this area!</button>
+      </div>
+  
+      <div id="house-nutrition" class="house house-nutrition" data-area="nutrition">
+        <img src="Imagens questonário/nutricionalhealtharea.png" alt="Nutritional Health"/>
+        <button class="explore-btn hidden" onclick="startArea('nutrition')">Click to explore this area!</button>
+      </div>
+  
+      <div id="house-culture" class="house house-culture" data-area="culture">
+        <img src="Imagens questonário/foodculturearea.png" alt="Food Culture"/>
+        <button class="explore-btn hidden" onclick="startArea('culture')">Click to explore this area!</button>
+      </div>
+  
+      <!-- Bandeira final -->
+      <img id="finalFlag" class="final-flag" src="Imagens questonário/finalflag.png" alt="Finish"/>
+      <button id="finalContinueBtn" class="final-continue hidden" onclick="goToMaizeSection()">Continue!</button>
     </div>
-
-    <div id="house-nutrition" class="house house-nutrition" data-area="nutrition">
-      <img src="Imagens questonário/nutricionalhealtharea.png" alt="Nutritional Health"/>
-      <button class="explore-btn hidden" onclick="startArea('nutrition')">Click to explore this area!</button>
-    </div>
-
-    <div id="house-culture" class="house house-culture" data-area="culture">
-      <img src="Imagens questonário/foodculturearea.png" alt="Food Culture"/>
-      <button class="explore-btn hidden" onclick="startArea('culture')">Click to explore this area!</button>
-    </div>
-
-    <!-- Bandeira final -->
-    <img id="finalFlag" class="final-flag" src="Imagens questonário/finalflag.png" alt="Finish"/>
-    <button id="finalContinueBtn" class="final-continue hidden" onclick="goToMaizeSection()">Continue!</button>
   </section>
 
   
@@ -1679,6 +1681,7 @@
   
 </body>
 </html>
+
 
 
 
