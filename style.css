@@ -2186,3 +2186,31 @@ area-maize .mc-list{ display:grid; gap:10px; margin-top:10px; }
 }
 
 
+/* Step 3 – diet: título forte + nota menor */
+#step3 .diet-option{
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas:
+    "input name"
+    "input note";
+  align-items: start;
+  gap: .2rem .6rem;
+  margin-bottom: .65rem;
+}
+
+#step3 .diet-option > input[type="radio"]{ grid-area: input; margin-top: .15rem; }
+#step3 .diet-option .diet-name{ grid-area: name; font-weight: 700; color: var(--text-brown); }
+#step3 .diet-option .diet-note{
+  grid-area: note;
+  font-size: clamp(.85rem, 1.6vw, .95rem);
+  color: var(--text-brown-2);
+  opacity: .9;
+  line-height: 1.35;
+}
+
+/* “Other” alinhado bonitinho */
+#step3 .diet-option input[type="text"]{
+  grid-column: name / -1;
+  margin-top: .25rem;
+  max-width: 560px;
+}
