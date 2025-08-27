@@ -642,7 +642,7 @@
               <!-- topo do baralho é o ÚLTIMO .card -->
               <div class="card" data-id="corn-tortilla">
                 <h4>Corn Tortilla</h4>
-                <div class="card-img"><img src="Imagens questonário/corntortillas.png" alt="Corn tortilla"></div>
+                <div class="card-img"><img src="Imagens questonário/corntortillas.png" alt="Corn tortilla" data-label:"Corn Tortilla"></div>
                 <ul class="eco">
                   <li>CO₂: 0.419 kg CO₂e/kg → 🟢 Very Low</li>
                   <li>Water: 1,870 L/kg → 🟠 Moderate</li>
@@ -652,7 +652,7 @@
 
               <div class="card" data-id="baguette">
                 <h4>French Baguette</h4>
-                <div class="card-img"><img src="Imagens questonário/itens/wheat-bread.png" alt="French baguette"></div>
+                <div class="card-img"><img src="Imagens questonário/itens/wheat-bread.png" alt="French baguette" data-label="Wheat Bread"></div>
                 <ul class="eco">
                   <li>💨 CO₂: 0.4–0.8 kg CO₂e/kg → 🟡 Low</li>
                   <li>💧 Water: 1,800–1,900 L/kg → 🟠 Moderate</li>
@@ -662,7 +662,7 @@
 
               <div class="card" data-id="cheese">
                 <h4>Cheese</h4>
-                <div class="card-img"><img src="Imagens questonário/itens/cheese.png" alt="Cheese"></div>
+                <div class="card-img"><img src="Imagens questonário/itens/cheese.png" alt="Cheese" data-label="Cheese"></div>
                 <ul class="eco">
                   <li>💨 CO₂: 8–21 kg CO₂e/kg → 🔴 Very High</li>
                   <li>💧 Water: 5,000–5,500 L/kg → 🔴 Very High</li>
@@ -672,7 +672,7 @@
 
               <div class="card" data-id="poultry">
                 <h4>Poultry Meal</h4>
-                <div class="card-img"><img src="Imagens questonário/itens/poultry.png" alt="Poultry meal"></div>
+                <div class="card-img"><img src="Imagens questonário/itens/poultry.png" alt="Poultry meal" data-label="Poultry Meal"></div>
                 <ul class="eco">
                   <li>💨 CO₂: 5.97 kg CO₂e/kg → 🔶 High</li>
                   <li>💧 Water: 670 L/kg → 🟡 Low</li>
@@ -682,7 +682,7 @@
 
               <div class="card" data-id="insect-snacks">
                 <h4>Insect Snacks</h4>
-                <div class="card-img"><img src="Imagens questonário/itens/insect-snacks.png" alt="Insect snacks"></div>                
+                <div class="card-img"><img src="Imagens questonário/itens/insect-snacks.png" alt="Insect snacks" data-label="Insect Snacks"></div>                
                 <ul class="eco">
                   <li>💨 CO₂: 0.3–3.0 kg CO₂e/kg → 🟡 Low</li>
                   <li>💧 Water: 400–800 L/kg → 🟡 Low</li>
@@ -692,7 +692,7 @@
 
               <div class="card" data-id="canned-sweet-corn">
                 <h4>Canned Sweet Corn</h4>
-                <div class="card-img"><img src="Imagens questonário/itens/sweet-corn.png" alt="Canned sweet corn"></div>                
+                <div class="card-img"><img src="Imagens questonário/itens/sweet-corn.png" alt="Canned sweet corn" data-label="Swee corn"></div>                
                 <ul class="eco">
                   <li>💨 CO₂: 0.976 kg CO₂e/kg → 🟡 Low</li>
                   <li>💧 Water: 706 L/kg → 🟡 Low</li>
@@ -759,6 +759,8 @@
                 <span>Cold pasta dish</span>
               </div>
             </div>
+
+            <input type="hidden" id="climateHeatChoices" name="climateHeatChoices" value="[]">
 
             <div class="button-row one-way">
               <button type="button" onclick="nextAreaStep('climate')">Next</button>
@@ -1580,6 +1582,7 @@
   
 </body>
 </html>
+
 
 
 
