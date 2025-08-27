@@ -68,6 +68,23 @@ function showOnly(id) {
   window.scrollTo({ top: 0, behavior: 'auto' });
 }
 
+function labelForInput(input){
+  const lbl = input.closest('label');
+  if (lbl){
+    const clone = lbl.cloneNode(true);
+    clone.querySelectorAll('input,textarea,select,button').forEach(n=>n.remove());
+    const t = clone.textContent.replace(/\s+/g,' ').trim();
+    if (t) return t;
+  }
+  const card = input.closest('.option-card, .night-card, .identity-card, .heat-card, .sort-card, .card');
+  if (card){
+    const cand = card.querySelector('.label, .title, span, p, h3');
+    const t = (cand?.textContent || card.textContent || '').replace(/\s+/g,' ').trim();
+    if (t) return t;
+  }
+  return input.value || null;
+}
+
 
 
 /* ==========================================================================
@@ -994,12 +1011,19 @@ function setupSwipeDeck(area){
     }, 280);
   }
 
-  function registerChoice(id, choice){
-    const st = SWIPE_STATE[area];
-    st.choices.push({ id, choice });
-    if (hidden) hidden.value = JSON.stringify(st.choices);
-    // console.log('swipe choice', st.choices);
-  }
+   function registerChoice(id, choice){
+     // tenta obter o texto visível do cartão com este id
+     const cardEl = deck.querySelector(`.card[data-id="${id}"]`);
+     const label = (cardEl?.querySelector('.label, .title, span, p, h3')?.textContent
+                    || cardEl?.textContent
+                    || '')
+                    .replace(/\s+/g,' ')
+                    .trim();
+   
+     const st = SWIPE_STATE[area];
+     st.choices.push({ id, label, choice });
+     if (hidden) hidden.value = JSON.stringify(st.choices);
+   }
 
   function getPoint(ev){
     if (ev.touches && ev.touches[0]) return { x:ev.touches[0].clientX, y:ev.touches[0].clientY };
@@ -1101,10 +1125,11 @@ function collectSwapMenuValue(area){
   const hidden = document.getElementById(`${area}SwapChoices`);
   if (!hidden) return;
 
-  const get = (name) => {
-    const el = step.querySelector(`input[type="radio"][name="${name}"]:checked`);
-    return el ? el.value : null;
-    };
+   const get = (name) => {
+     const el = step.querySelector(`input[type="radio"][name="${name}"]:checked`);
+     if (!el) return null;
+     return { value: el.value, label: labelForInput(el) };
+   };
 
   const payload = {
     rice:   { choice: get('swap_rice'),   swap_to: ['maize-based cereals','potatoes','millet'] },
@@ -1304,11 +1329,15 @@ function initNutritionQ2(){
     return cards.filter(c => c.classList.contains('selected'));
   }
 
-  function save(){
-    const sel = selectedCards();
-    const ids = sel.map(c => c.dataset.id);
-    hidden.value = JSON.stringify(ids);
-  }
+   function save(){
+     const sel = selectedCards();
+     const arr = sel.map(c => ({
+       id: c.dataset.id,
+       label: (c.querySelector('.label, .title, span, p, h3')?.textContent || c.textContent || '')
+                .replace(/\s+/g,' ').trim()
+     }));
+     hidden.value = JSON.stringify(arr);
+   }
 
   function refreshLocks(){
     const sel = selectedCards();
@@ -1443,7 +1472,7 @@ function initCultureQ1Cards(){
   const cards  = [...step.querySelectorAll('.identity-card[data-selectable]')];
   const hidden = document.getElementById('cultureIdentityChoice');
 
-  // Não há "Other" no step1, mas deixamos isto defensivo:
+  // Pode nem existir "Other" neste step — deixamos defensivo
   const otherCard = step.querySelector('.identity-card[data-id="other"]') || null;
   const otherWrap = otherCard ? otherCard.querySelector('.other-input-wrap') : null;
   const otherInp  = otherCard ? otherCard.querySelector('input,textarea') : null;
@@ -1456,24 +1485,33 @@ function initCultureQ1Cards(){
     card.classList.add('selected');
     card.setAttribute('aria-selected','true');
 
-    // tratar "Other" (não existe aqui, mas fica robusto)
     const isOther = (card === otherCard);
-    if (otherWrap){
-      otherWrap.classList.toggle('hidden', !isOther);
+    const labelFromCard = (card.querySelector('.label, .title, span, p, h3')?.textContent || card.textContent || '')
+                            .replace(/\s+/g,' ').trim();
+
+    if (isOther && otherWrap){
+      // mostrar input “Other”
+      otherWrap.classList.remove('hidden');
       if (otherInp){
-        otherInp.disabled = !isOther;
-        if (isOther){
-          otherInp.setAttribute('data-required-text','true');
-          otherInp.focus();
-          hidden.value = JSON.stringify({ value:'other', text:(otherInp.value||'').trim() });
-        } else {
-          otherInp.removeAttribute('data-required-text');
-          otherInp.value = '';
-          hidden.value = JSON.stringify({ value:(card.dataset.id||'') });
-        }
+        otherInp.disabled = false;
+        otherInp.setAttribute('data-required-text','true');
+        otherInp.focus();
       }
+      hidden.value = JSON.stringify({
+        value: 'other',
+        text: (otherInp?.value || '').trim(),
+        label: 'Other'
+      });
     } else {
-      hidden.value = JSON.stringify({ value:(card.dataset.id||'') });
+      // esconder/limpar “Other”
+      if (otherWrap) otherWrap.classList.add('hidden');
+      if (otherInp){
+        otherInp.disabled = true;
+        otherInp.removeAttribute('data-required-text');
+        otherInp.value = '';
+      }
+      // guardar value + label do cartão escolhido
+      hidden.value = JSON.stringify({ value: (card.dataset.id || ''), label: labelFromCard });
     }
 
     if (otherCard) otherCard.setAttribute('aria-expanded', String(isOther));
@@ -1482,7 +1520,11 @@ function initCultureQ1Cards(){
   if (otherInp){
     otherInp.addEventListener('input', () => {
       if (otherCard?.classList.contains('selected')) {
-        hidden.value = JSON.stringify({ value:'other', text: otherInp.value.trim() });
+        hidden.value = JSON.stringify({
+          value:'other',
+          text: otherInp.value.trim(),
+          label: 'Other'
+        });
       }
     });
   }
@@ -1492,6 +1534,7 @@ function initCultureQ1Cards(){
   // estado inicial
   hidden.value = '';
 }
+
 
 function initCultureQ1(){
   const pool = document.getElementById('cultureIdentityPool');
@@ -1767,10 +1810,16 @@ function initCultureQ4(){
   const hidden = document.getElementById('cultureNightChoice');
   if (!cards.length || !hidden) return;
   function sync(){
-    const sel = document.querySelector('#culture-step4 .night-card input[type="radio"]:checked');
-    if (!sel){ hidden.value = ''; return; }
-    hidden.value = JSON.stringify({ value: sel.value, maize: sel.dataset.maize || 'no' });
-  }
+     const sel = document.querySelector('#culture-step4 .night-card input[type="radio"]:checked');
+     if (!sel){ hidden.value = ''; return; }
+   
+     // apanha o texto visível do cartão
+     const card = sel.closest('.night-card');
+     const label = (card?.querySelector('.label, .title, span, p, h3')?.textContent || card?.textContent || sel.value)
+                    .replace(/\s+/g,' ').trim();
+   
+     hidden.value = JSON.stringify({ value: sel.value, label, maize: sel.dataset.maize || 'no' });
+   }
   cards.forEach(r => r.addEventListener('change', sync));
   sync();
 }
@@ -1780,10 +1829,14 @@ function initCultureQ5(){
   const checks = document.querySelectorAll('input[name="culture_night_why"]');
   const hidden = document.getElementById('cultureNightWhy');
   if (!checks.length || !hidden) return;
+
   function sync(){
-    const vals = [...checks].filter(c => c.checked).map(c => c.value);
+    const vals = [...checks]
+      .filter(c => c.checked)
+      .map(c => ({ value: c.value, label: labelForInput(c) }));
     hidden.value = JSON.stringify(vals);
   }
+
   checks.forEach(c => c.addEventListener('change', sync));
   sync();
 }
@@ -1861,25 +1914,27 @@ function initMaizeArea(){
 }
 
 // === Helpers para ler valores ===
-function getRadioVal(name, root=document){ 
+function getRadioVal(name, root=document){
   const r = root.querySelector(`input[type="radio"][name="${name}"]:checked`);
   if (!r) return null;
   if (r.value.toLowerCase?.() === 'other') {
-    const txt = r.closest('label')?.querySelector('input[type="text"]');
-    return { value: 'other', text: (txt?.value || '').trim() };
+    const txt = r.closest('label')?.querySelector('input[type="text"]')?.value?.trim() || '';
+    return { value: 'other', text: txt, label: 'Other' };
   }
-  return r.value;
+  return { value: r.value, label: labelForInput(r) };
 }
+
+
 function getCheckVals(name, root=document){
   const selected = [...root.querySelectorAll(`input[type="checkbox"][name="${name}"]:checked`)];
   const out = [];
   for (const c of selected) {
-    const val = (c.value || '').trim();
-    if (val.toLowerCase() === 'other') {
+    const v = (c.value || '').trim();
+    if (v.toLowerCase() === 'other') {
       const txt = c.closest('label')?.querySelector('input[type="text"]')?.value?.trim() || '';
-      out.push({ value: 'other', text: txt });
+      out.push({ value: 'other', text: txt, label: 'Other' });
     } else {
-      out.push(val);
+      out.push({ value: v, label: labelForInput(c) });
     }
   }
   return out;
@@ -1907,16 +1962,22 @@ function wireReflectionGroupToHidden(groupName, otherInputSelector, hiddenId, ro
   function sync(){
     const sel = root.querySelector(`input[name="${groupName}"]:checked`);
     if (!sel) { hidden.value = ''; return; }
+
     const isOther = (sel.value || '').toLowerCase() === 'other';
+    const lbl = labelForInput(sel); // ← usa o helper para apanhar o texto visível
+
     hidden.value = JSON.stringify(
-      isOther ? { value: 'other', text: (otherInp?.value || '').trim() }
-              : { value: sel.value }
+      isOther
+        ? { value: 'other', text: (otherInp?.value || '').trim(), label: 'Other' }
+        : { value: sel.value, label: lbl }
     );
   }
+
   radios.forEach(r => r.addEventListener('change', sync));
   otherInp?.addEventListener('input', sync);
   sync();
 }
+
 
 function getText(selector){ return (document.querySelector(selector)?.value || '').trim(); }
 function getJSONHidden(id){ try { return JSON.parse(document.getElementById(id)?.value || 'null'); } catch { return null; } }
@@ -2085,4 +2146,5 @@ window.submitAllAndFinish = async function(){
     showInlineSubmitError('We could not submit your answers right now. Please try again later.');
     if (btn) { btn.disabled = false; btn.textContent = 'Finish and submit answers!'; }
   }
+
 };
