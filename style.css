@@ -2229,3 +2229,27 @@ area-maize .mc-list{ display:grid; gap:10px; margin-top:10px; }
   font-size: clamp(1.2rem, 2.6vw, 1.6rem); /* um bocadinho maior */
   line-height: 1.3;
 }
+
+/* Map dentro de question-wrapper com imagem de fundo */
+.map .map-wrapper{
+  position: relative;
+  min-height: 66vh;                 /* altura confortável */
+  padding: 16px;                    /* espaço interno do wrapper */
+  border-radius: 20px;              /* segue o look dos cartões */
+  background: url("Imagens questonário/backgroundmapa.png") center/cover no-repeat;
+  box-shadow: 0 10px 30px rgba(0,0,0,.10);
+  overflow: hidden;                 /* recorta à curvatura; mude para visible se precisar */
+}
+
+/* Garantir que elementos absolutos posicionam dentro do wrapper */
+.map .map-wrapper .map-avatar,
+.map .map-wrapper .house,
+.map .map-wrapper .final-flag,
+.map .map-wrapper .final-continue{
+  position: absolute;
+}
+
+/* Em ecrãs pequenos, um pouco mais alto */
+@media (max-width: 680px){
+  .map .map-wrapper{ min-height: 72vh; padding: 12px; }
+}
