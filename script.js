@@ -2003,8 +2003,14 @@ function buildSurveyPayload(){
 }
 
 // === Enviar para backend; fallback: download .json ===
-/* ========= CONFIG: coloca aqui o teu endpoint HTTPS público ========= */
-const ENDPOINT = 'http://127.0.0.1:8000/submit'; // 👈 altera para o teu URL público (tem de ser HTTPS)
+// === Backend base/endpoint ===
+// === Backend base/endpoint (fonte única de verdade) ===
+const API_BASE = 'https://survey-backend-vpdf.onrender.com';
+const ENDPOINT = `${API_BASE}/submit`;
+
+document.addEventListener('DOMContentLoaded', () => {
+  fetch(`${API_BASE}/health`, { mode: 'cors', cache: 'no-store' }).catch(()=>{});
+});
 
 /* ========= NÃO FAZ DOWNLOAD. Tenta enviar e devolve ok/erro ========= */
 async function sendPayload(payload){
@@ -2017,26 +2023,25 @@ async function sendPayload(payload){
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
-      keepalive: true,
       mode: 'cors',
+      keepalive: true,
       credentials: 'omit',
       signal: ctrl.signal
     });
     clearTimeout(timeout);
 
     if (!res.ok) {
-      // tenta ler algum texto de erro do servidor para ajudar no debug (opcional)
       let extra = '';
-      try { extra = (await res.text()).slice(0, 160); } catch {}
+      try { extra = (await res.text()).slice(0,160); } catch {}
       throw new Error(`HTTP ${res.status} ${res.statusText}${extra ? ' – ' + extra : ''}`);
     }
     return { ok: true };
   } catch (err){
     clearTimeout(timeout);
-    console.warn('Submission failed:', err);
     return { ok: false, error: err?.message || String(err) };
   }
 }
+
 
 function showInlineSubmitError(msg){
   const step = document.getElementById('maize-step4');
@@ -2064,26 +2069,19 @@ function showInlineSubmitError(msg){
 // === Submissão final (substitui a tua função atual) ===
 window.submitAllAndFinish = async function(){
   const btn = document.getElementById('finishSubmitBtn');
-
-  // limpa mensagem anterior (se houver)
   document.getElementById('submitErrorMsg')?.remove();
-
-  // evita duplo clique
   if (btn) { btn.disabled = true; btn.textContent = 'Submitting...'; }
 
-  // constrói o payload com TUDO
   const payload = buildSurveyPayload();
-
-  // tenta enviar
-  const { ok } = await sendPayload(payload);
+  const { ok, data, error } = await sendPayload(payload);
 
   if (ok) {
-    // ✅ TOAST de sucesso
+    // mostra um toast e loga o id na consola p/ confirmares no Supabase
+    console.log('Saved OK:', data);
     toast('Answers submitted successfully. Thank you! 🎉', { type: 'info' });
     if (btn) { btn.textContent = 'Submitted'; }
-    // aqui podes opcionalmente redirecionar, ocultar o botão, etc.
   } else {
-    // ❌ Mensagem em inglês para tentar mais tarde
+    console.error('Submit error:', error);
     showInlineSubmitError('We could not submit your answers right now. Please try again later.');
     if (btn) { btn.disabled = false; btn.textContent = 'Finish and submit answers!'; }
   }
