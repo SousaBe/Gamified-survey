@@ -745,7 +745,6 @@
 
           <!-- Step 2: open text -->
           <div class="area-step" id="climate-step2">
-            <h3>Why did you choose these 5 items?</h3>
             <h3> What were your motivations to choose these items? Where reasons related to the environment? </h3>
 
             <textarea id="climateReason"
@@ -765,86 +764,93 @@
 
           <!-- Step 3: swipe cards -->
           <div class="area-step" id="climate-step3">
-            <h3>Swipe through these 2050 food labels. Would you buy each one?</h3>
+            <h3>
+              Swipe through these 2050 food labels. Would you buy each one?
+              <sup class="asterisk">*</sup>
+            </h3>
             <p class="muted">Swipe right = Buy · Swipe left = Skip. Or use the buttons.</p>
-
+          
             <div id="climateSwipeDeck" class="swipe-deck">
               <!-- topo do baralho é o ÚLTIMO .card -->
               <div class="card" data-id="corn-tortilla" data-label="Corn Tortilla">
                 <h4>Corn Tortilla</h4>
-                <div class="card-img"><img src="Imagens questonário/corntortillas.png" alt="Corn tortilla"</div>
+                <div class="card-img">
+                  <img src="Imagens questonário/corntortillas.png" alt="Corn tortilla">
+                </div>
                 <ul class="eco">
                   <li>💨 CO₂: 0.419 kg CO₂e/kg → 🟢 Very Low</li>
                   <li>💧 Water: 1870 L/kg → 🟠 Moderate</li>
-                  <li>♨️ Dominant contributor: cultivation (fertilizers, irrigation, cooking)</li>
+                  <li>♨️ Dominant contributor: Corn cultivation phase (fertilizers, irrigation, propane cooking)</li>
                 </ul>
               </div>
-
+          
               <div class="card" data-id="baguette" data-label="French Baguette">
                 <h4>French Baguette</h4>
                 <div class="card-img"><img src="Imagens questonário/itens/wheat-bread.png" alt="French baguette"></div>
                 <ul class="eco">
                   <li>💨 CO₂: 0.4–0.8 kg CO₂e/kg → 🟡 Low</li>
                   <li>💧 Water: 1608 L/kg → 🟠 Moderate</li>
-                  <li>♨️ Dominant contributor: flour & baking energy</li>
+                  <li>♨️ Dominant contributor: Flour production and gas consumption</li>
                 </ul>
               </div>
-
+          
               <div class="card" data-id="cheese" data-label="Cheese">
                 <h4>Cheese</h4>
                 <div class="card-img"><img src="Imagens questonário/itens/cheese.png" alt="Cheese"></div>
                 <ul class="eco">
-                  <li>💨 CO₂: 10.2  kg CO₂e/kg → 🔶 High</li>
+                  <li>💨 CO₂: 10.2 kg CO₂e/kg → 🔶 High</li>
                   <li>💧 Water: 3178 L/kg → 🔴 High</li>
-                  <li>♨️ Dominant contributor: methane (cows) & processing</li>
+                  <li>♨️ Dominant contributor: Raw milk production (cow feed production, cow emissions, natural land transformation)</li>
                 </ul>
               </div>
-
+          
               <div class="card" data-id="poultry" data-label="Poultry Meal">
                 <h4>Poultry Meal</h4>
                 <div class="card-img"><img src="Imagens questonário/itens/poultry.png" alt="Poultry meal"></div>
                 <ul class="eco">
-                  <li>💨 CO₂: 3.15  kg CO₂e/kg → 🟠 Moderate</li>
+                  <li>💨 CO₂: 3.15 kg CO₂e/kg → 🟠 Moderate</li>
                   <li>💧 Water: 4325 L/kg → 🔴 High</li>
-                  <li>♨️ Dominant contributor: feed & manure</li>
+                  <li>♨️ Dominant contributor: Feed production and manure management</li>
                 </ul>
               </div>
-
+          
               <div class="card" data-id="insect-snacks" data-label="Insect Snacks">
                 <h4>Insect Snacks</h4>
-                <div class="card-img"><img src="Imagens questonário/itens/insect-snacks.png" alt="Insect snacks"></div>                
+                <div class="card-img"><img src="Imagens questonário/itens/insect-snacks.png" alt="Insect snacks"></div>
                 <ul class="eco">
-                  <li>💨 CO₂:  5.760 kg CO₂e/kg → 🟡 Low</li>
+                  <li>💨 CO₂: 5.760 kg CO₂e/kg → 🟡 Low</li>
                   <li>💧 Water: 400–800 L/kg → 🟡 Low</li>
-                  <li>♨️ Dominant contributor: feed source</li>
+                  <li>♨️ Dominant contributor: Feed source</li>
                 </ul>
               </div>
-
-              <div class="card" data-id="canned-sweet-corn" data-label="Canned Sweet corn">
+          
+              <div class="card" data-id="canned-sweet-corn" data-label="Canned Sweet Corn">
                 <h4>Canned Sweet Corn</h4>
-                <div class="card-img"><img src="Imagens questonário/itens/sweet-corn.png" alt="Canned sweet corn"></div>                
+                <div class="card-img"><img src="Imagens questonário/itens/sweet-corn.png" alt="Canned sweet corn"></div>
                 <ul class="eco">
                   <li>💨 CO₂: 0.332 kg CO₂e/kg → 🟢 Very Low</li>
                   <li>💧 Water: 706 L/kg → 🟡 Low</li>
-                  <li>♨️ Dominant contributor: steam & packaging</li>
+                  <li>♨️ Dominant contributor: Cultivation process and processing process (packaging, steam production)</li>
                 </ul>
               </div>
             </div>
-
-            <input type="hidden" id="climateSwipeChoices" name="climate_swipe_choices" value="[]"/>
-
+          
+            <input type="hidden" id="climateSwipeChoices" name="climate_swipe_choices" value="[]">
+          
             <div id="climateSwipeDone" class="hidden">
               <p class="muted">Thanks! You’ve reviewed all products.</p>
               <div class="button-row one-way">
                 <button type="button" onclick="nextAreaStep('climate')">Next</button>
               </div>
             </div>
+          
             <p class="footnote-bottom pin">
               * These estimates are evidence-based but can vary by region, production practices,
               product formulation, packaging, and transport. For this activity, representative
               values were selected specifically for this case and question.
             </p>
           </div>
+          
 
           <!-- Step 4: hot day — pick exactly 2 -->
           <div class="area-step" id="climate-step4" data-select-exact="2">
@@ -1710,6 +1716,7 @@
   
 </body>
 </html>
+
 
 
 
