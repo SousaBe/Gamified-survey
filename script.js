@@ -2051,14 +2051,14 @@ function buildSurveyPayload(){
   // Demográfico
   const demoRoot = document.getElementById('demographicContainer') || document;
   const demographics = {
-    age:     getRadioVal('age', demoRoot),
-    gender:  getRadioVal('gender', demoRoot),
-    diet:    getRadioVal('diet', demoRoot),
-    allergies: getCheckVals('allergic', demoRoot),
-    nationality: getRadioVal('nationality', demoRoot),
-    city:    getText('input[name="city"]'),
+    demo_age:     getRadioVal('age', demoRoot),
+    demo_gender:  getRadioVal('gender', demoRoot),
+    demo_diet:    getRadioVal('diet', demoRoot),
+    demo_allergies: getCheckVals('allergic', demoRoot),
+    demo_nationality: getRadioVal('nationality', demoRoot),
+    demo_city:    getText('input[name="city"]'),
     // ratings dos produtos
-    ratings: {
+    demo_maizefood_ratings: {
       cornflakes: getRadioVal('cornflakes', demoRoot),
       cornbread:  getRadioVal('cornbread',  demoRoot),
       polenta:    getRadioVal('polenta',    demoRoot),
@@ -2071,43 +2071,43 @@ function buildSurveyPayload(){
 
   // CLIMATE
   const climate = {
-    basket:         getJSONHidden('climateDragSelection'),
-    reason_text:    getText('#climateReason') || getText('#climateReasonValue'),
-    swipe_choices:  getJSONHidden('climateSwipeChoices'),
-    heat_choices:   getJSONHidden('climateHeatChoices'),
-    swap_choices:   getJSONHidden('climateSwapChoices'),
-    reflection:     getHiddenAuto('climateReflectionValue'),
+    clim_Q1_basket:         getJSONHidden('climateDragSelection'),
+    clim_Q2_why:    getText('#climateReason') || getText('#climateReasonValue'),
+    clim_Q3_swipe_cards:  getJSONHidden('climateSwipeChoices'),
+    clim_Q4_heat_choices:   getJSONHidden('climateHeatChoices'),
+    clim_Q5_swap_choices:   getJSONHidden('climateSwapChoices'),
+    clim_Q6_reflection:     getHiddenAuto('climateReflectionValue'),
   };
 
   // NUTRITION
   const nutrition = {
-    priority_order:    getJSONHidden('nutritionPriorityOrder'),
-    q2_choices:        getJSONHidden('nutritionQ2Choices'),
-    swap_choice:       getRadioVal('nutrition_swap_choice'),
-    why_swap_text:     getText('#nutritionWhySwap') || getText('#nutritionWhySwapValue'),
-    breakfast:         getRadioVal('nutrition_breakfast'),
-    breakfast_healthier: {
+    nutri_Q1_priority_order:    getJSONHidden('nutritionPriorityOrder'),
+    nutri_Q2_choices:        getJSONHidden('nutritionQ2Choices'),
+    nutri_Q3_swap_choice:       getRadioVal('nutrition_swap_choice'),
+    nutri_Q4_why_swap:     getText('#nutritionWhySwap') || getText('#nutritionWhySwapValue'),
+    nutri_Q5_breakfast:         getRadioVal('nutrition_breakfast'),
+    nutri_Q6_breakfast_healthier: {
       choice:          getRadioVal('nutrition_breakfast_healthier'),
       explain:         getText('#nutritionHealthierExplain')
     },
-    reflection:        getHiddenAuto('nutritionReflectionValue'),
+    nutri_Q7_reflection:        getHiddenAuto('nutritionReflectionValue'),
   };
 
   // CULTURE
   const culture = {
-    identity_choice: getJSONHidden('cultureIdentityChoice') || getRadioVal('culture_identity_single'), // compat anterior/novo
-    status_sort:     getJSONHidden('cultureStatusSort'),
-    root_choice:     getHiddenAuto('cultureRootChoice'),
-    night_choice:    getJSONHidden('cultureNightChoice'),
-    night_why:       getJSONHidden('cultureNightWhy'),
-    reflection:      getHiddenAuto('cultureReflectionValue'),
+    cult_Q1_identity_choice: getJSONHidden('cultureIdentityChoice') || getRadioVal('culture_identity_single'), // compat anterior/novo
+    cult_Q2_status_sort:     getJSONHidden('cultureStatusSort'),
+    cult_Q3_root_choice:     getHiddenAuto('cultureRootChoice'),
+    cult_Q4_night_choice:    getJSONHidden('cultureNightChoice'),
+    cult_Q5_night_why:       getJSONHidden('cultureNightWhy'),
+    cult_Q6_reflection:      getHiddenAuto('cultureReflectionValue'),
   };
 
   // MAIZE
   const maize = {
-    reflect1:       getRadioVal('maize_reflect1'),
-    future_role:    getRadioVal('maize_future_role'),
-    reflection_open:getText('#maizeReflectionOpen') || getText('#maizeReflectionOpenValue'),
+    maiz_Q1_reflect1:       getRadioVal('maize_reflect1'),
+    maiz_Q2_future_role:    getRadioVal('maize_future_role'),
+    maiz_Q3_reflection_open:getText('#maizeReflectionOpen') || getText('#maizeReflectionOpenValue'),
   };
 
   // id anónimo p/ correlacionar respostas
@@ -2208,6 +2208,7 @@ window.submitAllAndFinish = async function(){
   }
 
 };
+
 
 
 
