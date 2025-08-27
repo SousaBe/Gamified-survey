@@ -2253,3 +2253,26 @@ area-maize .mc-list{ display:grid; gap:10px; margin-top:10px; }
 @media (max-width: 680px){
   .map .map-wrapper{ min-height: 72vh; padding: 12px; }
 }
+
+#gameMap{
+  background: transparent !important; /* deixa ver o background global (background.png) */
+}
+
+/* 2) O question-wrapper do mapa com a imagem de mapa e MAIS ALTO */
+.map .map-wrapper{
+  position: relative;
+  border-radius: 20px;
+  padding: 20px;
+  /* imagem do cartão do mapa */
+  background: url("Imagens questonário/backgroundmapa.png") center/cover no-repeat;
+  /* altura mais comprida */
+  min-height: 82vh;
+  box-shadow: 0 10px 30px rgba(0,0,0,.10);
+  overflow: visible; /* evita cortar elementos posicionados */
+}
+
+/* Em ecrãs mais pequenos, ainda um pouco mais alto */
+@media (max-width: 780px){
+  .map .map-wrapper{ min-height: 88vh; }
+}
+
