@@ -2167,19 +2167,22 @@ area-maize .mc-list{ display:grid; gap:10px; margin-top:10px; }
 }
 
 
-/* E-mail no consentimento: pode quebrar e ficar ligeiramente menor */
+/* Consent: links de e-mail não esticam o wrapper */
 .informconsent-screen .consentcontent .email-link{
-  overflow-wrap: anywhere;   /* 🔑 quebra em qualquer ponto, inclusive no "@" e "." */
+  display: inline-block;     /* garante que pode quebrar dentro de flex/grid */
+  max-width: 100%;
+  white-space: normal;       /* caso algum ancestor esteja a usar nowrap */
+  overflow-wrap: anywhere;   /* quebra em qualquer ponto (., @, etc.) */
   word-break: break-word;    /* fallback */
-  font-size: clamp(0.9rem, 3.2vw, 0.95rem);
   line-height: 1.4;
+  font-size: clamp(0.9rem, 3.2vw, 0.95rem); /* ligeiramente menor em ecrãs pequenos */
 }
 
-/* Se o e-mail estiver dentro de listas, evita esticar o <li> */
-.informconsent-screen .consentcontent li{
+/* E, por via das dúvidas, permite quebra também no container do texto */
+.informconsent-screen .consentcontent li,
+.informconsent-screen .consentcontent p{
   overflow-wrap: anywhere;
   word-break: break-word;
 }
-
 
 
