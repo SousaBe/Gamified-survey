@@ -1215,6 +1215,14 @@ document.addEventListener('DOMContentLoaded', () => {
   if (document.getElementById('climateShelf')) {
     initClickSelectForArea('climate');
   }
+
+   const agree = document.getElementById('consentAgree');
+  const startBtn = document.getElementById('consentStartBtn');
+     if (agree && startBtn) {
+       const sync = () => { startBtn.disabled = !agree.checked; };
+       sync();
+       agree.addEventListener('change', sync);
+     }
 });
 
 /* ==========================================================================
@@ -2208,6 +2216,7 @@ window.submitAllAndFinish = async function(){
   }
 
 };
+
 
 
 
