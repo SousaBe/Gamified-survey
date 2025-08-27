@@ -2166,25 +2166,19 @@ area-maize .mc-list{ display:grid; gap:10px; margin-top:10px; }
   cursor: not-allowed;
 }
 
-/* --- Consent fix: não cortar os <details> quando abrem --- */
-.informconsent-screen .question-wrapper{
-  overflow: visible !important;   /* deixa o conteúdo expandir */
-  height: auto !important;
-  max-height: none !important;
+
+/* E-mail no consentimento: pode quebrar e ficar ligeiramente menor */
+.informconsent-screen .consentcontent .email-link{
+  overflow-wrap: anywhere;   /* 🔑 quebra em qualquer ponto, inclusive no "@" e "." */
+  word-break: break-word;    /* fallback */
+  font-size: clamp(0.9rem, 3.2vw, 0.95rem);
+  line-height: 1.4;
 }
 
-.informconsent-screen .consentcontent{
-  position: relative;             /* sobe acima de molduras/pseudo-elements */
-  z-index: 2;
+/* Se o e-mail estiver dentro de listas, evita esticar o <li> */
+.informconsent-screen .consentcontent li{
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
-.consentcontent details{
-  overflow: visible;              /* por segurança */
-  margin-bottom: 12px;            /* espaço extra no fim */
-}
-
-/* Se o ecrã de consentimento estiver num container fixo, deixa rolar */
-.informconsent-screen{
-  overflow: auto;
-}
 
