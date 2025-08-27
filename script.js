@@ -921,23 +921,39 @@ function setupSwipeDeck(area){
   const hidden = document.getElementById(`${area}SwipeChoices`);
   if (!deck) return;
 
-  // 🔒 evita dupla inicialização (listeners duplicados = duplicados no hidden)
+  // evita inicializações duplicadas
   if (deck.dataset._swipeInit === '1') return;
   deck.dataset._swipeInit = '1';
 
-  // 🔄 reset limpo do estado e do hidden
+  // reset estado
   SWIPE_STATE[area] = { inited:true, choices: [] };
   if (hidden) hidden.value = '[]';
-   
+
+  // ids já registados nesta sessão do deck
   const seen = new Set();
 
-  // empilha (o último filho é o topo)
+  // ————— helper para extrair texto visível do cartão
+  function extractLabelFromCard(el){
+    return (
+      el?.getAttribute('data-label') ||
+      el?.querySelector('[data-label]')?.getAttribute('data-label') ||
+      el?.querySelector('.label, .title, .card-title, span, p, h3, h4')?.textContent ||
+      el?.textContent ||
+      ''
+    ).replace(/\s+/g,' ').trim();
+  }
+
+  // empilha (o último filho é o topo) e garante ids/labels
   styleStack();
   attachTop();
 
   function styleStack(){
     const cards = [...deck.querySelectorAll('.card')];
     cards.forEach((c, i) => {
+      // 👉 garante um id e um label estável em data-*
+      if (!c.dataset.id)     c.dataset.id     = c.getAttribute('id') || `card-${i}`;
+      if (!c.dataset.label)  c.dataset.label  = extractLabelFromCard(c);
+
       const z = i + 1;
       const off = (cards.length - 1 - i) * 8;   // leve offset
       const sc  = 1 - (cards.length - 1 - i) * 0.03;
@@ -950,8 +966,7 @@ function setupSwipeDeck(area){
   function attachTop(){
     const top = deck.querySelector('.card:last-child');
     if (!top){
-      // terminou o baralho
-      if (done) done.classList.remove('hidden');
+      if (done) done.classList.remove('hidden'); // acabou o baralho
       return;
     }
     enableDrag(top);
@@ -991,7 +1006,6 @@ function setupSwipeDeck(area){
         const dir = dx > 0 ? 'right' : 'left';
         fling(card, dir);
       } else {
-        // reverte
         card.style.transition = 'transform .2s ease';
         styleStack();
       }
@@ -1002,8 +1016,10 @@ function setupSwipeDeck(area){
   }
 
   function fling(card, dir){
-     if (card.dataset._swiped === '1') return;
-     card.dataset._swiped = '1';
+    // já foi processado? evita duplos (touch+mouse)
+    if (card.dataset._swiped === '1') return;
+    card.dataset._swiped = '1';
+
     // anima para fora
     card.style.transition = 'transform .28s ease, opacity .28s ease';
     const toX = dir === 'right' ? window.innerWidth * 0.9 : -window.innerWidth * 0.9;
@@ -1011,9 +1027,11 @@ function setupSwipeDeck(area){
     card.style.transform = `translate(${toX}px, 0) rotate(${rot}deg)`;
     card.style.opacity = '0';
 
-    const id = card.dataset.id || 'unknown';
+    // ⚠️ lê já do próprio card antes de remover
+    const id    = card.dataset.id    || 'unknown';
+    const label = card.dataset.label || extractLabelFromCard(card);
     const choice = dir === 'right' ? 'buy' : 'skip';
-    registerChoice(id, choice);
+    registerChoice(id, label, choice);
 
     setTimeout(() => {
       card.remove();
@@ -1022,40 +1040,32 @@ function setupSwipeDeck(area){
     }, 280);
   }
 
-   function registerChoice(id, choice){
-     // não voltes a registar o mesmo ID
-     if (seen.has(id)) return;
-     seen.add(id);
-   
-     // tenta capturar o texto visível antes da remoção
-     const cardEl = deck.querySelector(`.card[data-id="${id}"]`);
-     const label = (cardEl?.querySelector('.label, .title, span, p, h3')?.textContent
-                   || cardEl?.textContent
-                   || '')
-                   .replace(/\s+/g,' ')
-                   .trim();
-   
-     const st = SWIPE_STATE[area];
-     const entry = { id, label, choice };
-   
-     // de qualquer forma, mantém dedup por segurança
-     const idx = st.choices.findIndex(x => x.id === id);
-     if (idx >= 0) st.choices[idx] = entry;
-     else          st.choices.push(entry);
-   
-     if (hidden) hidden.value = JSON.stringify(st.choices);
-   }
+  function registerChoice(id, label, choice){
+    // não voltar a registar o mesmo id
+    if (seen.has(id)) return;
+    seen.add(id);
 
+    const st = SWIPE_STATE[area];
+    const entry = { id, label, choice };
+
+    // dedup por segurança
+    const idx = st.choices.findIndex(x => x.id === id);
+    if (idx >= 0) st.choices[idx] = entry;
+    else          st.choices.push(entry);
+
+    if (hidden) hidden.value = JSON.stringify(st.choices);
+  }
 
   function getPoint(ev){
     if (ev.touches && ev.touches[0]) return { x:ev.touches[0].clientX, y:ev.touches[0].clientY };
     return { x:ev.clientX, y:ev.clientY };
   }
 
-  // Botões (programático)
+  // Controlo por botões (se existirem)
   window.swipeLeft  = (a) => { if (a!==area) return; const top = deck.querySelector('.card:last-child'); if (top) fling(top,'left'); };
   window.swipeRight = (a) => { if (a!==area) return; const top = deck.querySelector('.card:last-child'); if (top) fling(top,'right'); };
 }
+
 
 // ===== Q4 (hot day) — escolher exatamente 2 =====
 function initHeatPickIfNeeded(area){
@@ -2170,6 +2180,7 @@ window.submitAllAndFinish = async function(){
   }
 
 };
+
 
 
 
