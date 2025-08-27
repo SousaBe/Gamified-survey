@@ -2114,4 +2114,54 @@ area-maize .mc-list{ display:grid; gap:10px; margin-top:10px; }
 #climate-step4 .heat-card.disabled{
   opacity: .55;
   cursor: not-allowed;
+
+}
+
+/* Consent – leitura rápida */
+.consentcontent { max-width: 900px; margin: 0 auto; }
+.consentcontent .lead {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin: 0 0 1rem 0;
+}
+
+.consent-ataglance {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: .6rem .9rem;
+  padding: .9rem 1rem;
+  margin: 1rem 0 1.2rem 0;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0,0,0,.06);
+}
+
+.consentcontent details {
+  background: #fafafa;
+  border-radius: 12px;
+  padding: .75rem 1rem;
+  margin: .6rem 0;
+  border: 1px solid rgba(0,0,0,.06);
+}
+.consentcontent details[open] { background: #fff; }
+.consentcontent details > summary {
+  cursor: pointer;
+  font-weight: 600;
+  list-style: none;
+  outline: none;
+}
+.consentcontent details > summary::-webkit-details-marker { display: none; }
+
+.consentcontent .compact { margin: .4rem 0 0 1rem; }
+.consentcontent .compact li { margin: .25rem 0; }
+
+.consent-agree {
+  display: flex; align-items: center; gap: .6rem;
+  margin-top: 1rem; font-weight: 600;
+}
+
+/* Botão desativado – aparência clara */
+.continue-button:disabled {
+  opacity: .5;
+  cursor: not-allowed;
 }
