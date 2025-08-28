@@ -2395,7 +2395,7 @@ html, body { overflow-x: hidden !important; }
 /* Definições de largura e margem consistentes */
 :root{
   --wrapper-max: 980px;   /* aumenta/diminui conforme gostares */
-  --side-gap: 20px;
+  --side-gap: 10px;
 }
 
 /* 1) Tornar os ecrãs “centradores” dos seus filhos */
@@ -2467,6 +2467,7 @@ html, body { overflow-x: hidden !important; }
   font-weight: 600;
 }
 .enter-btn.hidden{ display: none; }
+
 
 
 
