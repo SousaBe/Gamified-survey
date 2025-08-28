@@ -2425,10 +2425,9 @@ html, body { overflow-x: hidden !important; }
 
 /* 3) Garantir que imagens internas nunca empurram a largura */
 #informConsent .question-wrapper img,
-#informConsent .question-card-yourself img,
-#informConsent .consentcontent img,
-#demographicContainer .question-wrapper img,
-#demographicContainer .question-card-yourself img{
+#yourseld2050 .question-wrapper img,
+#narrativeIntro .question-wrapper img,
+#demographicContainer .question-wrapper{
   max-width: 100% !important;
   height: auto !important;
   display: block;
@@ -2467,6 +2466,7 @@ html, body { overflow-x: hidden !important; }
   font-weight: 600;
 }
 .enter-btn.hidden{ display: none; }
+
 
 
 
