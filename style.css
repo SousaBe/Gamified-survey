@@ -341,7 +341,7 @@ button:hover { background-color: #d47b54; animation: none; }
   transform-origin: center;
   /* mantém o teu float padrão aqui, caso apareça sem reveal */
   animation: float 2.2s ease-in-out infinite;
-  width: 500px;
+  width: 700px;
 }
 
 .avatar.reveal {
@@ -2394,7 +2394,7 @@ html, body { overflow-x: hidden !important; }
 /* Definições de largura e margem consistentes */
 :root{
   --wrapper-max: 1040px;   /* aumenta/diminui conforme gostares */
-  --side-gap: 10px;
+  --side-gap: 15px;
 }
 
 /* 1) Tornar os ecrãs “centradores” dos seus filhos */
@@ -2461,6 +2461,7 @@ html, body { overflow-x: hidden !important; }
   font-weight: 600;
 }
 .enter-btn.hidden{ display: none; }
+
 
 
 
