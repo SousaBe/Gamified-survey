@@ -1976,7 +1976,7 @@ img { max-width: 100%; height: auto; }
 }
 
 /* Título e texto (já definidos antes, repetimos aqui por segurança) */
-#maize-step4 h2{ color: #ffa828 !important; font-size: 30px;}
+#maize-step4 h2{ color: #c99b34 !important; font-size: 30px;}
 #maize-step4{ color: #664c25; }
 #maize-step4 p{ color: #664c25 !important; }
 
@@ -2475,6 +2475,7 @@ html, body { overflow-x: hidden !important; }
   font-weight: 600;
 }
 .enter-btn.hidden{ display: none; }
+
 
 
 
