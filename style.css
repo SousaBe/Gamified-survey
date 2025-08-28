@@ -1418,6 +1418,10 @@ img { max-width: 100%; height: auto; }
   overflow: auto;         /* caso o conteúdo cresça em screens pequenos */
 }
 
+#intro2050 .intro2050-text p{
+   font-size: 18px;         /* caso o conteúdo cresça em screens pequenos */
+}
+
 /* Wrapper castanho clarinho para a intro */
 #intro2050 .intro-card{
   /* herdado de .question-wrapper + overrides */
@@ -2462,6 +2466,7 @@ html, body { overflow-x: hidden !important; }
   font-weight: 600;
 }
 .enter-btn.hidden{ display: none; }
+
 
 
 
