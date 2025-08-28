@@ -754,7 +754,10 @@
 
           <!-- Step 2: open text -->
           <div class="area-step" id="climate-step2">
-            <h3> What were your motivations to choose these items? Where reasons related to the environment? </h3>
+            <div class="climate-intro-copy">
+              <h3><strong>What motivated you to choose these items?</strong></h3>
+              <h3>— Were any of your reasons related to the <strong>environment</strong>?</h3>
+            </div>
 
             <textarea id="climateReason"
                       class="long-answer"
@@ -774,7 +777,7 @@
           <!-- Step 3: swipe cards -->
           <div class="area-step" id="climate-step3">
             <h3>
-              Swipe through these 2050 food labels. Would you buy each one?
+              Swipe through these 2050 <strong>food labels</strong>. Would you buy each one?
               <sup class="asterisk">*</sup>
             </h3>
             <p class="muted">Swipe right = Buy · Swipe left = Skip. Or use the buttons.</p>
@@ -863,11 +866,15 @@
 
           <!-- Step 4: hot day — pick exactly 2 -->
           <div class="area-step" id="climate-step4" data-select-exact="2">
-            <h3>In 2050, extreme heat waves have become more frequent and intense. On very hot days, some foods feel more appealing than others.</h3>
-
-            <h3>Imagine it’s one of those scorching days. Which two of these foods would you prefer to eat?</h3>
-
-            <h3 class="muted">Select exactly two options.</h3>
+            <div class="climate-intro-copy">
+              <h3><strong>In 2050</strong>, extreme heat waves have become more frequent and intense.</h3>
+              <h3>— On very hot days, some foods feel more appealing than others.</h3>
+            
+              <h3><strong>Imagine it’s one of those scorching days.</strong></h3>
+              <h3>— Which <strong>two</strong> of these foods would you prefer to eat?</h3>
+            
+              <h3 class="muted">Select exactly two options.</h3>
+            </div>
 
             <div class="heat-grid">
               <!-- Maize options -->
@@ -912,8 +919,10 @@
 
           <!-- Step 5: sustainable canteen — keep or swap -->
           <div class="area-step" id="climate-step5">
-            <h3>In this 2050 scenario, assume the alternatives would prove more sustainable than the original (though this isn’t proven today).</h3>
-            <h3 class="muted">For each food, keep the original or swap for a more sustainable option?</h3>
+            <div class="climate-intro-copy">
+              <h3><strong>In this 2050 scenario</strong>, assume the alternatives would prove more sustainable than the original (though this isn’t proven today).</h3>
+              <h3 class="muted">— For each food, <strong>keep</strong> the original or <strong>swap</strong> for a more sustainable option?</h3>
+            </div>
 
             <div class="swap-grid">
               <!-- Rice -->
@@ -1052,11 +1061,23 @@
         <!-- INTRO -->
         <div class="areaIntroduction">
           <h2>Nutritional Health</h2>
-          <p>It’s 2050. Health is seamlessly woven into your daily life - smart, silent, and always present.
-          Wearables track your sleep, nutrition, and stress, guiding subtle choices to keep you well. Prevention is now the foundation of healthcare, thanks to decades of global efforts.</p>
-          <p>The shift began when poor diets were linked to heart disease, diabetes, and even dementia. Science showed that food could prevent illness by reducing inflammation and oxidative stress. Balance and healthy diets gained ground. By 2050, they helped reduce mortality and protect against chronic diseases.</p>
-          <p>Global models had warned that while people would live longer, many would face long years with illness if diets and habits didn’t change. So, policies are adapted, making healthy choices easier and personalized plans common.</p>
-          <p>Now, what you eat is more than fuel. It’s a daily decision that shapes your future. Let’s explore how you live your nutritional health in 2050.</p>
+            <div class="nutrition-intro-copy">
+              <h3><strong>It’s <span style="color:#7b9db7;">2050</span>.</strong> Health is seamlessly woven into daily life — smart, silent, always present.</h3>
+              <h3>— <span style="color:#7b9db7;"><strong>Wearables</strong></span> track your sleep, nutrition, and stress, guiding subtle choices to keep you well.</h3>
+              <h3><strong><span style="color:#7b9db7;">Prevention</span></strong> is now the foundation of healthcare, thanks to decades of global efforts.</h3>
+            
+              <h3>— Poor diets were linked to <strong>heart disease</strong>, <strong>diabetes</strong>, and <strong>dementia</strong>.</h3>
+              <h3>— Science showed food can prevent illness by reducing <span style="color:#7b9db7;"><strong>inflammation</strong></span> and <span style="color:#7b9db7;"><strong>oxidative stress</strong></span>.</h3>
+              <h3>— <span style="color:#7b9db7;"><strong>Balance</strong></span> and <span style="color:#7b9db7;"><strong>healthy diets</strong></span> gained ground.</h3>
+              <h3>— By 2050 they helped <strong><span style="color:#7b9db7;">reduce mortality</span></strong> and protect against <strong><span style="color:#7b9db7;">chronic diseases</span></strong>.</h3>
+            
+              <h3>— Global models warned that longer lives could include more years with illness unless <strong>diet</strong> and <strong>habits</strong> changed.</h3>
+              <h3>— So <span style="color:#7b9db7;"><strong>policies</strong></span> adapted, making healthy choices easier, and <span style="color:#7b9db7;"><strong>personalized plans</strong></span> became common.</h3>
+            
+              <h3><strong>Now</strong>, what you eat is <strong>more than fuel</strong>.</h3>
+              <h3>— It’s a <span style="color:#7b9db7;"><strong>daily decision</strong></span> that shapes your <span style="color:#7b9db7;"><strong>future</strong></span>.</h3>
+              <h3 class="muted">Let’s explore how you live your <span style="color:#7b9db7;"><strong>nutritional health</strong></span> in 2050.</h3>
+            </div>
           <br>
           <button class="buttonintroductionclimate" onclick="showAreaQuiz('nutrition')">Move forward!</button>
         </div>
@@ -1065,7 +1086,11 @@
         <div id="nutritionQuiz" class="area-quiz hidden">
           <!-- Step 1: Ranking -->
           <div class="area-step" id="nutrition-step1">
-            <h3>In 2050, food does more than just feed us. But not everyone has the same priorities. Rank the following factors from most to least important when choosing a food (top = most important).</h3>
+            <div class="climate-intro-copy">
+              <h3><strong>In 2050, food does more than just feed us.</strong></h3>
+              <h3>— But not everyone has the same priorities.</h3>
+              <h3 class="muted">— Rank the following factors from most to least important when choosing a food (<strong>top = most important</strong>).</h3>
+            </div>
 
             <ul id="nutritionPriorityList" class="rank-list">
               <li class="rank-item" draggable="true" data-key="prevent">Prevent disease</li>
@@ -1084,7 +1109,11 @@
 
           <!-- Step 2: Fortified / Functional / Familiar (multi-card até 3) -->
           <div class="area-step" id="nutrition-step2" data-select-min="1" data-select-max="2">
-            <h3>Fortified, Functional, or Familiar? Which of these would you be willing to eat? Choose 2.</h3>
+            <div class="climate-intro-copy">
+              <h3><strong>Fortified, Functional, or Familiar?</strong></h3>
+              <h3>— Which of these would you be willing to eat?</h3>
+              <h3 class="muted">— Choose <strong>2</strong>.</h3>
+            </div>
 
             <div class="option-grid" id="nutritionQ2Grid">
               <div class="option-card" data-selectable data-id="traditional">
@@ -1123,7 +1152,11 @@
 
           <!-- Step 3: Healthier swaps (escolha única) -->
           <div class="area-step" id="nutrition-step3">
-            <h3>Many people in 2050 have adapted their diets for long-term health. Sometimes that means replacing familiar foods with healthier alternatives. Which of these swaps would you be most open to?</h3>
+            <div class="climate-intro-copy">
+              <h3><strong>Many people in 2050 have adapted their diets for long-term health.</strong></h3>
+              <h3>— Sometimes that means replacing familiar foods with healthier alternatives.</h3>
+              <h3>— Which of these swaps would you be most open to?</h3>
+            </div>
 
             <div class="swap-grid">
               <label class="swap-card">
@@ -1194,7 +1227,7 @@
 
           <!-- Step 4: Texto aberto (porquê da Step 3) -->
           <div class="area-step" id="nutrition-step4">
-            <h3>Why did you choose that swap? Tell us what influenced your choice.</h3>
+            <h3>Why did you choose that swap? Tell us what influenced <strong>your choice</strong>.</h3>
 
             <textarea id="nutritionWhySwap" class="long-answer" rows="6" placeholder="Type your answer here..." required></textarea>
             <input type="hidden" id="nutritionWhySwapValue" name="nutrition_why_swap" value="">
@@ -1205,8 +1238,10 @@
 
           <!-- Step 5: Pequeno-almoço (com 4.1 dentro) -->
           <div class="area-step" id="nutrition-step5">
-            <h3>Your ideal breakfast in 2050</h3>
-            <p class="muted">Choose the one that satisfies you the most in 2050.</p>
+            <div class="climate-intro-copy">
+              <h3><strong>Your ideal breakfast in 2050</strong></h3>
+              <h3 class="muted">— Choose the one that satisfies you the most in 2050.</h3>
+            </div>
 
             <div class="breakfast-grid">
               <label class="breakfast-card">
@@ -1316,9 +1351,18 @@
         <!-- INTRO -->
         <div class="areaIntroduction">
           <h2>Food Culture</h2>
-          <p>By 2050, the way people eat continues to be shaped by deep cultural roots and rapidly evolving social dynamics. What we eat, how we eat, and with whom we share our meals are more than personal choices, they are cultural expressions, shaped by generations of traditions, beliefs, and values.</p>
-          <p>Food culture goes even further, encompassing mealtime rituals, social norms, and the emotional roles food plays in daily life. Eating habits are influenced by family, religion, the communities we belong to, and increasingly through social media. Across societies, eating together remains a powerful act of connection, while beliefs about food can shape practices from local food taboos to global movements like vegetarianism.</p>
-          <p>How do you see the role of culturally significant ingredients in your life today? Let’s explore how your cultural background and social world shape your food decisions in 2050 — and how that might influence the future of what we eat.</p>
+          <div class="culture-intro-copy">
+            <h3><strong>By <span style="color:#b06031;">2050</span>, the way people eat</strong> continues to be shaped by deep cultural roots and rapidly evolving social dynamics.</h3>
+            <h3>— What we eat, how we eat, and with whom we share our meals are more than personal choices — they’re <span style="color:#b06031;"><strong>cultural expressions</strong></span> shaped by generations of traditions, beliefs, and values.</h3>
+          
+            <h3><strong>Food culture goes even further</strong> — beyond nutrients and tastes.</h3>
+            <h3>— It includes <span style="color:#b06031;"><strong>mealtime rituals</strong></span>, <span style="color:#b06031;"><strong>social norms</strong></span>, and the <span style="color:#b06031;"><strong>emotions</strong></span> food carries in daily life.</h3>
+            <h3>— Eating habits are influenced by family, religion, the communities we belong to, and increasingly by social media.</h3>
+            <h3>— Across societies, <span style="color:#b06031;"><strong>eating together</strong></span> remains a powerful act of connection, while beliefs about food shape practices from local taboos to global movements like <strong>vegetarianism</strong>.</h3>
+          
+            <h3><strong>How do you see</strong> the role of <span style="color:#b06031;"><strong>culturally significant ingredients</strong></span> in your life today?</h3>
+            <h3>— Let’s explore how your cultural background and social world shape your food decisions in 2050 — and how that might influence the future of what we eat.</h3>
+          </div>
           <br>
           <button class="buttonintroductionclimate" onclick="showAreaQuiz('culture')">Move forward!</button>
         </div>
@@ -1328,7 +1372,10 @@
 
           <!-- Step 1: Food & identity (arrastar 1 afirmação para 1 de 3 colunas) -->
           <div class="area-step" id="culture-step1" data-select-exact="1">
-            <h3>In 2050, food is part of who you are. Which statement best describes you?</h3>
+            <div class="climate-intro-copy">
+              <h3><strong>In 2050, food is part of who you are.</strong></h3>
+              <h3>— Which statement best describes you?</h3>
+            </div>
 
             <div class="identity-grid" id="cultureIdentityGrid" role="listbox" aria-label="Pick one statement">
               <button type="button" class="identity-card" data-selectable data-id="tradition" role="option" aria-selected="false">
@@ -1362,7 +1409,10 @@
 
           <!-- Step 2: Cultural Ingredients Reimagined (classificar tudo em 2 categorias) -->
           <div class="area-step" id="culture-step2" data-require-classify-all="true">
-            <h3>In your society in 2050, some foods carry more status than others. Drag each food to the category that fits your perception.</h3>
+            <div class="climate-intro-copy">
+              <h3><strong>In your society in 2050, some foods carry more status than others.</strong></h3>
+              <h3>— Drag each food to the category that fits your perception.</h3>
+            </div>
 
             <div class="status-sort">
               <!-- Pool -->
@@ -1400,7 +1450,10 @@
 
           <!-- Step 3: A flavour that travels with you (cards, single select) -->
           <div class="area-step" id="culture-step3" data-select-exact="1">
-            <h3>If your priority is health in 2050, which of the following bases would you choose for the dish?</h3>
+            <div class="climate-intro-copy">
+              <h3><strong>If your priority is health in 2050,</strong></h3>
+              <h3>— Which of the following bases would you choose for the dish?</h3>
+            </div>
 
             <div class="ingredient-card-grid" id="cultureRootGrid" role="listbox" aria-label="Pick one ingredient">
               <button type="button" class="ingredient-card" data-selectable data-id="maize" role="option" aria-selected="false" data-label="Sweet Corn">
@@ -1449,7 +1502,10 @@
 
             <!-- Step 4: Themed dinner (cards com imagem) -->
             <div class="area-step" id="culture-step4">
-              <h3>It’s 2050. You’re hosting a themed dinner with your friends. Which one would you choose to share?</h3>
+              <div class="climate-intro-copy">
+                <h3><strong>It’s 2050.</strong> You’re hosting a themed dinner with your friends.</h3>
+                <h3>— Which one would you choose to share?</h3>
+              </div>
 
               <div class="night-grid" id="cultureNightGrid">
                 <!-- Mexican -->
@@ -1559,7 +1615,7 @@
 
           <!-- Step 5: Why that night? (múltipla escolha) -->
           <div class="area-step" id="culture-step5">
-            <h3>Why did you choose that night?</h3>
+            <h3><strong>Why</strong> did you choose that night?</h3>
             <div class="check-grid">
               <label><input type="checkbox" name="culture_night_why" value="fun_social"> It’s fun and social</label>
               <label><input type="checkbox" name="culture_night_why" value="love_food"> I love the food</label>
@@ -1627,16 +1683,24 @@
         <div class="areaIntroduction">
           <h2>Maize in 2050</h2>
 
-          <p>Throughout your journey in 2050, maize appeared in many forms, from nutritious breakfasts to cultural dinners. Sometimes traditional, sometimes innovative.</p>
-          <p>But what does it all mean to you? Let’s pause for a moment and reflect on how you see maize now, and what role it might play in the future of food.</p>
-
-          <p>Maize (Zea mays L.), often referred to as corn, is one of the most important cereal crops worldwide, both in terms of volume and versatility. It is the world’s most widely grown cereal, with annual production exceeding one billion tons, driven by its high yield potential and diverse uses. In Europe, maize represents a significant share of cereal production, and the continent plays a crucial role in the global seed market. With around 30 million seed doses produced annually, Europe is a leader in maize seed production, and France, in particular, stands out. In 2021, it accounted for nearly half of the EU’s seed output, exporting 60% of its production.</p>
-
-          <p>This strategic role in seed production reflects maize’s broader economic and geopolitical importance. While the United States, China, Brazil, and Argentina continue to dominate overall maize production and trade, shifting demand from low- and middle-income countries is reshaping global supply chains and innovation priorities. As the world faces rising challenges from climate change and population growth, maize will be at the center of efforts to enhance food security, making advances in sustainability, climate resilience, and nutritional quality more urgent than ever.</p>
-
-          <p>Moreover, maize is increasingly recognized for its potential in health promotion. Its components have been shown to reduce risks of chronic diseases such as diabetes, cardiovascular disease, and certain cancers. Notably, resistant starch in maize improves gut health and metabolic outcomes, while carotenoids like lutein and zeaxanthin support eye health and may reduce oxidative stress.</p>
-
-          <p>By understanding this multifaceted role, from economic engine and climate-resilient crop to health-promoting food, we can better imagine the place maize might occupy in tomorrow’s food systems.</p>
+          <div class="maize-intro-copy">
+            <h3><strong>Throughout your journey in <span style="color:#ffa828;">2050</span>, <span style="color:#ffa828;">maize</span> appeared in many forms</strong> — from nutritious breakfasts to cultural dinners, sometimes traditional, sometimes innovative.</h3>
+            <h3>— Let’s reflect on how you see <span style="color:#ffa828;"><strong>maize</strong></span> now, and what role it might play in the future of food.</h3>
+          
+            <h3><strong>Thanks to its versatility, <span style="color:#ffa828;">maize</span> is one of the world’s most important cereal crops.</strong></h3>
+            <h3>— In <strong>Europe</strong>, it represents a significant share of cereal production, with around <strong><span style="color:#ffa828;">30&nbsp;million seed doses</span></strong> produced annually.</h3>
+            <h3>— Among the leaders in maize seed production, nearly half of <strong>Europe’s</strong> seed output in <strong>2021</strong> was produced in <strong><span style="color:#ffa828;">France</span></strong>, exporting about <strong><span style="color:#ffa828;">60%</span></strong> of its production.</h3>
+          
+            <h3><strong>Shifting demand</strong> from low- and middle-income countries is reshaping global supply chains and innovation priorities.</h3>
+            <h3>— This strategic role reflects maize’s broader <strong><span style="color:#ffa828;">economic and geopolitical</span></strong> importance.</h3>
+            <h3>— As the world faces climate change and population growth, <span style="color:#ffa828;"><strong>maize</strong></span> can be a strategic crop at the center of efforts to enhance food security — advancing <strong>sustainability</strong>, <strong>climate resilience</strong>, and <strong>nutritional quality</strong>.</h3>
+          
+            <h3><strong>Maize is also increasingly recognized for its potential in health promotion.</strong></h3>
+            <h3>— Its components have been linked to reduced risk of chronic diseases.</h3>
+            <h3>— Nutrients such as <strong><span style="color:#ffa828;">resistant starch</span></strong> and <strong><span style="color:#ffa828;">carotenoids</span></strong> can help improve gut health, metabolic outcomes, support eye health, and potentially reduce oxidative stress.</h3>
+          
+            <h3><strong>By understanding maize’s multifaceted role,</strong> we can better imagine its place in tomorrow’s food systems.</h3>
+          </div>
 
           <br>
           <button class="buttonintroductionclimate" onclick="showAreaQuiz('maize')">Start reflection</button>
@@ -1699,11 +1763,18 @@
               <img id="finalTrophy" src="Imagens questonário/trofeufinal.png" alt="Final Trophy">
 
               <h2>Thank you for shaping the future.</h2>
-              <p>You’ve just completed your journey through the food world of 2050.</p>
-              <p>Your choices, ideas, and reflections reveal how people might eat, feel, and connect through food in the decades ahead.</p>
-              <p>From climate challenges to health goals and cultural rituals, you explored how everyday ingredients, such as maize, can take on new meanings in a changing world.</p>
-              <p>Your perspective matters. It helps researchers, policymakers, and communities imagine futures that are not only possible but desirable.</p>
-              <p><strong>Thank you for being part of this experience. The future of food starts with you.</strong></p>
+              <div class="maize-outro-copy">
+                <h3><strong>You’ve just completed your journey through the food world of <span style="color:#ffa828;">2050</span>.</strong></h3>
+                <h3>— Your choices, ideas, and reflections reveal how people might eat, feel, and connect through food in the decades ahead.</h3>
+              
+                <h3>From <strong><span style="color:#ffa828;">climate challenges</span></strong> to <strong><span style="color:#ffa828;">health goals</span></strong> and <strong><span style="color:#ffa828;">cultural rituals</span></strong>, you explored how everyday ingredients — like <strong><span style="color:#ffa828;">maize</span></strong> — take on new meanings in a changing world.</h3>
+              
+                <h3><strong>Your perspective matters.</strong></h3>
+                <h3>— It helps <strong>researchers</strong>, <strong>policymakers</strong>, and <strong>communities</strong> imagine futures that are not only possible but <strong><span style="color:#ffa828;">desirable</span></strong>.</h3>
+              
+                <h3><strong><span style="color:#ffa828;">Thank you</span> for being part of this experience.</strong></h3>
+                <h3><strong>The <span style="color:#ffa828;">future of food</span> starts with you.</strong></h3>
+              </div>
               
               <div class="final-avatars">
                 <img id="maizeFinalAvatar" class="chosen-avatar" alt="Your avatar">
@@ -1725,6 +1796,7 @@
   
 </body>
 </html>
+
 
 
 
