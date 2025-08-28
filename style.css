@@ -413,8 +413,9 @@ button:hover { background-color: #d47b54; animation: none; }
   border-radius: 28px;
   font-weight: 500;
   box-shadow: var(--shadow);
+  font-size: 30px;
 }
-.final-continue:hover{ background:#c99b34; }
+.final-continue:hover{ background:#ed451d; }
 
 
 /* ==========================================================================
@@ -2435,10 +2436,6 @@ html, body { overflow-x: hidden !important; }
   transform: translateX(-50%) !important;
 }
 
-/* Mapa passa a ser uma imagem fixa */
-.map .map-wrapper{
-  background: url("Imagens questonário/backgroundmapaq.png") center/cover no-repeat !important;
-}
 
 /* Se as casas antigas ainda existirem no HTML, esconde-as */
 #gameMap .house,
@@ -2460,6 +2457,7 @@ html, body { overflow-x: hidden !important; }
   font-weight: 600;
 }
 .enter-btn.hidden{ display: none; }
+
 
 
 
