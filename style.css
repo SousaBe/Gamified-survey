@@ -88,52 +88,34 @@ button:hover { background-color: #d47b54; animation: none; }
 /* ==========================================================================
    2) CARDS & WRAPPERS
    ========================================================================== */
-/* Definições de largura e margem consistentes */
-:root{
-  --wrapper-max: 1040px;   /* aumenta/diminui conforme gostares */
-  --side-gap: 10px;
-}
 
 /* Cartão base reutilizável */
 .question-card-yourself,
-.question-wrapper,
-.narrative-box{
+.question-wrapper, .narrative-box{
   position: relative;
-  width: min(100%, var(--wrapper-max));
-  margin: var(--wrapper-outer) auto;   /* centra horizontalmente */
-  padding: var(--wrapper-pad);         /* afasta texto das margens */
+  width: clamp(280px, 80vw, 1300px);
+  margin: 80px auto;
   background-color: #fff;
+  padding: clamp(10px, 5vw, 20px);
   border-radius: 20px;
   box-shadow: var(--shadow);
-  display: grid;
-  align-items: center;
   justify-items: center;
+  justify-content: center;
+  justify-self: center;
+  z-index: 1;
   overflow: hidden;
+  display: grid;
   color: var(--text-brown);
   font-size: clamp(1rem, 2vw, 1.2rem);
   line-height: 1.5;
+  text-align: left;
+  margin: 50px 50px 50px;
+  align-items: center;
   text-align: center;
 }
 
-/* 1) Tornar os ecrãs “centradores” dos seus filhos */
-#informConsent:not(.hidden),
-#demographicContainer:not(.hidden){
-  display: grid;              /* sem !important */
-  justify-items: center !important;
-  padding-inline: var(--side-gap) !important;
-}
 
 
-/* 3) Garantir que imagens internas nunca empurram a largura */
-#informConsent .question-wrapper img,
-#informConsent .question-card-yourself img,
-#informConsent .consentcontent img,
-#demographicContainer .question-wrapper img,
-#demographicContainer .question-card-yourself img{
-  max-width: 100% !important;
-  height: auto !important;
-  display: block;
-}
 
 .narrative-text, .consentcontent, .areaIntroduction {
   color: var(--text-brown);
@@ -2405,12 +2387,48 @@ img { max-width: 100%; height: auto; }
 
 /* === FIX DEFINITIVO: centrar Consent + Demografia no iPhone === */
 
+/* === FIX DEFINITIVO: centrar Consent + Demografia no iPhone === */
+
 /* Evita scroll/overflow lateral a desalinhar o centro visual */
 html, body { overflow-x: hidden !important; }
 
+/* Definições de largura e margem consistentes */
+:root{
+  --wrapper-max: 980px;   /* aumenta/diminui conforme gostares */
+  --side-gap: 20px;
+}
 
+/* 1) Tornar os ecrãs “centradores” dos seus filhos */
+#informConsent,
+#demographicContainer{
+  display: grid !important;
+  justify-items: center !important;   /* centra filhos na horizontal */
+  padding-inline: var(--side-gap) !important;
+}
 
+/* 2) Forçar o(s) wrapper(s) desses ecrãs a serem fluidos e centrados */
+#informConsent .question-wrapper,
+#informConsent .question-card-yourself,
+#informConsent .consentcontent,
+#demographicContainer .question-wrapper,
+#demographicContainer .question-card-yourself{
+  width: min(calc(100% - (var(--side-gap) * 2)), var(--wrapper-max)) !important;
+  margin: 20px auto !important;       /* centra horizontalmente */
+  left: auto !important;
+  right: auto !important;
+  transform: none !important;         /* evita qualquer translate herdado */
+}
 
+/* 3) Garantir que imagens internas nunca empurram a largura */
+#informConsent .question-wrapper img,
+#informConsent .question-card-yourself img,
+#informConsent .consentcontent img,
+#demographicContainer .question-wrapper img,
+#demographicContainer .question-card-yourself img{
+  max-width: 100% !important;
+  height: auto !important;
+  display: block;
+}
 
 /* 4) Avatar grande das demográficas: tornar fluido no mobile */
 #demographicContainer .avatares{
@@ -2423,6 +2441,15 @@ html, body { overflow-x: hidden !important; }
   left: 50% !important;
   transform: translateX(-50%) !important;
 }
+
+#informConsent:not(.hidden),
+#demographicContainer:not(.hidden){
+  display: grid;              /* sem !important */
+  justify-items: center !important;
+  padding-inline: var(--side-gap) !important;
+}
+
+
 
 
 /* Se as casas antigas ainda existirem no HTML, esconde-as */
@@ -2445,6 +2472,7 @@ html, body { overflow-x: hidden !important; }
   font-weight: 600;
 }
 .enter-btn.hidden{ display: none; }
+
 
 
 
