@@ -342,10 +342,11 @@ button:hover { background-color: #d47b54; animation: none; }
 }
 
 /* Avatares (reveal) */
-.avatar {
+#avatarReveal .avatar-container .avatar {
   transform-origin: center;
   /* mantém o teu float padrão aqui, caso apareça sem reveal */
   animation: float 2.2s ease-in-out infinite;
+  width: 100px;
 }
 
 .avatar.reveal {
@@ -2466,6 +2467,7 @@ html, body { overflow-x: hidden !important; }
   font-weight: 600;
 }
 .enter-btn.hidden{ display: none; }
+
 
 
 
