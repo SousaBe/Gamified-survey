@@ -2408,7 +2408,15 @@ img { max-width: 100%; height: auto; }
 
 .question-wrapper,
 .question-card-yourself,
-.narrative-box {
+.narrative-box,
+.informconsent-screen .question-wrapper,
+.start-screen .content,
+#intro2050 .intro-card,
+.map .map-wrapper,
+.create-yourself .content1,
+.ready-begin .content2,
+.area-screen .question-wrapper,
+.area-quiz .question-wrapper {
   margin: 20px 20px 20px !important;
 }
 
