@@ -2408,10 +2408,10 @@ html, body { overflow-x: hidden !important; }
 
 /* 2) Forçar o(s) wrapper(s) desses ecrãs a serem fluidos e centrados */
 #informConsent .question-wrapper,
-#informConsent .question-card-yourself,
-#informConsent .consentcontent,
 #demographicContainer .question-wrapper,
-#demographicContainer .question-card-yourself{
+#intro2050 .question-wrapper intro-card,
+#narrativeIntro .narrative-box,
+#yourself2050 .question-card-yourself{
   width: min(calc(100% - (var(--side-gap) * 2)), var(--wrapper-max)) !important;
   margin: 20px auto !important;       /* centra horizontalmente */
   left: auto !important;
@@ -2463,6 +2463,7 @@ html, body { overflow-x: hidden !important; }
   font-weight: 600;
 }
 .enter-btn.hidden{ display: none; }
+
 
 
 
