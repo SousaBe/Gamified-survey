@@ -1475,7 +1475,7 @@ area-maize .mc-list{ display:grid; gap:10px; margin-top:10px; }
   text-align: center;
   gap: clamp(12px, 2.5vw, 24px);
   padding: clamp(16px, 4vw, 28px);
-  margin: 30px 30px;
+  margin: 20px 20px;
 }
 
 /* Imagens da intro centralizadas e responsivas */
@@ -1919,6 +1919,7 @@ area-maize .mc-list{ display:grid; gap:10px; margin-top:10px; }
 #area-maize .question-wrapper{
   display: grid;                /* já tens grid, reforçamos */
   grid-auto-flow: row;          /* empilha elementos em linhas */
+  margin: 20px 20px;
 }
 
 #maizeVisual{
@@ -2239,6 +2240,7 @@ area-maize .mc-list{ display:grid; gap:10px; margin-top:10px; }
   background: url("Imagens questonário/backgroundmapa.png") center/cover no-repeat;
   box-shadow: 0 10px 30px rgba(0,0,0,.10);
   overflow: hidden;                 /* recorta à curvatura; mude para visible se precisar */
+  margin: 20px 20px;
 }
 
 /* Garantir que elementos absolutos posicionam dentro do wrapper */
@@ -2269,6 +2271,7 @@ area-maize .mc-list{ display:grid; gap:10px; margin-top:10px; }
   min-height: 82vh;
   box-shadow: 0 10px 30px rgba(0,0,0,.10);
   overflow: visible; /* evita cortar elementos posicionados */
+  margin: 20px 20px;
 }
 
 /* Em ecrãs mais pequenos, ainda um pouco mais alto */
@@ -2381,7 +2384,7 @@ area-maize .mc-list{ display:grid; gap:10px; margin-top:10px; }
   font-style: italic;
   opacity: .9;
 }
-.area-screen .question-wrapper{ position: relative; }
+.area-screen .question-wrapper{ position: relative; margin: 20px 20px; }
 #climate-step3 .footnote-bottom.pin{
   position: absolute;
   bottom: 16px;
@@ -2397,6 +2400,7 @@ area-maize .mc-list{ display:grid; gap:10px; margin-top:10px; }
   margin-left: auto !important;
   margin-right: auto !important;
   box-sizing: border-box;
+  margin: 20px 20px;
 }
 
 /* Avoid accidental overflow from inner elements */
@@ -2413,5 +2417,6 @@ area-maize .mc-list{ display:grid; gap:10px; margin-top:10px; }
   padding-left: 16px;
   padding-right: 16px;
 }
+
 
 
