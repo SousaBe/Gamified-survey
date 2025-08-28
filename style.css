@@ -114,14 +114,9 @@ button:hover { background-color: #d47b54; animation: none; }
 }
 
 
-
-
 .narrative-text, .consentcontent, .areaIntroduction {
   color: var(--text-brown);
   font-size: 16px;
-  line-height: 1.5;
-  text-align: center;
-  margin: 0 20px 40px;
 }
 
 .areaIntroduction {
@@ -346,7 +341,7 @@ button:hover { background-color: #d47b54; animation: none; }
   transform-origin: center;
   /* mantém o teu float padrão aqui, caso apareça sem reveal */
   animation: float 2.2s ease-in-out infinite;
-  width: 100px;
+  width: 500px;
 }
 
 .avatar.reveal {
@@ -2466,6 +2461,7 @@ html, body { overflow-x: hidden !important; }
   font-weight: 600;
 }
 .enter-btn.hidden{ display: none; }
+
 
 
 
