@@ -421,20 +421,12 @@ button:hover { background-color: #d47b54; animation: none; }
 
 
 
-@media (max-width: 900px) {
-  .question-card-yourself { grid-template-columns: 1fr; }
-}
 @media (max-width: 768px) {
   .start-screen h1 { font-size: 24px; }
   .start-button, .start-game-button { font-size: 18px; padding: 14px 30px; width: 90%; }
   .question-card { width: 95%; padding: 20px; }
   label { font-size: 16px; }
   .rating-bubble { width: 24px; height: 24px; font-size: 14px; line-height: 24px; }
-  .intro2050-text { margin: -80px 0 0; text-align: center; }
-  .intro2050-text h1 { font-size: 30px; }
-  .intro2050-text h1 strong { font-size: 90px; }
-  .intro2050-text p { font-size: 20px; }
-  .intro2050-container { left: 50%; transform: translateX(-50%); }
 }
 
 
@@ -1413,7 +1405,17 @@ img { max-width: 100%; height: auto; }
 }
 
 #intro2050 .intro2050-text p{
-   font-size: 18px;         /* caso o conteúdo cresça em screens pequenos */
+   font-size: 22px;         /* caso o conteúdo cresça em screens pequenos */
+}
+
+
+#intro2050 .intro2050-text h1{
+   font-size: 40px;         /* caso o conteúdo cresça em screens pequenos */
+}
+
+
+#intro2050 .intro2050-text h1 strong{
+   font-size: 80px;         /* caso o conteúdo cresça em screens pequenos */
 }
 
 /* Wrapper castanho clarinho para a intro */
@@ -2473,6 +2475,7 @@ html, body { overflow-x: hidden !important; }
   font-weight: 600;
 }
 .enter-btn.hidden{ display: none; }
+
 
 
 
