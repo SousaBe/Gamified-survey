@@ -90,8 +90,7 @@ button:hover { background-color: #d47b54; animation: none; }
    ========================================================================== */
 
 /* Cartão base reutilizável */
-.question-card-yourself,
-.question-wrapper, .narrative-box{
+.question-wrapper{
   position: relative;
   width: clamp(280px, 80vw, 1300px);
   margin: 80px auto;
@@ -2463,6 +2462,7 @@ html, body { overflow-x: hidden !important; }
   font-weight: 600;
 }
 .enter-btn.hidden{ display: none; }
+
 
 
 
