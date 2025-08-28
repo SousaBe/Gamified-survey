@@ -2161,6 +2161,29 @@ img { max-width: 100%; height: auto; }
   margin-top: 1rem; font-weight: 600;
 }
 
+/* Consent – impedir que o texto saia das caixas */
+.consent-ataglance,
+.consent-ataglance > * { 
+  min-width: 0;                /* filhos do grid podem encolher */
+}
+
+.consent-ataglance p,
+.consent-ataglance li,
+.consent-ataglance div {
+  white-space: normal;
+  overflow-wrap: anywhere;     /* quebra onde for preciso */
+  word-break: break-word;      /* fallback */
+  hyphens: auto;               /* hifenização (suportada em iOS) */
+}
+
+/* (extra de segurança) qualquer “card” dentro do consent */
+.consentcontent .badge-block,
+.consentcontent details,
+.consentcontent .intro-card,
+.consentcontent .question-wrapper * {
+  max-width: 100%;
+}
+
 /* Botão desativado – aparência clara */
 .continue-button:disabled {
   opacity: .5;
@@ -2460,5 +2483,6 @@ html, body { overflow-x: hidden !important; }
   left: 50% !important;
   transform: translateX(-50%) !important;
 }
+
 
 
