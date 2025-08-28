@@ -2229,15 +2229,29 @@ img { max-width: 100%; height: auto; }
 /* 2) O question-wrapper do mapa com a imagem de mapa e MAIS ALTO */
 .map .map-wrapper{
   position: relative;
+  width: clamp(280px, 80vw, 1300px);
+  margin: 80px auto;
+  background: url("Imagens questonário/backgroundmapa.png") center/cover no-repeat;
+  padding: clamp(10px, 5vw, 20px);
   border-radius: 20px;
+  box-shadow: var(--shadow);
+  justify-items: center;
+  justify-content: center;
+  justify-self: center;
+  z-index: 1;
+  overflow: hidden;
+  display: grid;
+  color: var(--text-brown);
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  line-height: 1.5;
+  text-align: left;
+  margin: 50px 50px 50px;
+  align-items: center;
+  text-align: center;
+  position: relative;
   padding: 20px;
   /* imagem do cartão do mapa */
-  background: url("Imagens questonário/backgroundmapa.png") center/cover no-repeat;
-  /* altura mais comprida */
-  min-height: 82vh;
-  box-shadow: 0 10px 30px rgba(0,0,0,.10);
   overflow: visible; /* evita cortar elementos posicionados */
-  margin: 20px 20px;
 }
 
 /* Em ecrãs mais pequenos, ainda um pouco mais alto */
@@ -2461,6 +2475,7 @@ html, body { overflow-x: hidden !important; }
   font-weight: 600;
 }
 .enter-btn.hidden{ display: none; }
+
 
 
 
