@@ -2422,6 +2422,27 @@ img { max-width: 100%; height: auto; }
 }
 
 
+:root { --wrapper-max: 940px; } /* ajusta aqui se quiseres ainda maior */
+
+.question-wrapper,
+.question-card-yourself,
+.narrative-box,
+#informConsent .question-wrapper,
+.informconsent-screen .question-wrapper,
+#demographicContainer .question-wrapper,
+#demographicContainer .question-card-yourself {
+  width: clamp(320px, 94vw, var(--wrapper-max)) !important;
+  margin-inline: auto !important;  /* centra na horizontal */
+  margin-block: 20px !important;   /* 20px em cima/baixo */
+}
+
+/* Se tiveres margens fixas no mapa/intro, também centraliza: */
+.map .map-wrapper,
+#intro2050 .intro-card {
+  margin-inline: auto !important;
+  margin-block: 20px !important;
+  width: clamp(320px, 94vw, var(--wrapper-max)) !important;
+}
 
 
 
