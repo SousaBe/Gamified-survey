@@ -2413,7 +2413,7 @@ html, body { overflow-x: hidden !important; }
 #informConsent .question-wrapper,
 #demographicContainer .question-wrapper,
 #intro2050 .question-wrapper,
-#narrativeIntro .narrative-box,
+#narrativeIntro .question-wrapper,
 #yourself2050 .question-card-yourself{
   width: min(calc(100% - (var(--side-gap) * 2)), var(--wrapper-max)) !important;
   margin: 20px auto !important;       /* centra horizontalmente */
@@ -2466,6 +2466,7 @@ html, body { overflow-x: hidden !important; }
   font-weight: 600;
 }
 .enter-btn.hidden{ display: none; }
+
 
 
 
