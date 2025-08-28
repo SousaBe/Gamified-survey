@@ -2406,23 +2406,32 @@ img { max-width: 100%; height: auto; }
   padding-right: 16px;
 }
 
-.question-wrapper,
-.question-card-yourself,
-.narrative-box,
-.informconsent-screen .question-wrapper,
-.start-screen .content,
-#intro2050 .intro-card,
-.map .map-wrapper,
-.create-yourself .content1,
-.ready-begin .content2,
-.area-screen .question-wrapper,
-.area-quiz .question-wrapper {
-  margin: 50px 50px 50px !important;
-  width: clamp(200px, 94vw, 300px)!important;
+
+/* 1) Impede a página de ganhar scroll horizontal (safety net) */
+html, body { overflow-x: hidden !important; }
+
+/* 2) Avatar gigante → torna-o fluido e razoável */
+.avatar {
+  width: clamp(180px, 40vw, 320px) !important;  /* em vez de 3000px */
+  max-width: 100% !important;
 }
 
+/* 3) Evita que a secção do avatar reserve largura extra */
+.avatar-reveal,
+.avatar-container {
+  overflow-x: hidden !important;
+}
 
-:root { --wrapper-max: 940px; } /* ajusta aqui se quiseres ainda maior */
+/* 4) O mapa pode gerar overflow pela posição absoluta das “casas”.
+      No mobile, corta para não empurrar o layout. */
+@media (max-width: 680px){
+  .map .map-wrapper{
+    overflow-x: hidden !important;
+  }
+}
+
+/* 5) Força o wrapper a ficar CENTRADO e com largura fluida */
+:root { --wrapper-max: 960px; } /* aumenta/ajusta à vontade */
 
 .question-wrapper,
 .question-card-yourself,
@@ -2432,18 +2441,17 @@ img { max-width: 100%; height: auto; }
 #demographicContainer .question-wrapper,
 #demographicContainer .question-card-yourself {
   width: clamp(320px, 94vw, var(--wrapper-max)) !important;
-  margin-inline: auto !important;  /* centra na horizontal */
-  margin-block: 20px !important;   /* 20px em cima/baixo */
+  margin-inline: auto !important;   /* centra horizontalmente */
+  margin-block: 20px !important;    /* 20px em cima/baixo */
 }
 
-/* Se tiveres margens fixas no mapa/intro, também centraliza: */
-.map .map-wrapper,
-#intro2050 .intro-card {
-  margin-inline: auto !important;
-  margin-block: 20px !important;
-  width: clamp(320px, 94vw, var(--wrapper-max)) !important;
+/* 6) Garantir que imagens internas nunca esticam o cartão */
+.question-wrapper img,
+.question-wrapper .card-img img {
+  max-width: 100% !important;
+  height: auto !important;
+  display: block;
 }
-
 
 
 
