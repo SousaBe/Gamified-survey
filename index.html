@@ -103,303 +103,303 @@
 
   <!-- QUESTIONÁRIO DEMOGRÁFICO -->
   <div class="question-wrapper hidden" id="demographicContainer">
-      <img src="Imagens questonário/avatares.png" alt="avatares" class="avatares">
-      <div class="question-content">
-        <div class="answer-col">
-          <!-- Step 1 -->
-          <div class="step" id="step1">
-            <h2>How old are you?</h2>
-            <label><input type="radio" name="age" value="Under 18"> Under 18</label>
-            <label><input type="radio" name="age" value="18–24"> 18–24</label>
-            <label><input type="radio" name="age" value="25–39"> 25–39</label>
-            <label><input type="radio" name="age" value="40–54"> 40–54</label>
-            <label><input type="radio" name="age" value="55–69"> 55–69</label>
-            <label><input type="radio" name="age" value="70+"> 70+</label>
-          </div>
+    <img src="Imagens questonário/avatares.png" alt="avatares" class="avatares">
+    <div class="question-content">
+      <div class="answer-col">
+        <!-- Step 1 -->
+        <div class="step" id="step1">
+          <h2>How old are you?</h2>
+          <label><input type="radio" name="age" value="Under 18"> Under 18</label>
+          <label><input type="radio" name="age" value="18–24"> 18–24</label>
+          <label><input type="radio" name="age" value="25–39"> 25–39</label>
+          <label><input type="radio" name="age" value="40–54"> 40–54</label>
+          <label><input type="radio" name="age" value="55–69"> 55–69</label>
+          <label><input type="radio" name="age" value="70+"> 70+</label>
+        </div>
 
-          <!-- Step 2 -->
-          <div class="step" id="step2">
-            <h2>What is your gender?</h2>
-            <label><input type="radio" name="gender" value="Man"> Man</label>
-            <label><input type="radio" name="gender" value="Woman"> Woman</label>
-            <label><input type="radio" name="gender" value="Other"> Other</label>
-          </div>
+        <!-- Step 2 -->
+        <div class="step" id="step2">
+          <h2>What is your gender?</h2>
+          <label><input type="radio" name="gender" value="Man"> Man</label>
+          <label><input type="radio" name="gender" value="Woman"> Woman</label>
+          <label><input type="radio" name="gender" value="Other"> Other</label>
+        </div>
 
-          <!-- Step 3 -->
-          <div class="step" id="step3">
-            <h2>How do you best describe your diet?</h2>
+        <!-- Step 3 -->
+        <div class="step" id="step3">
+          <h2>How do you best describe your diet?</h2>
           
-            <label class="diet-option">
-              <input type="radio" name="diet" value="Omnivore">
-              <span class="diet-name">Omnivore</span>
-              <span class="diet-note">(includes both plant-based and animal-based foods, with variations that may include dairy and/or eggs)</span>
-            </label>
+          <label class="diet-option">
+            <input type="radio" name="diet" value="Omnivore">
+            <span class="diet-name">Omnivore</span>
+            <span class="diet-note">(includes both plant-based and animal-based foods, with variations that may include dairy and/or eggs)</span>
+          </label>
           
-            <label class="diet-option">
-              <input type="radio" name="diet" value="Flexitarian">
-              <span class="diet-name">Flexitarian</span>
-              <span class="diet-note">(mostly plant-based eating style that allows occasional consumption of meat and animal products)</span>
-            </label>
+          <label class="diet-option">
+            <input type="radio" name="diet" value="Flexitarian">
+            <span class="diet-name">Flexitarian</span>
+            <span class="diet-note">(mostly plant-based eating style that allows occasional consumption of meat and animal products)</span>
+          </label>
           
-            <label class="diet-option">
-              <input type="radio" name="diet" value="Vegetarian">
-              <span class="diet-name">Vegetarian</span>
-              <span class="diet-note">(based on plant foods and excludes meat)</span>
-            </label>
+          <label class="diet-option">
+            <input type="radio" name="diet" value="Vegetarian">
+            <span class="diet-name">Vegetarian</span>
+            <span class="diet-note">(based on plant foods and excludes meat)</span>
+          </label>
           
-            <label class="diet-option">
-              <input type="radio" name="diet" value="Vegan">
-              <span class="diet-name">Vegan</span>
-              <span class="diet-note">(excludes all animal products and focuses entirely on plant-based foods)</span>
-            </label>
+          <label class="diet-option">
+            <input type="radio" name="diet" value="Vegan">
+            <span class="diet-name">Vegan</span>
+            <span class="diet-note">(excludes all animal products and focuses entirely on plant-based foods)</span>
+          </label>
           
-            <label class="diet-option">
-              <input type="radio" name="diet" value="Pescatarian">
-              <span class="diet-name">Pescatarian</span>
-              <span class="diet-note">(primarily plant-based eating pattern that includes fish and seafood, and sometimes dairy and eggs, while excluding red meat and poultry)</span>
-            </label>
+          <label class="diet-option">
+            <input type="radio" name="diet" value="Pescatarian">
+            <span class="diet-name">Pescatarian</span>
+            <span class="diet-note">(primarily plant-based eating pattern that includes fish and seafood, and sometimes dairy and eggs, while excluding red meat and poultry)</span>
+          </label>
           
-            <label class="diet-option">
-              <input type="radio" name="diet" value="Other">
-              <span class="diet-name">Other</span>
-              <input type="text" placeholder="Please specify">
-            </label>
-          </div>
+          <label class="diet-option">
+            <input type="radio" name="diet" value="Other">
+            <span class="diet-name">Other</span>
+            <input type="text" placeholder="Please specify">
+          </label>
+        </div>
 
-          <!-- Step 4 -->
-          <div class="step" id="step4">
-            <h2> Are you allergic/intolerant to any type of food today?</h2>
-            <label><input type="checkbox" name="allergic" value="Milk"> Milk </label>
-            <label><input type="checkbox" name="allergic" value="Eggs"> Eggs </label>
-            <label><input type="checkbox" name="allergic" value="Soybeans"> Soybeans </label>
-            <label><input type="checkbox" name="allergic" value="Wheat"> Wheat or cereals containing gluten </label>
-            <label><input type="checkbox" name="allergic" value="Nuts"> Peanuts and/or tree nuts </label>
-            <label><input type="checkbox" name="allergic" value="Fish"> Fish and/or seafood </label>
-            <label><input type="checkbox" name="allergic" value="None"> I don't have allergies </label>
-            <label><input type="checkbox" name="allergic" value="Other"> Other <input type="text" placeholder="Please specify"></label>
-          </div>
+        <!-- Step 4 -->
+        <div class="step" id="step4">
+          <h2> Are you allergic/intolerant to any type of food today?</h2>
+          <label><input type="checkbox" name="allergic" value="Milk"> Milk </label>
+          <label><input type="checkbox" name="allergic" value="Eggs"> Eggs </label>
+          <label><input type="checkbox" name="allergic" value="Soybeans"> Soybeans </label>
+          <label><input type="checkbox" name="allergic" value="Wheat"> Wheat or cereals containing gluten </label>
+          <label><input type="checkbox" name="allergic" value="Nuts"> Peanuts and/or tree nuts </label>
+          <label><input type="checkbox" name="allergic" value="Fish"> Fish and/or seafood </label>
+          <label><input type="checkbox" name="allergic" value="None"> I don't have allergies </label>
+          <label><input type="checkbox" name="allergic" value="Other"> Other <input type="text" placeholder="Please specify"></label>
+        </div>
 
-          <div class="step" id="step5">
-            <!-- Primeira pergunta com radio buttons -->
-            <h2>What is your nationality?</h2>
-            <label><input type="radio" name="nationality" value="French"> French</label>
-            <label><input type="radio" name="nationality" value="Other"> Other <input type="text" placeholder="Please specify"></label>
+        <div class="step" id="step5">
+          <!-- Primeira pergunta com radio buttons -->
+          <h2>What is your nationality?</h2>
+          <label><input type="radio" name="nationality" value="French"> French</label>
+          <label><input type="radio" name="nationality" value="Other"> Other <input type="text" placeholder="Please specify"></label>
 
-            <!-- Segunda pergunta com input -->
-            <h2>Where do you live today?</h2>
-              <input type="text" name="city" placeholder="Type your city" class="city-input" required>
-          </div>
+          <!-- Segunda pergunta com input -->
+          <h2>Where do you live today?</h2>
+            <input type="text" name="city" placeholder="Type your city" class="city-input" required>
+        </div>
 
-          <!-- Step 6 -->
-          <div class="step" id="step6">
-            <h2>How often do you currently eat the products above?</h2>
-            <p style="margin-bottom: 30px;">1 = Never · 2 = Rarely · 3 = Sometimes · 4 = A lot of times · 5 = Daily</p>
+        <!-- Step 6 -->
+        <div class="step" id="step6">
+          <h2>How often do you currently eat the products above?</h2>
+          <p style="margin-bottom: 30px;">1 = Never · 2 = Rarely · 3 = Sometimes · 4 = A lot of times · 5 = Daily</p>
 
-            <div class="product-grid">
-              <!-- Cornflakes -->
-              <div class="product-item">
-                <img src="Imagens questonário/cornflakes.png" alt="Cornflakes">
-                <div class="rating">
-                  <label>
-                    <input type="radio" name="cornflakes" value="1" />
-                    <span class="rating-bubble">1</span>
-                  </label>
-                  <label>
-                    <input type="radio" name="cornflakes" value="2" />
-                    <span class="rating-bubble">2</span>
-                  </label>
-                  <label>
-                    <input type="radio" name="cornflakes" value="3" />
-                    <span class="rating-bubble">3</span>
-                  </label>
-                  <label>
-                    <input type="radio" name="cornflakes" value="4" />
-                    <span class="rating-bubble">4</span>
-                  </label>
-                  <label>
-                    <input type="radio" name="cornflakes" value="5" />
-                    <span class="rating-bubble">5</span>
-                  </label>
-                </div>
-                <p>Cornflakes</p>
+          <div class="product-grid">
+            <!-- Cornflakes -->
+            <div class="product-item">
+              <img src="Imagens questonário/cornflakes.png" alt="Cornflakes">
+              <div class="rating">
+                <label>
+                  <input type="radio" name="cornflakes" value="1" />
+                  <span class="rating-bubble">1</span>
+                </label>
+                <label>
+                  <input type="radio" name="cornflakes" value="2" />
+                  <span class="rating-bubble">2</span>
+                </label>
+                <label>
+                  <input type="radio" name="cornflakes" value="3" />
+                  <span class="rating-bubble">3</span>
+                </label>
+                <label>
+                  <input type="radio" name="cornflakes" value="4" />
+                  <span class="rating-bubble">4</span>
+                </label>
+                <label>
+                  <input type="radio" name="cornflakes" value="5" />
+                  <span class="rating-bubble">5</span>
+                </label>
               </div>
+              <p>Cornflakes</p>
+            </div>
 
-              <!-- Corn bread -->
-              <div class="product-item">
-                <img src="Imagens questonário/cornbread.png" alt="Corn bread">
-                <div class="rating">
-                  <label>
-                    <input type="radio" name="cornbread" value="1" />
-                    <span class="rating-bubble">1</span>
-                  </label>
-                  <label>
-                    <input type="radio" name="cornbread" value="2" />
-                    <span class="rating-bubble">2</span>
-                  </label>
-                  <label>
-                    <input type="radio" name="cornbread" value="3" />
-                    <span class="rating-bubble">3</span>
-                  </label>
-                  <label>
-                    <input type="radio" name="cornbread" value="4" />
-                    <span class="rating-bubble">4</span>
-                  </label>
-                  <label>
-                    <input type="radio" name="cornbread" value="5" />
-                    <span class="rating-bubble">5</span>
-                  </label>
-                </div>
-                <p>Corn bread</p>
+            <!-- Corn bread -->
+            <div class="product-item">
+              <img src="Imagens questonário/cornbread.png" alt="Corn bread">
+              <div class="rating">
+                <label>
+                  <input type="radio" name="cornbread" value="1" />
+                  <span class="rating-bubble">1</span>
+                </label>
+                <label>
+                  <input type="radio" name="cornbread" value="2" />
+                  <span class="rating-bubble">2</span>
+                </label>
+                <label>
+                  <input type="radio" name="cornbread" value="3" />
+                  <span class="rating-bubble">3</span>
+                </label>
+                <label>
+                  <input type="radio" name="cornbread" value="4" />
+                  <span class="rating-bubble">4</span>
+                </label>
+                <label>
+                  <input type="radio" name="cornbread" value="5" />
+                  <span class="rating-bubble">5</span>
+                </label>
               </div>
+              <p>Corn bread</p>
+            </div>
 
-              <!-- Polenta -->
+            <!-- Polenta -->
               <div class="product-item">
-                <img src="Imagens questonário/polenta.png" alt="Polenta">
-                <div class="rating">
-                  <label>
-                    <input type="radio" name="polenta" value="1" />
-                    <span class="rating-bubble">1</span>
-                  </label>
-                  <label>
-                    <input type="radio" name="polenta" value="2" />
-                    <span class="rating-bubble">2</span>
-                  </label>
-                  <label>
-                    <input type="radio" name="polenta" value="3" />
-                    <span class="rating-bubble">3</span>
-                  </label>
-                  <label>
-                    <input type="radio" name="polenta" value="4" />
-                    <span class="rating-bubble">4</span>
-                  </label>
-                  <label>
-                    <input type="radio" name="polenta" value="5" />
-                    <span class="rating-bubble">5</span>
-                  </label>
-                </div>
-                <p>Polenta</p>
+              <img src="Imagens questonário/polenta.png" alt="Polenta">
+              <div class="rating">
+                <label>
+                  <input type="radio" name="polenta" value="1" />
+                  <span class="rating-bubble">1</span>
+                </label>
+                <label>
+                  <input type="radio" name="polenta" value="2" />
+                  <span class="rating-bubble">2</span>
+                </label>
+                <label>
+                  <input type="radio" name="polenta" value="3" />
+                  <span class="rating-bubble">3</span>
+                </label>
+                <label>
+                  <input type="radio" name="polenta" value="4" />
+                  <span class="rating-bubble">4</span>
+                </label>
+                <label>
+                  <input type="radio" name="polenta" value="5" />
+                  <span class="rating-bubble">5</span>
+                </label>
               </div>
+              <p>Polenta</p>
+            </div>
 
-              <!-- Sweet corn -->
-              <div class="product-item">
-                <img src="Imagens questonário/sweetcorn.png" alt="Sweet corn">
-                <div class="rating">
-                  <label>
-                    <input type="radio" name="sweetcorn" value="1" />
-                    <span class="rating-bubble">1</span>
-                  </label>
-                  <label>
-                    <input type="radio" name="sweetcorn" value="2" />
-                    <span class="rating-bubble">2</span>
-                  </label>
-                  <label>
-                    <input type="radio" name="sweetcorn" value="3" />
-                    <span class="rating-bubble">3</span>
-                  </label>
-                  <label>
-                    <input type="radio" name="sweetcorn" value="4" />
-                    <span class="rating-bubble">4</span>
-                  </label>
-                  <label>
-                    <input type="radio" name="sweetcorn" value="5" />
-                    <span class="rating-bubble">5</span>
-                  </label>
-                </div>
-                <p>Sweet corn</p>
+            <!-- Sweet corn -->
+            <div class="product-item">
+              <img src="Imagens questonário/sweetcorn.png" alt="Sweet corn">
+              <div class="rating">
+                <label>
+                  <input type="radio" name="sweetcorn" value="1" />
+                  <span class="rating-bubble">1</span>
+                </label>
+                <label>
+                  <input type="radio" name="sweetcorn" value="2" />
+                  <span class="rating-bubble">2</span>
+                </label>
+                <label>
+                  <input type="radio" name="sweetcorn" value="3" />
+                  <span class="rating-bubble">3</span>
+                </label>
+                <label>
+                  <input type="radio" name="sweetcorn" value="4" />
+                  <span class="rating-bubble">4</span>
+                </label>
+                <label>
+                  <input type="radio" name="sweetcorn" value="5" />
+                  <span class="rating-bubble">5</span>
+                </label>
               </div>
+              <p>Sweet corn</p>
+            </div>
 
-              <!-- Corn tortillas -->
-              <div class="product-item">
-                <img src="Imagens questonário/corntortillas.png" alt="Corn tortillas">
-                <div class="rating">
-                  <label>
-                    <input type="radio" name="tortillas" value="1" />
-                    <span class="rating-bubble">1</span>
-                  </label>
-                  <label>
-                    <input type="radio" name="tortillas" value="2" />
-                    <span class="rating-bubble">2</span>
-                  </label>
-                  <label>
-                    <input type="radio" name="tortillas" value="3" />
-                    <span class="rating-bubble">3</span>
-                  </label>
-                  <label>
-                    <input type="radio" name="tortillas" value="4" />
-                    <span class="rating-bubble">4</span>
-                  </label>
-                  <label>
-                    <input type="radio" name="tortillas" value="5" />
-                    <span class="rating-bubble">5</span>
-                  </label>
-                </div>
-                <p>Corn tortillas</p>
+            <!-- Corn tortillas -->
+            <div class="product-item">
+              <img src="Imagens questonário/corntortillas.png" alt="Corn tortillas">
+              <div class="rating">
+                <label>
+                  <input type="radio" name="tortillas" value="1" />
+                  <span class="rating-bubble">1</span>
+                </label>
+                <label>
+                  <input type="radio" name="tortillas" value="2" />
+                  <span class="rating-bubble">2</span>
+                </label>
+                <label>
+                  <input type="radio" name="tortillas" value="3" />
+                  <span class="rating-bubble">3</span>
+                </label>
+                <label>
+                  <input type="radio" name="tortillas" value="4" />
+                  <span class="rating-bubble">4</span>
+                </label>
+                <label>
+                  <input type="radio" name="tortillas" value="5" />
+                  <span class="rating-bubble">5</span>
+                </label>
               </div>
+              <p>Corn tortillas</p>
+            </div>
 
-              <!-- Nachos -->
-              <div class="product-item">
-                <img src="Imagens questonário/nachos.png" alt="Nachos">
-                <div class="rating">
-                  <label>
-                    <input type="radio" name="nachos" value="1" />
-                    <span class="rating-bubble">1</span>
-                  </label>
-                  <label>
-                    <input type="radio" name="nachos" value="2" />
-                    <span class="rating-bubble">2</span>
-                  </label>
-                  <label>
-                    <input type="radio" name="nachos" value="3" />
-                    <span class="rating-bubble">3</span>
-                  </label>
-                  <label>
-                    <input type="radio" name="nachos" value="4" />
-                    <span class="rating-bubble">4</span>
-                  </label>
-                  <label>
-                    <input type="radio" name="nachos" value="5" />
-                    <span class="rating-bubble">5</span>
-                  </label>
-                </div>
-                <p>Nachos</p>
+            <!-- Nachos -->
+            <div class="product-item">
+              <img src="Imagens questonário/nachos.png" alt="Nachos">
+              <div class="rating">
+                <label>
+                  <input type="radio" name="nachos" value="1" />
+                  <span class="rating-bubble">1</span>
+                </label>
+                <label>
+                  <input type="radio" name="nachos" value="2" />
+                  <span class="rating-bubble">2</span>
+                </label>
+                <label>
+                  <input type="radio" name="nachos" value="3" />
+                  <span class="rating-bubble">3</span>
+                </label>
+                <label>
+                  <input type="radio" name="nachos" value="4" />
+                  <span class="rating-bubble">4</span>
+                </label>
+                <label>
+                  <input type="radio" name="nachos" value="5" />
+                  <span class="rating-bubble">5</span>
+                </label>
               </div>
+              <p>Nachos</p>
+            </div>
 
-              <!-- Popcorn -->
-              <div class="product-item">
-                <img src="Imagens questonário/popcorn.png" alt="Popcorn">
-                <div class="rating">
-                  <label>
-                    <input type="radio" name="popcorn" value="1" />
-                    <span class="rating-bubble">1</span>
-                  </label>
-                  <label>
-                    <input type="radio" name="popcorn" value="2" />
-                    <span class="rating-bubble">2</span>
-                  </label>
-                  <label>
-                    <input type="radio" name="popcorn" value="3" />
-                    <span class="rating-bubble">3</span>
-                  </label>
-                  <label>
-                    <input type="radio" name="popcorn" value="4" />
-                    <span class="rating-bubble">4</span>
-                  </label>
-                  <label>
-                    <input type="radio" name="popcorn" value="5" />
-                    <span class="rating-bubble">5</span>
-                  </label>
-                </div>
-                <p>Popcorn</p>
+            <!-- Popcorn -->
+            <div class="product-item">
+              <img src="Imagens questonário/popcorn.png" alt="Popcorn">
+              <div class="rating">
+                <label>
+                  <input type="radio" name="popcorn" value="1" />
+                  <span class="rating-bubble">1</span>
+                </label>
+                <label>
+                  <input type="radio" name="popcorn" value="2" />
+                  <span class="rating-bubble">2</span>
+                </label>
+                <label>
+                  <input type="radio" name="popcorn" value="3" />
+                  <span class="rating-bubble">3</span>
+                </label>
+                <label>
+                  <input type="radio" name="popcorn" value="4" />
+                  <span class="rating-bubble">4</span>
+                </label>
+                <label>
+                  <input type="radio" name="popcorn" value="5" />
+                  <span class="rating-bubble">5</span>
+                </label>
               </div>
+              <p>Popcorn</p>
             </div>
           </div>
-        </div>
+         </div>
+      </div>
         
 
-        <div class="button-container">
-          <button onclick="nextStep()">Next!</button>
-        </div>
+      <div class="button-container">
+        <button onclick="nextStep()">Next!</button>
       </div>
+    </div>
   </div>
 
 <!-- INTRODUÇÃO AO FUTURO 2050 -->
@@ -541,6 +541,9 @@
     <div class="question-wrapper map-wrapper">
       <!-- Avatar que se mexe -->
       <img id="mapAvatar" class="map-avatar" alt="Your avatar" />
+      <button id="enterAreaBtn" class="enter-btn hidden" type="button">
+        Click to explore this area
+      </button>
   </section>
 
   
@@ -1694,6 +1697,7 @@
   
 </body>
 </html>
+
 
 
 
