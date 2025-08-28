@@ -123,7 +123,6 @@ button:hover { background-color: #d47b54; animation: none; }
   font-size: clamp(1rem, 2vw, 1.2rem);
   line-height: 1.5;
   text-align: center;
-  margin: 0 20px 40px;
 }
 
 .areaIntroduction h2 {
@@ -2475,6 +2474,7 @@ html, body { overflow-x: hidden !important; }
   font-weight: 600;
 }
 .enter-btn.hidden{ display: none; }
+
 
 
 
