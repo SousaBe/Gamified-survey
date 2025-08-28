@@ -340,7 +340,7 @@ button:hover { background-color: #d47b54; animation: none; }
   transform-origin: center;
   /* mantém o teu float padrão aqui, caso apareça sem reveal */
   animation: float 2.2s ease-in-out infinite;
-  width: 700px;
+  width: 900px;
 }
 
 .avatar.reveal {
@@ -350,7 +350,6 @@ button:hover { background-color: #d47b54; animation: none; }
 }
 
 .avatar-container { text-align: center; margin-top: 20px; }
-.avatar { width: clamp(160px, 28vw, 320px); animation: float 2.2s ease-in-out infinite; }
 
 .avatar-reveal {
   display: flex;
@@ -2310,7 +2309,7 @@ img { max-width: 100%; height: auto; }
 
 /* --- Climate intro: estilo legível e com ênfase verde --- */
 #area-climate .areaIntroduction{
-  --climate-green: #2e7d32; /* <- ajusta para o mesmo verde do teu título, se for diferente */
+  --climate-green: #92bc3d; /* <- ajusta para o mesmo verde do teu título, se for diferente */
 }
 
 #area-climate .climate-intro-copy .lead{
@@ -2474,6 +2473,7 @@ html, body { overflow-x: hidden !important; }
   font-weight: 600;
 }
 .enter-btn.hidden{ display: none; }
+
 
 
 
