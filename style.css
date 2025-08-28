@@ -352,7 +352,7 @@ button:hover { background-color: #d47b54; animation: none; }
 }
 
 .avatar-container { text-align: center; margin-top: 20px; }
-.avatar { width: 3000px; animation:  2s ease-in-out infinite; }
+.avatar { width: clamp(160px, 28vw, 320px); animation: float 2.2s ease-in-out infinite; }
 
 .avatar-reveal {
   display: flex;
@@ -407,7 +407,7 @@ button:hover { background-color: #d47b54; animation: none; }
   transform: translateX(-50%);
 }
 
-.hidden { display: none; }
+
 .house.active img{
   animation: pulse 0.9s ease-in-out 2;
   transform-origin: center;
@@ -1444,7 +1444,7 @@ img { max-width: 100%; height: auto; }
 
 
 /* perguntas (reuso do estilo das áreas) */
-area-maize .mc-list{ display:grid; gap:10px; margin-top:10px; }
+#area-maize .mc-list{ display:grid; gap:10px; margin-top:10px; }
 #area-maize .mc{ display:flex; gap:8px; align-items:flex-start; padding:10px 12px; border:1px solid #e6e6e6; border-radius:12px; background:#fff; }
 .final-avatars{ display:flex; gap:14px; justify-content:center; align-items:center; margin-bottom:10px; }
 .trophy{ width:60px; height:60px; fill: var(--accent, #35a68a); filter: drop-shadow(0 4px 8px rgba(0,0,0,.15)); }
@@ -2231,18 +2231,6 @@ area-maize .mc-list{ display:grid; gap:10px; margin-top:10px; }
   line-height: 1.3;
 }
 
-/* Map dentro de question-wrapper com imagem de fundo */
-.map .map-wrapper{
-  position: relative;
-  min-height: 66vh;                 /* altura confortável */
-  padding: 16px;                    /* espaço interno do wrapper */
-  border-radius: 20px;              /* segue o look dos cartões */
-  background: url("Imagens questonário/backgroundmapa.png") center/cover no-repeat;
-  box-shadow: 0 10px 30px rgba(0,0,0,.10);
-  overflow: hidden;                 /* recorta à curvatura; mude para visible se precisar */
-  margin: 20px 20px;
-}
-
 /* Garantir que elementos absolutos posicionam dentro do wrapper */
 .map .map-wrapper .map-avatar,
 .map .map-wrapper .house,
@@ -2418,5 +2406,10 @@ area-maize .mc-list{ display:grid; gap:10px; margin-top:10px; }
   padding-right: 16px;
 }
 
+.question-wrapper,
+.question-card-yourself,
+.narrative-box {
+  margin: 20px 20px 20px !important;
+}
 
 
