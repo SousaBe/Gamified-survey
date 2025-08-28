@@ -394,30 +394,6 @@ button:hover { background-color: #d47b54; animation: none; }
 
 }
 
-/* Casas e bandeira: posiciona por % (define top no teu CSS) */
-.house {
-  position: absolute;
-  left: 60%;
-  transform: translateX(-50%);
-}
-
-.final-flag {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-
-.house.active img{
-  animation: pulse 0.9s ease-in-out 2;
-  transform-origin: center;
-}
-
-@keyframes pulse{
-  0%,100% { transform: scale(1); }
-  50%     { transform: scale(1.06); } /* ajusta o “puff” aqui */
-}
-
 .explore-btn{
   background: var(--brand); color:#fff; border:0; border-radius:50px;
   padding:.3rem 1rem; font-weight:500; box-shadow:0 8px 20px rgba(0,0,0,.15);
@@ -439,31 +415,6 @@ button:hover { background-color: #d47b54; animation: none; }
   box-shadow: var(--shadow);
 }
 .final-continue:hover{ background:#c99b34; }
-
-/* Coordenadas (ajusta para o teu background) */
-#house-climate { top: 65%;}
-#house-nutrition { top: 45%; }
-#house-culture { top: 27%; }
-#finalFlag { top: -6%;  width: 200px !important; height: auto !important;}
-
-/* força o tamanho só da casa do clima */
-#gameMap #house-climate > img{
-  width: 350px !important;  /* ajusta o valor à tua medida */
-  height: auto;
-  max-width: none !important;
-}
-
-#gameMap #house-nutrition > img{
-  width: 320px !important;  /* ajusta o valor à tua medida */
-  height: auto;
-  max-width: none !important;
-}
-
-#gameMap #house-culture > img{
-  width: 280px !important;  /* ajusta o valor à tua medida */
-  height: auto;
-  max-width: none !important;
-}
 
 
 /* ==========================================================================
@@ -2483,6 +2434,7 @@ html, body { overflow-x: hidden !important; }
   left: 50% !important;
   transform: translateX(-50%) !important;
 }
+
 
 
 
