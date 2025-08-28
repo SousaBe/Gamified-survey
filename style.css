@@ -2418,8 +2418,9 @@ img { max-width: 100%; height: auto; }
 .area-screen .question-wrapper,
 .area-quiz .question-wrapper {
   margin: 30px 30px 30px !important;
-  width: clamp(400px, 94vw, 900px) !important;
+  width: 500px !important;
 }
+
 
 
 
