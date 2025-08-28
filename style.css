@@ -2442,6 +2442,60 @@ html, body { overflow-x: hidden !important; }
   transform: translateX(-50%) !important;
 }
 
+/* ============================================================
+   UNIFICAR VISUAL DAS CAIXAS (igual ao Informed Consent)
+   ============================================================ */
+
+/* Se já definiste --wrapper-max acima, usa a que tens (1040px).
+   Aqui só usamos essa variável para garantir o mesmo limite.   */
+
+/* 1) Mesmas medidas/estilo para todas as caixas-alvo */
+#informConsent .question-wrapper,
+#informConsent .question-card-yourself,
+#demographicContainer .question-wrapper,
+#demographicContainer .question-card-yourself,
+#intro2050 .question-wrapper,
+#intro2050 .intro-card,              /* torna a intro igual à caixa branca */
+#yourself2050 .question-wrapper,
+#yourself2050 .question-card-yourself,
+.create-yourself .question-card-yourself,
+.ready-begin .question-card-yourself {
+  width: min(calc(100% - 40px), var(--wrapper-max)) !important;
+  max-width: var(--wrapper-max) !important;
+  margin: 30px auto !important;              /* centro horizontal consistente */
+  padding: 24px !important;                  /* MESMO padding em todos */
+  background: #fff !important;               /* igual ao consent */
+  border-radius: 20px !important;
+  box-shadow: var(--shadow) !important;
+  left: auto !important;
+  right: auto !important;
+  transform: none !important;
+  overflow: hidden;                           /* evita texto “sair” da caixa */
+}
+
+/* 2) Garante que os ecrãs “container” realmente centram os filhos */
+#informConsent:not(.hidden),
+#demographicContainer:not(.hidden),
+#intro2050:not(.hidden){
+  display: grid;
+  justify-items: center !important;
+  padding-inline: 10px !important;           /* usa o teu --side-gap se preferires */
+}
+
+/* 3) Para o texto não colar às margens, manter um limite interno confortável
+      (não “espreme” inputs/botões). Só centra blocos de texto. */
+#informConsent .question-wrapper > p,
+#informConsent .question-wrapper > div.consentcontent,
+#demographicContainer .question-wrapper > p,
+#intro2050 .question-wrapper > p,
+#yourself2050 .question-wrapper > p {
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* 4) Defender contra overflow horizontal que possa “descentrar” no iPhone */
+html, body { overflow-x: hidden !important; }
 
 
 
@@ -2467,6 +2521,7 @@ html, body { overflow-x: hidden !important; }
   font-weight: 600;
 }
 .enter-btn.hidden{ display: none; }
+
 
 
 
