@@ -2407,7 +2407,7 @@ html, body { overflow-x: hidden !important; }
 
 /* 2) Forçar o(s) wrapper(s) desses ecrãs a serem fluidos e centrados */
 #informConsent .question-wrapper,
-#demographicContainer .question-wrapper,
+#demographicContainer .question-content,
 #intro2050 .question-wrapper intro-card,
 #narrativeIntro .narrative-box,
 #yourself2050 .question-card-yourself{
@@ -2462,6 +2462,7 @@ html, body { overflow-x: hidden !important; }
   font-weight: 600;
 }
 .enter-btn.hidden{ display: none; }
+
 
 
 
