@@ -224,6 +224,27 @@ function validateStep(stepEl) {
 /* ==========================================================================
    4) AVATAR FLOW & MAP
    ========================================================================== */
+const AREA_LABEL = {
+  climate: 'Climate & Environment',
+  nutrition: 'Nutritional Health',
+  culture: 'Food Culture'
+};
+
+function hideEnterButton(){
+  const b = document.getElementById('enterAreaBtn');
+  if (b) b.classList.add('hidden');
+}
+
+function showEnterButtonForCurrentArea(){
+  const key = AREA_ORDER[currentAreaIndex];
+  const b = document.getElementById('enterAreaBtn');
+  if (!b) return;
+  b.textContent = 'Click to enter this area';
+  b.setAttribute('aria-label', `Enter ${AREA_LABEL[key] || key} area`);
+  b.onclick = () => window.startArea(key);
+  b.classList.remove('hidden');
+}
+
 function readytobegin(event) {
   if (event && typeof event.preventDefault === 'function') event.preventDefault();
 
@@ -269,15 +290,17 @@ window.showMap = function(perfilChosen, srcOverride){
   avatar.src = srcOverride || AVATAR_SRC_BY_PERFIL[perfilChosen] || AVATAR_SRC_BY_PERFIL.rooted;
 
   currentAreaIndex = 0;
-  document.querySelectorAll('.explore-btn').forEach(b => b.classList.add('hidden'));
-  document.querySelectorAll('.house').forEach(h => h.classList.remove('active'));
+  hideEnterButton();
 
   avatar.style.top = TOPS.start + '%';
   avatar.style.transitionProperty = 'top';
   avatar.style.transitionDuration = '1.2s';
   void avatar.offsetWidth;
 
-  const onEnd = () => { avatar.removeEventListener('transitionend', onEnd); unlockCurrentArea(); };
+  const onEnd = () => {
+    avatar.removeEventListener('transitionend', onEnd);
+    unlockCurrentArea(); // mostra o botão
+  };
   avatar.addEventListener('transitionend', onEnd, { once:true });
 
   avatar.style.top = TOPS.climate + '%';
@@ -313,22 +336,22 @@ window.startMap = function() {
   avatar.src = AVATAR_SRC_BY_PERFIL[window.selectedPerfil2050] || AVATAR_SRC_BY_PERFIL.rooted;
 
   currentAreaIndex = 0;
-  $$('.explore-btn').forEach(b => b.classList.add('hidden'));
-  $$('.house').forEach(h => h.classList.remove('active'));
+  hideEnterButton();
 
   show($('#gameMap'));
   avatar.style.top = TOPS.start + '%';
 
-  const onEnd = () => { avatar.removeEventListener('transitionend', onEnd); unlockCurrentArea(); };
+  const onEnd = () => {
+    avatar.removeEventListener('transitionend', onEnd);
+    unlockCurrentArea(); // mostra o botão
+  };
   avatar.addEventListener('transitionend', onEnd, { once:true });
   requestAnimationFrame(() => { avatar.style.top = TOPS.climate + '%'; });
 };
 
-function unlockCurrentArea() {
-  const key = AREA_ORDER[currentAreaIndex];
-  const house = document.querySelector(`.house[data-area="${key}"]`);
-  house?.classList.add('active');
-  house?.querySelector('.explore-btn')?.classList.remove('hidden');
+function unlockCurrentArea(){
+  // Com o mapa estático, basta mostrar o CTA global
+  showEnterButtonForCurrentArea();
 }
 
 window.startArea = function(key) {
@@ -336,23 +359,21 @@ window.startArea = function(key) {
   show($(`#area-${key}`));
 };
 
-window.completeArea = function(key) {
+window.completeArea = function(key){
   hide($(`#area-${key}`));
   show($('#gameMap'));
-
-  const house = document.querySelector(`.house[data-area="${key}"]`);
-  house?.classList.remove('active');
-  house?.querySelector('.explore-btn')?.classList.add('hidden');
 
   const idx = AREA_ORDER.indexOf(key);
   const nextKey = AREA_ORDER[idx + 1];
   const avatar = $('#mapAvatar');
 
+  hideEnterButton(); // esconder enquanto anima
+
   const goNext = () => {
     avatar.removeEventListener('transitionend', goNext);
     if (nextKey) {
       currentAreaIndex = idx + 1;
-      unlockCurrentArea();
+      unlockCurrentArea();      // volta a mostrar o CTA
     } else {
       const btn = document.getElementById('finalContinueBtn');
       show(btn);
@@ -2216,6 +2237,7 @@ window.submitAllAndFinish = async function(){
   }
 
 };
+
 
 
 
