@@ -2435,6 +2435,33 @@ html, body { overflow-x: hidden !important; }
   transform: translateX(-50%) !important;
 }
 
+/* Mapa passa a ser uma imagem fixa */
+.map .map-wrapper{
+  background: url("Imagens questonário/backgroundmapaq.png") center/cover no-repeat !important;
+}
+
+/* Se as casas antigas ainda existirem no HTML, esconde-as */
+#gameMap .house,
+#gameMap .explore-btn{ display:none !important; }
+
+/* Botão global para entrar na área */
+.enter-btn{
+  position: absolute;
+  left: 50%;
+  bottom: 16px;
+  transform: translateX(-50%);
+  background: var(--brand);
+  color: #fff;
+  border: 0;
+  padding: 12px 20px;
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  z-index: 9999;
+  font-weight: 600;
+}
+.enter-btn.hidden{ display: none; }
+
+
 
 
 
