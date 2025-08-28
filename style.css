@@ -2399,10 +2399,10 @@ html, body { overflow-x: hidden !important; }
 }
 
 /* 1) Tornar os ecrãs “centradores” dos seus filhos */
-#informConsent,
-#demographicContainer{
-  display: grid !important;
-  justify-items: center !important;   /* centra filhos na horizontal */
+#informConsent:not(.hidden),
+#demographicContainer:not(.hidden){
+  display: grid;              /* sem !important */
+  justify-items: center !important;
   padding-inline: var(--side-gap) !important;
 }
 
@@ -2442,14 +2442,30 @@ html, body { overflow-x: hidden !important; }
   transform: translateX(-50%) !important;
 }
 
-#informConsent:not(.hidden),
-#demographicContainer:not(.hidden){
-  display: grid;              /* sem !important */
-  justify-items: center !important;
-  padding-inline: var(--side-gap) !important;
+
+
+/* Consent – impedir que o texto saia das caixas */
+.consent-ataglance,
+.consent-ataglance > * { 
+  min-width: 0;                /* filhos do grid podem encolher */
 }
 
+.consent-ataglance p,
+.consent-ataglance li,
+.consent-ataglance div {
+  white-space: normal;
+  overflow-wrap: anywhere;     /* quebra onde for preciso */
+  word-break: break-word;      /* fallback */
+  hyphens: auto;               /* hifenização (suportada em iOS) */
+}
 
+/* (extra de segurança) qualquer “card” dentro do consent */
+.consentcontent .badge-block,
+.consentcontent details,
+.consentcontent .intro-card,
+.consentcontent .question-wrapper * {
+  max-width: 100%;
+}
 
 
 /* Se as casas antigas ainda existirem no HTML, esconde-as */
@@ -2472,6 +2488,7 @@ html, body { overflow-x: hidden !important; }
   font-weight: 600;
 }
 .enter-btn.hidden{ display: none; }
+
 
 
 
