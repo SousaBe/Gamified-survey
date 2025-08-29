@@ -2453,7 +2453,8 @@ html, body { overflow-x: hidden !important; }
   box-shadow: var(--shadow);
   font-weight: 600;
   left: 50% !important;
-  transform: translateX(-50%);  
+  transform: translateX(-50%);7
+  animation: none !important;
 
 }
 
@@ -2468,6 +2469,7 @@ html, body { overflow-x: hidden !important; }
 #finalContinueBtn.hidden{
   display: none !important;
 }
+
 
 
 
