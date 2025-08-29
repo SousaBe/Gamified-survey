@@ -2445,7 +2445,6 @@ html, body { overflow-x: hidden !important; }
   position: fixed !important;                 /* relativo ao viewport */
   top: max(12px, env(safe-area-inset-top));   /* respeita notch iOS */
   left: 50%;
-  transform: translateX(-50%);
   z-index: 99999;                             /* acima do mapa/avatar */
   background: var(--brand);
   color: #fff;
@@ -2454,6 +2453,7 @@ html, body { overflow-x: hidden !important; }
   border-radius: 24px;
   box-shadow: var(--shadow);
   font-weight: 600;
+
 }
 
 /* estados/hover a teu gosto */
@@ -2467,6 +2467,7 @@ html, body { overflow-x: hidden !important; }
 #finalContinueBtn.hidden{
   display: none !important;
 }
+
 
 
 
