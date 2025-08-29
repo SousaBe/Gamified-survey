@@ -1391,17 +1391,17 @@ img { max-width: 100%; height: auto; }
 }
 
 #intro2050 .intro2050-text p{
-   font-size: 22px;         /* caso o conteúdo cresça em screens pequenos */
+   font-size: 16px;         /* caso o conteúdo cresça em screens pequenos */
 }
 
 
 #intro2050 .intro2050-text h1{
-   font-size: 40px;         /* caso o conteúdo cresça em screens pequenos */
+   font-size: 30px;         /* caso o conteúdo cresça em screens pequenos */
 }
 
 
 #intro2050 .intro2050-text h1 strong{
-   font-size: 80px;         /* caso o conteúdo cresça em screens pequenos */
+   font-size: 50px;         /* caso o conteúdo cresça em screens pequenos */
 }
 
 /* Wrapper castanho clarinho para a intro */
@@ -2471,6 +2471,7 @@ html, body { overflow-x: hidden !important; }
 #finalContinueBtn.hidden{
   display: none !important;
 }
+
 
 
 
