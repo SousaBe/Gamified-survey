@@ -239,7 +239,7 @@ function showEnterButtonForCurrentArea(){
   const key = AREA_ORDER[currentAreaIndex];
   const b = document.getElementById('enterAreaBtn');
   if (!b) return;
-  b.textContent = 'Click to enter this area';
+  b.textContent = 'Click to enter this area!';
   b.setAttribute('aria-label', `Enter ${AREA_LABEL[key] || key} area`);
   b.onclick = () => window.startArea(key);
   b.classList.remove('hidden');
@@ -2239,6 +2239,7 @@ window.submitAllAndFinish = async function(){
   }
 
 };
+
 
 
 
