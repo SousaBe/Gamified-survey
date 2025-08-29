@@ -205,6 +205,7 @@ button:hover { background-color: #d47b54; animation: none; }
   text-align: center;   /* centra o texto */
   z-index: 10;
   margin: 0 auto;       /* centra o bloco */
+   
 }
 
 #intro2050 .intro2050-container{
@@ -222,6 +223,11 @@ button:hover { background-color: #d47b54; animation: none; }
   width: 100%;
   max-width: none;                   /* ocupa a largura do ecrã */
   margin: 30px auto 0 !important;    /* espaço acima e centrado */
+}
+
+#intro2050 .start-game-button{
+  display: block;           /* força quebra de linha */
+  margin: 8px auto 0;       /* centra */
 }
 
 /* Botão normal (sem mexer em cores de texto) */
@@ -1436,6 +1442,9 @@ img { max-width: 100%; height: auto; }
   margin: 0 auto;
   display: flex;
   justify-content: center;
+  flex-direction: column;   /* um em cima do outro */
+  align-items: center;      /* centra horizontalmente */
+  gap: 12px;                /* espaço entre itens */
 }
 
 
@@ -2475,6 +2484,7 @@ html, body { overflow-x: hidden !important; }
 #nutritionHealthierExplainWrap:focus-within {
   border-color: #7b9db7;
 }
+
 
 
 
