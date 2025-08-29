@@ -379,16 +379,15 @@ button:hover { background-color: #d47b54; animation: none; }
 }
 
 /* Avatar: centrado no X e controlado por top:% */
-.map-avatar {
+.map-avatar{
   position: absolute;
-  left: 40%;
-  transform: translate(-50%, -100%); /* ancora pelo “pé” */
-  width: clamp(300px, 22vw, 400px); ;
-  top: 100%;                         /* começa no fundo */
-  transition: top 1.2s ease-in-out;  /* anima subir */
+  left: 50%;
+  transform: translate(-50%, -100%);
+  width: clamp(300px, 22vw, 400px);
+  top: 100%;
+  transition: top 1.2s ease-in-out;   /* mantém a animação de subida */
   pointer-events: none;
   z-index: 9000;
-
 }
 
 .explore-btn{
@@ -2227,32 +2226,23 @@ img { max-width: 100%; height: auto; }
 }
 
 /* 2) O question-wrapper do mapa com a imagem de mapa e MAIS ALTO */
+/* caixa do MAPA (mais larga e centrada) */
 .map .map-wrapper{
   position: relative;
-  width: clamp(280px, 80vw, 1300px);
-  margin: 80px auto;
+  /* AUMENTA a largura fluida e o limite máximo */
+  width: clamp(320px, 92vw, 1400px);   /* antes: 80vw, 1300px */
+  margin: 60px auto;                   /* centra horizontalmente */
   background: url("Imagens questonário/backgroundmapa.png") center/cover no-repeat;
-  padding: clamp(10px, 5vw, 20px);
+  padding: clamp(10px, 5vw, 24px);
   border-radius: 20px;
   box-shadow: var(--shadow);
-  justify-items: center;
-  justify-content: center;
-  justify-self: center;
-  z-index: 1;
-  overflow: hidden;
   display: grid;
+  place-items: center;
+  overflow: visible;                    /* para não cortar nada */
   color: var(--text-brown);
   font-size: clamp(1rem, 2vw, 1.2rem);
-  line-height: 1.5;
-  text-align: left;
-  margin: 50px 50px 50px;
-  align-items: center;
-  text-align: center;
-  position: relative;
-  padding: 20px;
-  /* imagem do cartão do mapa */
-  overflow: visible; /* evita cortar elementos posicionados */
 }
+
 
 /* Em ecrãs mais pequenos, ainda um pouco mais alto */
 @media (max-width: 780px){
@@ -2476,6 +2466,33 @@ html, body { overflow-x: hidden !important; }
 }
 .enter-btn.hidden{ display: none; }
 
+#enterAreaBtn,
+#finalContinueBtn{
+  position: fixed !important;                 /* relativo ao viewport */
+  top: max(12px, env(safe-area-inset-top));   /* respeita notch iOS */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 99999;                             /* acima do mapa/avatar */
+  background: var(--brand);
+  color: #fff;
+  border: 0;
+  padding: 12px 20px;
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  font-weight: 600;
+}
+
+/* estados/hover a teu gosto */
+#enterAreaBtn:hover,
+#finalContinueBtn:hover{
+  background: #c99b34;
+}
+
+/* quando escondidos pela tua função hideEnterButton() */
+#enterAreaBtn.hidden,
+#finalContinueBtn.hidden{
+  display: none !important;
+}
 
 
 
