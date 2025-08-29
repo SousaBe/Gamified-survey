@@ -2452,8 +2452,8 @@ html, body { overflow-x: hidden !important; }
   border-radius: 24px;
   box-shadow: var(--shadow);
   font-weight: 600;
-  top: 50% !important;
   left: 50% !important;
+  transform: translateX(-50%);  
 
 }
 
@@ -2468,6 +2468,7 @@ html, body { overflow-x: hidden !important; }
 #finalContinueBtn.hidden{
   display: none !important;
 }
+
 
 
 
