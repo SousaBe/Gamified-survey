@@ -2444,7 +2444,6 @@ html, body { overflow-x: hidden !important; }
 #finalContinueBtn{
   position: fixed !important;                 /* relativo ao viewport */
   top: max(12px, env(safe-area-inset-top));   /* respeita notch iOS */
-  left: 50%;
   z-index: 99999;                             /* acima do mapa/avatar */
   background: var(--brand);
   color: #fff;
@@ -2469,6 +2468,7 @@ html, body { overflow-x: hidden !important; }
 #finalContinueBtn.hidden{
   display: none !important;
 }
+
 
 
 
