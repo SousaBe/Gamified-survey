@@ -2472,6 +2472,9 @@ html, body { overflow-x: hidden !important; }
   display: none !important;
 }
 
+#nutritionHealthierExplainWrap:focus-within {
+  border-color: #7b9db7;
+}
 
 
 
