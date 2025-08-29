@@ -243,6 +243,7 @@ function showEnterButtonForCurrentArea(){
   b.setAttribute('aria-label', `Enter ${AREA_LABEL[key] || key} area`);
   b.onclick = () => window.startArea(key);
   b.classList.remove('hidden');
+  b.focus?.();
 }
 
 function readytobegin(event) {
@@ -2237,6 +2238,7 @@ window.submitAllAndFinish = async function(){
   }
 
 };
+
 
 
 
