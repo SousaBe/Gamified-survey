@@ -397,20 +397,7 @@ button:hover { background-color: #d47b54; animation: none; }
 
 .explore-btn:hover{ background:#c99b34; }
 
-.final-continue{
-  position: absolute;
-  left: 35%;
-  top: 8%;                 /* aparece perto da bandeira (que está a ~6%) */
-  z-index: 10;              /* acima do avatar/casas */
-  background: var(--brand-2);
-  color: #fff;
-  padding: 12px 28px;
-  border: 0;
-  border-radius: 28px;
-  font-weight: 500;
-  box-shadow: var(--shadow);
-  font-size: 30px;
-}
+
 .final-continue:hover{ background:#ed451d; }
 
 
@@ -2450,20 +2437,7 @@ html, body { overflow-x: hidden !important; }
 #gameMap .explore-btn{ display:none !important; }
 
 /* Botão global para entrar na área */
-.enter-btn{
-  position: absolute;
-  left: 50%;
-  bottom: 16px;
-  transform: translateX(-50%);
-  background: var(--brand);
-  color: #fff;
-  border: 0;
-  padding: 12px 20px;
-  border-radius: 24px;
-  box-shadow: var(--shadow);
-  z-index: 9999;
-  font-weight: 600;
-}
+
 .enter-btn.hidden{ display: none; }
 
 #enterAreaBtn,
@@ -2493,6 +2467,7 @@ html, body { overflow-x: hidden !important; }
 #finalContinueBtn.hidden{
   display: none !important;
 }
+
 
 
 
