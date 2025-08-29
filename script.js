@@ -2096,6 +2096,7 @@ function buildSurveyPayload(){
       tortillas:  getRadioVal('tortillas',  demoRoot),
       nachos:     getRadioVal('nachos',     demoRoot),
       popcorn:    getRadioVal('popcorn',    demoRoot),
+      corncake:    getRadioVal('corncake',    demoRoot),
     },
   };
 
@@ -2238,6 +2239,7 @@ window.submitAllAndFinish = async function(){
   }
 
 };
+
 
 
 
