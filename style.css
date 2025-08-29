@@ -381,7 +381,7 @@ button:hover { background-color: #d47b54; animation: none; }
 /* Avatar: centrado no X e controlado por top:% */
 .map-avatar{
   position: absolute;
-  left: 50%;
+  left: 40%;
   transform: translate(-50%, -100%);
   width: clamp(300px, 22vw, 400px);
   top: 100%;
@@ -2467,6 +2467,7 @@ html, body { overflow-x: hidden !important; }
 #finalContinueBtn.hidden{
   display: none !important;
 }
+
 
 
 
