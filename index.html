@@ -392,6 +392,33 @@
                 </div>
                 <p>Popcorn</p>
               </div>
+
+              <div class="product-item">
+                <img src="Imagens questonário/puffedcorncakes.png" alt="Puffed corn cake">
+                <div class="rating">
+                  <label>
+                    <input type="radio" name="corncakes" value="1" />
+                    <span class="rating-bubble">1</span>
+                  </label>
+                  <label>
+                    <input type="radio" name="corncakes" value="2" />
+                    <span class="rating-bubble">2</span>
+                  </label>
+                  <label>
+                    <input type="radio" name="corncakes" value="3" />
+                    <span class="rating-bubble">3</span>
+                  </label>
+                  <label>
+                    <input type="radio" name="corncakes" value="4" />
+                    <span class="rating-bubble">4</span>
+                  </label>
+                  <label>
+                    <input type="radio" name="corncakes" value="5" />
+                    <span class="rating-bubble">5</span>
+                  </label>
+                </div>
+                <p>Puffed corn cake</p>
+              </div>
             </div>
            </div>
         </div>
@@ -672,7 +699,7 @@
                     <img src="Imagens questonário/itens/insect-snacks.png" alt="Insect snacks"><span>Insect snacks</span>
                   </div>
                   <div class="food-item" id="item-puffed-grain" draggable="true" data-maize="yes" data-novel="no">
-                    <img src="Imagens questonário/itens/puffed-grain.png" alt="Puffed grain snack"><span>Puffed grain snack</span>
+                    <img src="Imagens questonário/itens/puffedcorncake.png" alt="Puffed corn cake"><span>Puffed corn cake</span>
                   </div>
                   <div class="food-item" id="item-energy-bar" draggable="true" data-maize="yes" data-novel="no">
                     <img src="Imagens questonário/itens/energy-bar.png" alt="Plant energy bar"><span>Energy bar</span>
@@ -877,25 +904,26 @@
             <div class="heat-grid">
               <!-- Maize options -->
               <div class="heat-card" data-selectable data-id="cold-maize-salad" data-maize="yes">
-                <img src="Imagens questonário/itens/cold-maize-salad.png" alt="Cold maize salad">
+                <img src="Imagens questonário/itens/cold-maize-salad.png" alt="Cold corn salad">
                 <span>Cold maize salad</span>
               </div>
 
               <div class="heat-card" data-selectable data-id="tortilla-wrap-veg" data-maize="yes">
-                <img src="Imagens questonário/itens/tortilla-wrap.png" alt="Tortilla wrap with vegetables">
-                <span>Tortilla wrap with vegetables</span>
+                <img src="Imagens questonário/itens/tortilla-wrap.png" alt="Tortilla wrap with vegetables and corn">
+                <span>Tortilla wrap with vegetables and corn</span>
               </div>
 
               <div class="heat-card" data-selectable data-id="grilled-corn-cob" data-maize="yes">
-                <img src="Imagens questonário/itens/grilled-corn.png" alt="Grilled maize on the cob">
+                <img src="Imagens questonário/itens/grilled-corn.png" alt="Grilled corn on the cob">
                 <span>Grilled maize on the cob</span>
+              </div>
+              
+              <div class="heat-card" data-selectable data-id="yogurt-fruit" data-maize="yes">
+                <img src="Imagens questonário/itens/yogurt-fruit.png" alt="Yogurt with fruit and crunchy cornflakes">
+                <span>Yogurt with fruit and crunchy cornflakes</span>
               </div>
 
               <!-- Non-maize options -->
-              <div class="heat-card" data-selectable data-id="yogurt-fruit" data-maize="no">
-                <img src="Imagens questonário/itens/yogurt-fruit.png" alt="Yogurt with fruit">
-                <span>Yogurt with fruit</span>
-              </div>
 
               <div class="heat-card" data-selectable data-id="grilled-chicken" data-maize="no">
                 <img src="Imagens questonário/itens/poultry.png" alt="Grilled chicken">
@@ -1014,17 +1042,17 @@
                 <div class="badge-sub">You explored how climate and food systems are changing.</div>
               </div>
 
-              <p>You’ve just completed the Climate and Environment challenge!</p>
+              <p><strong>You’ve just completed the Climate and Environment challenge!</strong></p>
               <p>Your choices help reveal how people might adapt a climate-uncertain future.</p>
 
 
 
-              <h4 class="reflect-title">What did you learn from this area?</h4>
+              <h4 class="reflect-title">After exploring food in a climate-challenged world, what feels most true to you?</h4>
               <div class="reflect-list">
-                <label><input type="radio" name="climate_reflection" value="maize_resilient"> I hadn’t considered maize as a climate-resilient option before</label>
-                <label><input type="radio" name="climate_reflection" value="aware_climate_availability"> I became more aware of how climate shapes food availability</label>
-                <label><input type="radio" name="climate_reflection" value="sust_vs_preference"> I noticed how sustainability and personal preference can conflict</label>
-                <label><input type="radio" name="climate_reflection" value="prioritize_familiar"> I still prioritize familiar tastes, even in extreme conditions</label>
+                <label><input type="radio" name="climate_reflection" value="maize_resilient"> I realized maize can play a role as a climate-resilient food</label>
+                <label><input type="radio" name="climate_reflection" value="aware_climate_availability"> I became more aware of how climate change can limit what foods are available</label>
+                <label><input type="radio" name="climate_reflection" value="sust_vs_preference"> I noticed how environmental impact and personal taste can clash</label>
+                <label><input type="radio" name="climate_reflection" value="prioritize_familiar"> Even with climate challenges, I’d still choose what feels familiar</label>
                 <label>
                   <input type="radio" name="climate_reflection" value="other">
                   Other
@@ -1108,8 +1136,8 @@
           <!-- Step 2: Fortified / Functional / Familiar (multi-card até 3) -->
           <div class="area-step" id="nutrition-step2" data-select-min="1" data-select-max="2">
             <div class="climate-intro-copy">
-              <h3><strong>Fortified, Functional, or Familiar?</strong></h3>
-              <h3>Which of these would you be willing to eat?</h3>
+              <h3>Scientists have created <strong>new</strong> ways of using <strong>maize to improve health and nutrition</strong>. Some are enriched with vitamins and minerals, others are made into new healthy products.</h3>
+              <h3>Which of these would you choose to eat?</h3>
               <h3 class="muted">Choose <strong>2</strong> options.</h3>
             </div>
 
@@ -1120,23 +1148,23 @@
               </div>
 
               <div class="option-card" data-selectable data-id="fortified">
-                <div class="o-title">Fortified maize flour</div>
+                <div class="o-title">Maize flour enriched with vitamins or minerals</div>
                 <div class="o-sub">+ iron / vitamin A</div>
               </div>
 
               <div class="option-card" data-selectable data-id="probiotic">
-                <div class="o-title">Probiotic corn-based yogurt</div>
+                <div class="o-title">Corn-based yogurt with probiotics</div>
                 <div class="o-sub">Digestive support</div>
               </div>
 
               <div class="option-card" data-selectable data-id="protein">
                 <div class="o-title">Maize protein shake</div>
-                <div class="o-sub">Muscle recovery</div>
+                <div class="o-sub">For energy or muscle recovery</div>
               </div>
 
               <!-- Cartão especial “None” -->
               <div class="option-card none" data-selectable data-id="none" data-none="true">
-                <div class="o-title">I’d avoid all of the above</div>
+                <div class="o-title">I wouldn’t choose any of these</div>
               </div>
             </div>
 
@@ -1310,15 +1338,15 @@
                 <div class="badge-sub">You explored how health goals can shape future food choices.</div>
               </div>
 
-              <p>You’ve just completed the Health and Nutrition challenge!</p>
+              <p><strong>You’ve just completed the Health and Nutrition challenge!</strong></p>
               <p>Your choices offer clues about how people in 2050 manage their well-being through food, and how health priorities might influence the future of everyday ingredients.</p>
 
-              <h4 class="reflect-title">What did you learn from this area?</h4>
+              <h4 class="reflect-title">After exploring your nutritional choices in 2050, what feels most true to you?</h4>
               <div class="reflect-list">
-                <label><input type="radio" name="nutrition_reflection" value="features_shape_design"> I hadn’t realized how health features could shape future food design</label>
-                <label><input type="radio" name="nutrition_reflection" value="prevention_role"> I became more aware of the role food plays in disease prevention</label>
-                <label><input type="radio" name="nutrition_reflection" value="tech_vs_trad"> I noticed how technology and tradition can clash in food choices</label>
-                <label><input type="radio" name="nutrition_reflection" value="taste_priority"> I still prioritize taste, even in personalized nutrition</label>
+                <label><input type="radio" name="nutrition_reflection" value="features_shape_design"> I realized health is becoming my top priority when choosing food</label>
+                <label><input type="radio" name="nutrition_reflection" value="prevention_role"> I see myself still holding on to familiar and traditional foods</label>
+                <label><input type="radio" name="nutrition_reflection" value="tech_vs_trad"> I feel more open to fortified or functional maize-based products</label>
+                <label><input type="radio" name="nutrition_reflection" value="taste_priority"> I noticed that even in 2050, taste and pleasure guide my choices</label>
                 <label>
                   <input type="radio" name="nutrition_reflection" value="other">
                   Other
@@ -1378,7 +1406,7 @@
           <div class="area-step" id="culture-step1" data-select-exact="1">
             <div class="climate-intro-copy">
               <h3><strong>In 2050, food is part of who you are.</strong></h3>
-              <h3>Which statement <strong>best</strong> describes you?</h3>
+              <h3>Which statement <strong>best</strong> describes <strong>your relationship</strong> with food?</h3>
             </div>
 
             <div class="identity-grid" id="cultureIdentityGrid" role="listbox" aria-label="Pick one statement">
@@ -1391,15 +1419,23 @@
               </button>
 
               <button type="button" class="identity-card" data-selectable data-id="affordable" role="option" aria-selected="false">
-                I eat what’s affordable and easy to prepare
+                I choose food that supports my health and well-being
               </button>
 
               <button type="button" class="identity-card" data-selectable data-id="social" role="option" aria-selected="false">
-                I eat what’s popular in my social circles
+                I care about the planet - so I tried to make sutainable food choices should
               </button>
 
               <button type="button" class="identity-card" data-selectable data-id="lifestyle" role="option" aria-selected="false">
-                I follow a lifestyle diet (e.g., vegan, gluten-free)
+                I eat what’s affordable and easy to prepare
+              </button>
+
+              <button type="button" class="identity-card" data-selectable data-id="future" role="option" aria-selected="false">
+                I’m curious about futuristic food and new technologies
+              </button>
+              
+              <button type="button" class="identity-card" data-selectable data-id="social" role="option" aria-selected="false">
+                I eat what’s popular in my social circles
               </button>
             </div>
 
@@ -1431,6 +1467,8 @@
                 <div class="sort-card" draggable="true" data-id="beef-stew" data-label="Beef stew">Beef stew</div>
                 <div class="sort-card" draggable="true" data-id="onion-soup" data-label="Onion soup">Onion soup</div>
                 <div class="sort-card" draggable="true" data-id="salad" data-label="Salad">Salad</div>
+                <div class="sort-card" draggable="true" data-id="corn-cake" data-label="Puffed corn cake">Puffed corn cake</div>
+                <div class="sort-card" draggable="true" data-id="nachos" data-label="Nachos">Nachos</div>
               </div>
 
               <!-- Categorias -->
@@ -1648,15 +1686,15 @@
                 <div class="badge-sub">You explored how culture, heritage, and innovation shape food in the future.</div>
               </div>
 
-              <p>You’ve just completed the Food Culture challenge!</p>
+              <p><strong>You’ve just completed the Food Culture challenge!</strong></p>
               <p>Your choices reveal how people in 2050 connect identity, community, and food — and how that might influence everyday ingredients.</p>
 
-              <h4 class="reflect-title">What did you realize while exploring food culture in 2050?</h4>
+              <h4 class="reflect-title">What feels most true to you after exploring food culture in 2050?</h4>
               <div class="reflect-list">
-                <label><input type="radio" name="culture_reflection" value="tradition_influence"> I hadn’t thought about how much tradition influences what I eat</label>
-                <label><input type="radio" name="culture_reflection" value="togetherness"> I became more aware of how food brings people together</label>
-                <label><input type="radio" name="culture_reflection" value="social_trends"> I realized that social trends can reshape what becomes “normal”</label>
-                <label><input type="radio" name="culture_reflection" value="familiar_priority"> I still prioritize what’s familiar, even if culture shifts</label>
+                <label><input type="radio" name="culture_reflection" value="tradition_influence">•	I hadn’t thought about how much tradition influences what I eat</label>
+                <label><input type="radio" name="culture_reflection" value="togetherness">I realized how food choices can reflect identity and cultural roots</label>
+                <label><input type="radio" name="culture_reflection" value="social_trends">I noticed how some foods — including maize — can shift from everyday to trendy</label>
+                <label><input type="radio" name="culture_reflection" value="familiar_priority">Even in 2050, I’d still hold on to the familiar tastes I know best</label>
                 <label>
                   <input type="radio" name="culture_reflection" value="other">
                   Other
@@ -1801,6 +1839,7 @@
   
 </body>
 </html>
+
 
 
 
