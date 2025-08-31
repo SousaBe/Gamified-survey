@@ -2511,6 +2511,53 @@ html, body { overflow-x: hidden !important; }
   margin: 0 auto;   /* centra horizontalmente */
 }
 
+/* ============ ENTER & CONTINUE: fixar centro e animação própria ============ */
+#enterAreaBtn,
+#finalContinueBtn{
+  position: fixed !important;
+  top: max(12px, env(safe-area-inset-top));
+  left: 50% !important;
+  transform: translateX(-50%);        /* ← mantém o centro */
+  right: auto !important;
+  bottom: auto !important;
+  z-index: 99999;
+
+  /* visual */
+  background: var(--brand);
+  color: #fff;
+  border: 0;
+  padding: 12px 20px;
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  font-weight: 600;
+  font-size: 20px;
+  cursor: pointer;
+
+  /* MUITO IMPORTANTE: desligar a animação global que mexe no transform */
+  animation: none !important;
+}
+
+/* classe usada quando o botão aparece (entrada + pulso sem quebrar o centro) */
+.btn-pop-center {
+  animation: enter-pop .34s ease-out, btn-pulsar 1.5s infinite .34s !important;
+}
+
+/* pulso que preserva translateX(-50%) */
+@keyframes btn-pulsar{
+  0%,100% { transform: translateX(-50%) scale(1); }
+  50%     { transform: translateX(-50%) scale(1.08); }
+}
+
+/* animação de entrada simples; usa translateY só na entrada */
+@keyframes enter-pop{
+  from { transform: translateX(-50%) translateY(-8px); opacity: 0; }
+  to   { transform: translateX(-50%) translateY(0);    opacity: 1; }
+}
+
+/* continuar a permitir esconder via classe */
+#enterAreaBtn.hidden,
+#finalContinueBtn.hidden{ display: none !important; }
+
 
 
 
