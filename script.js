@@ -397,14 +397,11 @@ window.completeArea = function(key){
       currentAreaIndex = idx + 1;
       unlockCurrentArea();      // volta a mostrar o CTA
     } else {
-     const btn = document.getElementById('finalContinueBtn');
-     if (btn) {
-       btn.classList.remove('hidden', 'btn-pop-center');
-       void btn.offsetWidth;
-       btn.classList.add('btn-pop-center');
-       btn.focus();
-     }
-   };
+      const btn = document.getElementById('finalContinueBtn');
+      show(btn);
+      btn.focus();
+    }
+  };
 
   const targetTop = nextKey ? TOPS[nextKey] : TOPS.flag;
   avatar.addEventListener('transitionend', goNext, { once:true });
@@ -2263,6 +2260,7 @@ window.submitAllAndFinish = async function(){
   }
 
 };
+
 
 
 
