@@ -2507,6 +2507,9 @@ html, body { overflow-x: hidden !important; }
   border-color: #7b9db7;
 }
 
+.question-wrapper img.sacola {
+  margin: 0 auto;   /* centra horizontalmente */
+}
 
 
 
