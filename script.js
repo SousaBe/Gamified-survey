@@ -404,7 +404,7 @@ window.completeArea = function(key){
        btn.classList.add('btn-pop-center');
        btn.focus();
      }
-   }
+   };
 
   const targetTop = nextKey ? TOPS[nextKey] : TOPS.flag;
   avatar.addEventListener('transitionend', goNext, { once:true });
@@ -2263,6 +2263,7 @@ window.submitAllAndFinish = async function(){
   }
 
 };
+
 
 
 
