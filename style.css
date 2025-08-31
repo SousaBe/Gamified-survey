@@ -2436,20 +2436,16 @@ html, body { overflow-x: hidden !important; }
 }
 
 
-/* Se as casas antigas ainda existirem no HTML, esconde-as */
-#gameMap .house,
-#gameMap .explore-btn{ display:none !important; }
-
-/* Botão global para entrar na área */
-
-.enter-btn.hidden{ display: none; }
-
-#enterAreaBtn{
+/* ENTER: fixo e centrado no topo */
+#enterAreaBtn {
   position: fixed !important;
-  top: max(12px, env(safe-area-inset-top));
-  left: 50% !important;
-  transform: translateX(-50%);   /* sem !important para permitir animação somar */
+  top: max(20px, env(safe-area-inset-top));
+  left: 50% !important;              /* centro da janela */
+  transform: translateX(-50%);       /* corrige metade da largura */
+  right: auto !important;            /* garante que não cola à direita */
+  bottom: auto !important;           /* garante que não cola em baixo */
   z-index: 99999;
+
   background: var(--brand);
   color: #fff;
   border: 0;
@@ -2458,14 +2454,24 @@ html, body { overflow-x: hidden !important; }
   box-shadow: var(--shadow);
   font-weight: 600;
   font-size: 20px;
-  margin: 0;
-  right: auto !important;
-  bottom: auto !important;
   cursor: pointer;
-  animation: pulsar 1.5s infinite; /* pulso contínuo */
+
+  animation: pulsar 1.5s infinite;
 }
-#enterAreaBtn:hover{ background:#c99b34; }
-#enterAreaBtn.hidden{ display: none !important; }
+
+#enterAreaBtn.hidden {
+  display: none !important;
+}
+
+/* animação de entrada */
+.enter-btn-pop {
+  animation: enter-pop .34s ease-out, pulsar 1.5s infinite;
+}
+
+@keyframes enter-pop {
+  0%   { opacity: 0; transform: translate(-50%, -6px) scale(0.96); }
+  100% { opacity: 1; transform: translate(-50%, 0) scale(1); }
+}
 
 /* FINAL: mantém como estava, mas separado do enter */
 #finalContinueBtn{
@@ -2490,13 +2496,7 @@ html, body { overflow-x: hidden !important; }
 #finalContinueBtn:hover{ background:#c99b34; }
 #finalContinueBtn.hidden{ display: none !important; }
 
-.enter-btn-pop{
-  animation: enter-pop .34s ease-out, pulsar 1.5s infinite;
-}
-
-@keyframes enter-pop{
-  0%   { opacity: 0; transform: translateX(-50%) translateY(-6px) scale(0.96); }
-  100% { opacity: 1; transform: translateX(-50%) translateY(0)    scale(1); }
+00% { opacity: 1; transform: translateX(-50%) translateY(0)    scale(1); }
 }
 #gameMap .enter-btn,
 #gameMap #enterAreaBtn:not(:root){
@@ -2510,6 +2510,7 @@ html, body { overflow-x: hidden !important; }
 .question-wrapper img.sacola {
   margin: 0 auto;   /* centra horizontalmente */
 }
+
 
 
 
