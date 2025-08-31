@@ -1,5 +1,5 @@
 /* ==========================================================================
-   0) TOAST (leve, sem libs)
+   0) TOAST (leve, sem
    ========================================================================== */
 (function(){
   function ensureContainer(){
@@ -66,6 +66,18 @@ function showOnly(id) {
   targets.forEach(s => $id(s)?.classList.add('hidden'));
   $id(id)?.classList.remove('hidden');
   window.scrollTo({ top: 0, behavior: 'auto' });
+}
+
+function ensureEnterBtn() {
+  let b = document.getElementById('enterAreaBtn');
+  if (!b) {
+    b = document.createElement('button');
+    b.id = 'enterAreaBtn';
+    b.type = 'button';
+    b.className = 'enter-btn hidden'; // base + começa escondido
+    document.body.appendChild(b);     // <-- no <body>, fora do mapa
+  }
+  return b;
 }
 
 function labelForInput(input){
@@ -232,17 +244,32 @@ const AREA_LABEL = {
 
 function hideEnterButton(){
   const b = document.getElementById('enterAreaBtn');
-  if (b) b.classList.add('hidden');
+  if (b){
+    b.classList.add('hidden');
+    b.classList.remove('enter-btn-pop'); // limpa a classe de animação
+  }
 }
 
 function showEnterButtonForCurrentArea(){
   const key = AREA_ORDER[currentAreaIndex];
-  const b = document.getElementById('enterAreaBtn');
-  if (!b) return;
+  const b = ensureEnterBtn(); // usa o do body (único)
+
   b.textContent = 'Click to enter this area!';
   b.setAttribute('aria-label', `Enter ${AREA_LABEL[key] || key} area`);
-  b.onclick = () => window.startArea(key);
-  b.classList.remove('hidden');
+
+  // 1 clique: esconde já e entra
+  b.onclick = (ev) => {
+    ev.preventDefault();
+    ev.stopPropagation();
+    hideEnterButton();
+    window.startArea(key);
+  };
+
+  // mostrar com animação de entrada (reinicia a cada vez)
+  b.classList.remove('hidden', 'enter-btn-pop');
+  void b.offsetWidth; // reflow para reiniciar animação
+  b.classList.add('enter-btn-pop');
+
   b.focus?.();
 }
 
@@ -2239,6 +2266,7 @@ window.submitAllAndFinish = async function(){
   }
 
 };
+
 
 
 
