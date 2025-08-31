@@ -2444,14 +2444,11 @@ html, body { overflow-x: hidden !important; }
 
 .enter-btn.hidden{ display: none; }
 
-#enterAreaBtn,
-#finalContinueBtn{
-  position: fixed !important;                 /* fixa ao viewport */
-  top: max(12px, env(safe-area-inset-top));   /* topo, respeita notch */
-  left: 50% !important;                       /* meio do ecrã */
-  transform: translateX(-50%) !important;     /* centra pela largura */
-  /* alternativa moderna: translate: -50% 0; */
-
+#enterAreaBtn{
+  position: fixed !important;
+  top: max(12px, env(safe-area-inset-top));
+  left: 50% !important;
+  transform: translateX(-50%);   /* sem !important para permitir animação somar */
   z-index: 99999;
   background: var(--brand);
   color: #fff;
@@ -2461,29 +2458,55 @@ html, body { overflow-x: hidden !important; }
   box-shadow: var(--shadow);
   font-weight: 600;
   font-size: 20px;
-  margin: 0;                                  /* por via das dúvidas */
+  margin: 0;
   right: auto !important;
   bottom: auto !important;
+  cursor: pointer;
+  animation: pulsar 1.5s infinite; /* pulso contínuo */
+}
+#enterAreaBtn:hover{ background:#c99b34; }
+#enterAreaBtn.hidden{ display: none !important; }
 
-  animation: pulsar 1.5s infinite; 
+/* FINAL: mantém como estava, mas separado do enter */
+#finalContinueBtn{
+  position: fixed !important;
+  top: max(12px, env(safe-area-inset-top));
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  z-index: 99999;
+  background: var(--brand);
+  color: #fff;
+  border: 0;
+  padding: 12px 20px;
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  font-weight: 600;
+  font-size: 20px;
+  margin: 0;
+  right: auto !important;
+  bottom: auto !important;
+  animation: pulsar 1.5s infinite;
+}
+#finalContinueBtn:hover{ background:#c99b34; }
+#finalContinueBtn.hidden{ display: none !important; }
 
+.enter-btn-pop{
+  animation: enter-pop .34s ease-out, pulsar 1.5s infinite;
 }
 
-/* estados/hover a teu gosto */
-#enterAreaBtn:hover,
-#finalContinueBtn:hover{
-  background: #c99b34;
+@keyframes enter-pop{
+  0%   { opacity: 0; transform: translateX(-50%) translateY(-6px) scale(0.96); }
+  100% { opacity: 1; transform: translateX(-50%) translateY(0)    scale(1); }
 }
-
-/* quando escondidos pela tua função hideEnterButton() */
-#enterAreaBtn.hidden,
-#finalContinueBtn.hidden{
+#gameMap .enter-btn,
+#gameMap #enterAreaBtn:not(:root){
   display: none !important;
 }
 
 #nutritionHealthierExplainWrap:focus-within {
   border-color: #7b9db7;
 }
+
 
 
 
