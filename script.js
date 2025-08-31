@@ -252,26 +252,20 @@ function hideEnterButton(){
 
 function showEnterButtonForCurrentArea(){
   const key = AREA_ORDER[currentAreaIndex];
-  const b = ensureEnterBtn(); // usa o do body (único)
+  const b = document.getElementById('enterAreaBtn');
+  if (!b) return;
 
   b.textContent = 'Click to enter this area!';
   b.setAttribute('aria-label', `Enter ${AREA_LABEL[key] || key} area`);
+  b.onclick = () => window.startArea(key);
 
-  // 1 clique: esconde já e entra
-  b.onclick = (ev) => {
-    ev.preventDefault();
-    ev.stopPropagation();
-    hideEnterButton();
-    window.startArea(key);
-  };
-
-  // mostrar com animação de entrada (reinicia a cada vez)
-  b.classList.remove('hidden', 'enter-btn-pop');
-  void b.offsetWidth; // reflow para reiniciar animação
-  b.classList.add('enter-btn-pop');
-
+  // mostrar centrado + animação
+  b.classList.remove('hidden', 'btn-pop-center');
+  void b.offsetWidth;              // força reflow para reiniciar animação
+  b.classList.add('btn-pop-center');
   b.focus?.();
 }
+
 
 function readytobegin(event) {
   if (event && typeof event.preventDefault === 'function') event.preventDefault();
@@ -403,11 +397,14 @@ window.completeArea = function(key){
       currentAreaIndex = idx + 1;
       unlockCurrentArea();      // volta a mostrar o CTA
     } else {
-      const btn = document.getElementById('finalContinueBtn');
-      show(btn);
-      btn.focus();
-    }
-  };
+     const btn = document.getElementById('finalContinueBtn');
+     if (btn) {
+       btn.classList.remove('hidden', 'btn-pop-center');
+       void btn.offsetWidth;
+       btn.classList.add('btn-pop-center');
+       btn.focus();
+     }
+   }
 
   const targetTop = nextKey ? TOPS[nextKey] : TOPS.flag;
   avatar.addEventListener('transitionend', goNext, { once:true });
@@ -2266,6 +2263,7 @@ window.submitAllAndFinish = async function(){
   }
 
 };
+
 
 
 
