@@ -2438,7 +2438,7 @@ html, body { overflow-x: hidden !important; }
 
 /* ENTER: fixo e centrado no topo */
 #enterAreaBtn {
-  position: fixed !important;
+  position: absolute !important;
   top: max(20px, env(safe-area-inset-top));
   left: 50% !important;              /* centro da janela */
   transform: translateX(-50%);       /* corrige metade da largura */
@@ -2510,6 +2510,7 @@ html, body { overflow-x: hidden !important; }
 .question-wrapper img.sacola {
   margin: 0 auto;   /* centra horizontalmente */
 }
+
 
 
 
